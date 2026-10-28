@@ -5,7 +5,7 @@ export const initPredictions = async () => {
 
   if (!predictionList) return;
 
-  const response = await fetch('/assets/json/predskazaniya.json');
+  const response = await fetch('./../../assets/json/predskazaniya.json');
   const data = await response.json();
 
   if (!data || !Array.isArray(data)) return;
