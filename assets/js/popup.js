@@ -76,7 +76,7 @@ export const popup = {
   //           OPEN
   // ==============================
   async open(id) {
-    if (this._isOpening || this._isAnimating) return;
+    if (this._isOpening || this._isAnimating || !this._backdrop) return;
     this._isOpening = true;
 
     const targetPopup = document.querySelector(`[data-popup="${id}"]`);
@@ -88,7 +88,7 @@ export const popup = {
 
     const activePopup = document.querySelector('[data-popup].active');
 
-    // включаем фон, если ещё не включён
+    // включаем фон, если еще не включен
     if (!this._backdrop.classList.contains('active')) {
       this._backdrop.classList.add('active');
     }

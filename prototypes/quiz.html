@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Распределяющая маска</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center min-vh-100 p-3">
+
+    <div class="card shadow-sm text-center p-4" style="max-width: 520px; width: 100%;">
+        <div class="card-body">
+            <h1 class="h4 mb-3">Репертуар театра</h1>
+            <p class="text-muted mb-4">
+                Узнайте, какой сказочный образ подходит вам больше всего, и выберите спектакль по душе.
+            </p>
+
+            <div class="d-flex flex-column gap-2 align-items-center">
+                <button type="button" class="btn btn-primary btn-lg mt-2" data-bs-toggle="modal" data-bs-target="#sortingMaskModal">
+                    <i class="bi bi-magic me-2"></i> Подобрать пьесу
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="sortingMaskModal" tabindex="-1" aria-labelledby="sortingMaskModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="sortingMaskModalLabel">Распределяющая маска</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div id="stepIntro">
+                        <p class="mb-3">
+                            Пройдите короткий тест из 5 вопросов и узнайте, <strong>какой вы сказочный персонаж</strong>!
+                        </p>
+                        <p class="text-muted mb-4">
+                            Мы расскажем, почему именно вы сможете блестяще сыграть такую роль и в какой пьесе нашего репертуара можно увидеть этого героя.
+                        </p>
+                        <div class="d-grid">
+                            <button type="button" class="btn btn-primary" id="btnStart">Начать</button>
+                        </div>
+                    </div>
+
+                    <div id="stepQuiz" class="d-none">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <small class="text-muted" id="questionProgressText">Вопрос 1 из 5</small>
+                        </div>
+                        <div class="progress mb-3" style="height: 6px;">
+                            <div class="progress-bar" id="questionProgressBar" role="progressbar" style="width: 20%;"></div>
+                        </div>
+
+                        <h6 class="mb-3" id="questionTitle">Текст вопроса</h6>
+
+                        <div class="list-group mb-4" id="optionsList">
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="button" class="btn btn-primary" id="btnNext" disabled>Далее</button>
+                        </div>
+                    </div>
+
+                    <div id="stepResult" class="d-none text-center">
+                        <img id="resultImage" src="" alt="Иллюстрация персонажа" class="img-fluid rounded mb-3 border">
+
+                        <h5 class="mb-2" id="resultTitle">
+                            Вы – Снежная королева, потому что сначала порядок, потом веселье.
+                        </h5>
+
+                        <p class="text-muted small mb-4" id="resultDescription"></p>
+
+                        <div class="d-flex gap-2 justify-content-center align-items-center mb-2">
+                            <button type="button" class="btn btn-outline-secondary" id="btnRestart" title="Пройти тест заново" aria-label="Пройти тест заново">
+                                <i class="bi bi-arrow-counterclockwise"></i>
+                            </button>
+
+                            <a href="#play" class="btn btn-primary flex-grow-1" id="btnGoToPlay">
+                                Перейти к пьесе
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer d-none" id="modalFooterResult">
+                    <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const RESULTS = {
+            snow_queen: {
+                title: 'Вы – Снежная королева, потому что сначала порядок, потом веселье.',
+                description: 'Ваше самообладание и умение держать ситуацию под контролем делают вас идеальным исполнителем главной роли в пьесе «Снежная королева».',
+                playName: 'Снежная королева',
+                image: 'https://placehold.co/600x320/e0f2fe/0369a1?text=Снежная+королева'
+            },
+            mad_hatter: {
+                title: 'Вы – Безумный Шляпник, потому что скука для вас — главное преступление.',
+                description: 'Ваша богатая фантазия и талант к импровизации позволят вам блестяще сыграть эту яркую роль в пьесе «Алиса в Стране чудес».',
+                playName: 'Алиса в Стране чудес',
+                image: 'https://placehold.co/600x320/f3e8ff/6b21a8?text=Безумный+Шляпник'
+            },
+            puss_in_boots: {
+                title: 'Вы – Кот в сапогах, потому что харизма и смекалка открывают любые двери.',
+                description: 'Ваша находчивость и обаяние покорят зрительный зал с первой минуты в авантюрной пьесе «Кот в сапогах».',
+                playName: 'Кот в сапогах',
+                image: 'https://placehold.co/600x320/fef3c7/b45309?text=Кот+в+сапогах'
+            },
+            maleficent: {
+                title: 'Вы – Могущественная Колдунья, потому что вам нет равных в эффектных появлениях.',
+                description: 'Ваша выразительность и любовь к красивой драме помогут создать незабываемый образ в пьесе «Спящая красавица».',
+                playName: 'Спящая красавица',
+                image: 'https://placehold.co/600x320/d1fae5/065f46?text=Могущественная+Колдунья'
+            },
+            fairy_godmother: {
+                title: 'Вы – Добрая Фея-крёстная, потому что вы создаёте чудо там, где другие опускают руки.',
+                description: 'Ваша чуткость и душевная теплота подарят зрителям ощущение настоящего волшебства в классической пьесе «Золушка».',
+                playName: 'Золушка',
+                image: 'https://placehold.co/600x320/fce7f3/9d174d?text=Добрая+Фея-крёстная'
+            }
+        };
+
+        const QUESTIONS = [
+            {
+                text: '1. До начала спектакля осталось 5 минут, и внезапно гаснет свет. Ваши действия?',
+                options: [
+                    { label: 'Спокойно раздам чёткие поручения техникам по плану.', value: 'snow_queen' },
+                    { label: 'Превращу темноту в весёлую импровизацию для зрителей.', value: 'mad_hatter' },
+                    { label: 'Обаятельно пошучу со сцены, чтобы разрядить обстановку.', value: 'puss_in_boots' },
+                    { label: 'Использую полумрак для эффектного и таинственного выхода.', value: 'maleficent' },
+                    { label: 'Успокою коллег и помогу всем подготовиться к выходу.', value: 'fairy_godmother' }
+                ]
+            },
+            {
+                text: '2. Какой реквизит вы бы выбрали для своей роли?',
+                options: [
+                    { label: 'Ледяную корону и серебряное зеркало.', value: 'snow_queen' },
+                    { label: 'Высокий цилиндр и необычные карманные часы.', value: 'mad_hatter' },
+                    { label: 'Шляпу с пером и удобные высокие сапоги.', value: 'puss_in_boots' },
+                    { label: 'Магический посох и длинный тёмный плащ.', value: 'maleficent' },
+                    { label: 'Волшебную палочку, исполняющую желания.', value: 'fairy_godmother' }
+                ]
+            },
+            {
+                text: '3. Какая декорация нравится вам больше всего?',
+                options: [
+                    { label: 'Строгий и сияющий ледяной дворец.', value: 'snow_queen' },
+                    { label: 'Сказочный сад с длинным столом для чаепития.', value: 'mad_hatter' },
+                    { label: 'Дорога приключений, ведущая к королевскому замку.', value: 'puss_in_boots' },
+                    { label: 'Таинственный лес, окутанный туманом.', value: 'maleficent' },
+                    { label: 'Праздничный бальный зал в полночь.', value: 'fairy_godmother' }
+                ]
+            },
+            {
+                text: '4. Партнёр по сцене забыл свою реплику. Как вы поступите?',
+                options: [
+                    { label: 'Строго верну диалог в рамки сценария.', value: 'snow_queen' },
+                    { label: 'Придумаю забавный каламбур прямо на ходу.', value: 'mad_hatter' },
+                    { label: 'Возьму внимание зала на себя и выручу партнёра.', value: 'puss_in_boots' },
+                    { label: 'Сделаю многозначительную драматическую паузу.', value: 'maleficent' },
+                    { label: 'Незаметно и мягко подскажу нужные слова.', value: 'fairy_godmother' }
+                ]
+            },
+            {
+                text: '5. Что для вас главное после финального поклона?',
+                options: [
+                    { label: 'Знать, что спектакль прошёл идеально и без единой ошибки.', value: 'snow_queen' },
+                    { label: 'Слышать искренний смех и восторг в зале.', value: 'mad_hatter' },
+                    { label: 'Ловить громкие овации и крики «Браво!».', value: 'puss_in_boots' },
+                    { label: 'Понимать, что ваш образ запомнится зрителям надолго.', value: 'maleficent' },
+                    { label: 'Видеть счастливые и растроганные лица людей.', value: 'fairy_godmother' }
+                ]
+            }
+        ];
+
+        const stepIntro = document.getElementById('stepIntro');
+        const stepQuiz = document.getElementById('stepQuiz');
+        const stepResult = document.getElementById('stepResult');
+        const modalFooterResult = document.getElementById('modalFooterResult');
+
+        const btnStart = document.getElementById('btnStart');
+        const btnNext = document.getElementById('btnNext');
+        const btnRestart = document.getElementById('btnRestart');
+        const btnGoToPlay = document.getElementById('btnGoToPlay');
+
+        const questionProgressText = document.getElementById('questionProgressText');
+        const questionProgressBar = document.getElementById('questionProgressBar');
+        const questionTitle = document.getElementById('questionTitle');
+        const optionsList = document.getElementById('optionsList');
+
+        const resultImage = document.getElementById('resultImage');
+        const resultTitle = document.getElementById('resultTitle');
+        const resultDescription = document.getElementById('resultDescription');
+
+        let currentStep = 0;
+        let answers = [];
+
+        function showSection(section) {
+            stepIntro.classList.add('d-none');
+            stepQuiz.classList.add('d-none');
+            stepResult.classList.add('d-none');
+            modalFooterResult.classList.add('d-none');
+
+            section.classList.remove('d-none');
+            if (section === stepResult) {
+                modalFooterResult.classList.remove('d-none');
+            }
+        }
+
+        function startQuiz() {
+            currentStep = 0;
+            answers = [];
+            renderQuestion();
+            showSection(stepQuiz);
+        }
+
+        function renderQuestion() {
+            const q = QUESTIONS[currentStep];
+            const stepNum = currentStep + 1;
+            const progressPercent = (stepNum / QUESTIONS.length) * 100;
+
+            questionProgressText.textContent = `Вопрос ${stepNum} из ${QUESTIONS.length}`;
+            questionProgressBar.style.width = `${progressPercent}%`;
+            questionTitle.textContent = q.text;
+
+            btnNext.disabled = true;
+            optionsList.innerHTML = '';
+
+            q.options.forEach((opt, idx) => {
+                const label = document.createElement('label');
+                label.className = 'list-group-item list-group-item-action d-flex align-items-center gap-2';
+                label.style.cursor = 'pointer';
+
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = 'quizOption';
+                radio.value = opt.value;
+                radio.className = 'form-check-input mt-0';
+                radio.id = `opt_${idx}`;
+
+                const span = document.createElement('span');
+                span.textContent = opt.label;
+
+                radio.addEventListener('change', () => {
+                    btnNext.disabled = false;
+                });
+
+                label.appendChild(radio);
+                label.appendChild(span);
+                optionsList.appendChild(label);
+            });
+        }
+
+        function showResult() {
+            const scoreMap = {};
+            answers.forEach(val => {
+                scoreMap[val] = (scoreMap[val] || 0) + 1;
+            });
+
+            let bestKey = 'snow_queen';
+            let maxCount = 0;
+
+            for (const key in scoreMap) {
+                if (scoreMap[key] > maxCount) {
+                    maxCount = scoreMap[key];
+                    bestKey = key;
+                }
+            }
+
+            const resultData = RESULTS[bestKey];
+
+            resultImage.src = resultData.image;
+            resultImage.alt = resultData.playName;
+            resultTitle.textContent = resultData.title;
+            resultDescription.textContent = resultData.description;
+            btnGoToPlay.textContent = `Перейти к пьесе «${resultData.playName}»`;
+            btnGoToPlay.dataset.playName = resultData.playName;
+
+            showSection(stepResult);
+        }
+
+        btnStart.addEventListener('click', startQuiz);
+
+        btnNext.addEventListener('click', () => {
+            const selected = optionsList.querySelector('input[name="quizOption"]:checked');
+            if (!selected) return;
+
+            answers.push(selected.value);
+
+            if (currentStep < QUESTIONS.length - 1) {
+                currentStep++;
+                renderQuestion();
+            } else {
+                showResult();
+            }
+        });
+
+        btnRestart.addEventListener('click', startQuiz);
+
+        btnGoToPlay.addEventListener('click', (e) => {
+            e.preventDefault();
+            const playName = btnGoToPlay.dataset.playName || '';
+            const modalEl = document.getElementById('sortingMaskModal');
+            const modalInstance = bootstrap.Modal.getInstance(modalEl);
+            if (modalInstance) {
+                modalInstance.hide();
+            }
+        });
+    </script>
+</body>
+</html>

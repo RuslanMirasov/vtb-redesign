@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сам себе Чайковский</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body class="bg-light py-4">
+
+    <div class="container">
+        <div class="card shadow-sm">
+            <div class="card-header bg-white d-flex flex-wrap justify-content-between align-items-center gap-2 py-3">
+                <h1 class="h4 mb-0">Сам себе Чайковский</h1>
+                <div class="d-flex align-items-center gap-2">
+                    <span class="badge bg-secondary" id="syncStatusBadge">
+                        <i class="bi bi-disc me-1"></i>Дорожки остановлены
+                    </span>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="card bg-light border mb-4">
+                    <div class="card-body py-3">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-12 col-md-auto">
+                                <label class="form-label fw-semibold small d-block mb-1">Настроение:</label>
+                                <div class="btn-group" role="group" aria-label="Настроение музыки">
+                                    <input type="radio" class="btn-check" name="musicMood" id="moodFun" value="fun" checked autocomplete="off">
+                                    <label class="btn btn-outline-primary btn-sm px-3" for="moodFun">
+                                        <i class="bi bi-emoji-smile me-1"></i>Весело
+                                    </label>
+
+                                    <input type="radio" class="btn-check" name="musicMood" id="moodSad" value="sad" autocomplete="off">
+                                    <label class="btn btn-outline-primary btn-sm px-3" for="moodSad">
+                                        <i class="bi bi-emoji-frown me-1"></i>Грустно
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-auto">
+                                <label class="form-label fw-semibold small d-block mb-1">Стиль:</label>
+                                <div class="btn-group" role="group" aria-label="Стиль музыки">
+                                    <input type="radio" class="btn-check" name="musicStyle" id="styleClassic" value="classic" checked autocomplete="off">
+                                    <label class="btn btn-outline-primary btn-sm px-3" for="styleClassic">
+                                        <i class="bi bi-music-note-beamed me-1"></i>Классика
+                                    </label>
+
+                                    <input type="radio" class="btn-check" name="musicStyle" id="styleModern" value="modern" autocomplete="off">
+                                    <label class="btn btn-outline-primary btn-sm px-3" for="styleModern">
+                                        <i class="bi bi-lightning-charge me-1"></i>Современно
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md ms-md-auto text-md-end">
+                                <div class="small text-muted">Активный набор дорожек:</div>
+                                <span class="badge bg-info text-dark" id="activePresetBadge">Весело — Классика</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="instrumentGroupsContainer" class="row g-3 mb-4"></div>
+
+                <div id="noInstrumentWarning" class="alert alert-warning d-none" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    Необходимо выбрать хотя бы один инструмент для составления музыкальной композиции!
+                </div>
+
+                <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center border-top pt-3">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="btnResetInstruments">
+                        <i class="bi bi-x-circle me-1"></i>Сбросить выбор
+                    </button>
+
+                    <button type="button" class="btn btn-primary btn-lg px-5" id="btnCompose">
+                        <i class="bi bi-sliders me-2"></i>Сочинить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="compositionModal" tabindex="-1" aria-labelledby="compositionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="compositionModalLabel">Ваша музыкальная композиция</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="text-muted small">Выбранные инструменты:</span>
+                        <span class="badge bg-info text-dark" id="modalPresetBadge">Весело — Классика</span>
+                    </div>
+
+                    <div id="modalSelectedInstrumentsList" class="d-flex flex-wrap gap-1 mb-4"></div>
+
+                    <div class="card bg-light border">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <button type="button" class="btn btn-warning" id="btnModalPlayPause">
+                                    <i class="bi bi-pause-fill me-1" id="modalPlayPauseIcon"></i>
+                                    <span id="modalPlayPauseText">Пауза</span>
+                                </button>
+                                <span class="badge bg-success" id="modalPlaybackStatus">Воспроизведение...</span>
+                            </div>
+
+                            <div class="progress mb-3" style="height: 6px;">
+                                <div id="modalCompositionProgress" class="progress-bar bg-success" role="progressbar" style="width: 0%;"></div>
+                            </div>
+
+                            <div class="mb-0">
+                                <label for="modalVolumeRange" class="form-label d-flex justify-content-between small mb-1">
+                                    <span><i class="bi bi-volume-up me-1"></i>Громкость композиции</span>
+                                    <span id="modalVolumeValue">80%</span>
+                                </label>
+                                <input type="range" class="form-range" id="modalVolumeRange" min="0" max="100" value="80">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary w-100" id="btnDownloadMp3">
+                        <i class="bi bi-download me-2"></i>Скачать MP3
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
+
+    <script>
+        function makeInstrumentImage(label, bgHex, fgHex, iconGlyph) {
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="56" viewBox="0 0 80 56">
+                        <rect width="80" height="56" rx="6" fill="${bgHex}"/>
+                        <text x="40" y="34" font-family="sans-serif" font-size="22" text-anchor="middle" fill="${fgHex}">${iconGlyph}</text>
+                    </svg>`;
+            return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+        }
+
+        const PRESET_LABELS = {
+            'fun_classic': 'Весело — Классика',
+            'fun_modern': 'Весело — Современно',
+            'sad_classic': 'Грустно — Классика',
+            'sad_modern': 'Грустно — Современно'
+        };
+
+        const INSTRUMENT_CATEGORIES = [
+            {
+                category: 'Струнно-смычковые',
+                colorBg: '#e0f2fe',
+                colorFg: '#0369a1',
+                items: [
+                    { id: 'violin', name: 'Скрипка', glyph: '🎻' },
+                    { id: 'cello', name: 'Виолончель', glyph: '🎻' },
+                    { id: 'double_bass', name: 'Контрабас', glyph: '🎻' }
+                ]
+            },
+            {
+                category: 'Струнно-щипковые',
+                colorBg: '#fef3c7',
+                colorFg: '#b45309',
+                items: [
+                    { id: 'harp', name: 'Арфа', glyph: '🪕' },
+                    { id: 'balalaika', name: 'Балалайка', glyph: '🪕' },
+                    { id: 'gusli', name: 'Гусли', glyph: '🎼' },
+                    { id: 'domra', name: 'Домра', glyph: '🪕' }
+                ]
+            },
+            {
+                category: 'Деревянные духовые',
+                colorBg: '#dcfce7',
+                colorFg: '#15803d',
+                items: [
+                    { id: 'flute', name: 'Флейта', glyph: '🪈' },
+                    { id: 'oboe', name: 'Гобой', glyph: '🎷' },
+                    { id: 'clarinet', name: 'Кларнет', glyph: '🎷' }
+                ]
+            },
+            {
+                category: 'Медные духовые',
+                colorBg: '#ffedd5',
+                colorFg: '#c2410c',
+                items: [
+                    { id: 'trumpet', name: 'Труба', glyph: '🎺' },
+                    { id: 'french_horn', name: 'Валторна', glyph: '📯' },
+                    { id: 'tuba', name: 'Туба', glyph: '🎺' }
+                ]
+            },
+            {
+                category: 'Ударные',
+                colorBg: '#fee2e2',
+                colorFg: '#b91c1c',
+                items: [
+                    { id: 'timpani', name: 'Литавры', glyph: '🥁' },
+                    { id: 'cymbals', name: 'Тарелки', glyph: '🔔' },
+                    { id: 'drum', name: 'Барабан', glyph: '🥁' },
+                    { id: 'xylophone', name: 'Ксилофон', glyph: '🎹' }
+                ]
+            },
+            {
+                category: 'Клавишные',
+                colorBg: '#f3e8ff',
+                colorFg: '#6b21a8',
+                items: [
+                    { id: 'piano', name: 'Фортепиано', glyph: '🎹' },
+                    { id: 'organ', name: 'Орган', glyph: '🎹' },
+                    { id: 'harpsichord', name: 'Клавесин', glyph: '🎹' }
+                ]
+            }
+        ];
+
+        const INSTRUMENTS_BY_ID = {};
+        let globalIndex = 0;
+
+        INSTRUMENT_CATEGORIES.forEach(group => {
+            group.items.forEach(inst => {
+                const assignedFile = (globalIndex % 2 === 0) ? '/prototypes/1.mp3' : '/prototypes/2.mp3';
+                globalIndex++;
+
+                inst.category = group.category;
+                inst.imageUrl = makeInstrumentImage(inst.name, group.colorBg, group.colorFg, inst.glyph);
+
+                inst.tracks = {
+                    'fun_classic': assignedFile,
+                    'fun_modern': assignedFile,
+                    'sad_classic': assignedFile,
+                    'sad_modern': assignedFile
+                };
+
+                INSTRUMENTS_BY_ID[inst.id] = inst;
+            });
+        });
+
+        const selectedInstruments = new Set();
+        let currentMood = 'fun';
+        let currentStyle = 'classic';
+
+        function getCurrentPresetKey() {
+            return `${currentMood}_${currentStyle}`;
+        }
+
+        let audioCtx = null;
+        let masterGainNode = null;
+        const decodedAudioCache = {};
+        const activeTrackNodes = new Map();
+
+        let loopBaseStartTime = 0;
+        let pausedLoopOffset = 0;
+        let isTransportRunning = false;
+
+        let playbackMode = 'editor';
+        let isModalPlaying = false;
+        let modalVolume = 0.8;
+        let progressTimerId = null;
+
+        const instrumentGroupsContainer = document.getElementById('instrumentGroupsContainer');
+        const syncStatusBadge = document.getElementById('syncStatusBadge');
+        const activePresetBadge = document.getElementById('activePresetBadge');
+        const noInstrumentWarning = document.getElementById('noInstrumentWarning');
+        const btnResetInstruments = document.getElementById('btnResetInstruments');
+        const btnCompose = document.getElementById('btnCompose');
+
+        const compositionModalEl = document.getElementById('compositionModal');
+        const compositionModal = new bootstrap.Modal(compositionModalEl);
+        const modalPresetBadge = document.getElementById('modalPresetBadge');
+        const modalSelectedInstrumentsList = document.getElementById('modalSelectedInstrumentsList');
+        const btnModalPlayPause = document.getElementById('btnModalPlayPause');
+        const modalPlayPauseIcon = document.getElementById('modalPlayPauseIcon');
+        const modalPlayPauseText = document.getElementById('modalPlayPauseText');
+        const modalPlaybackStatus = document.getElementById('modalPlaybackStatus');
+        const modalCompositionProgress = document.getElementById('modalCompositionProgress');
+        const modalVolumeRange = document.getElementById('modalVolumeRange');
+        const modalVolumeValue = document.getElementById('modalVolumeValue');
+        const btnDownloadMp3 = document.getElementById('btnDownloadMp3');
+
+        function ensureAudioContext() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContextClass();
+                masterGainNode = audioCtx.createGain();
+                masterGainNode.gain.value = 0.8;
+                masterGainNode.connect(audioCtx.destination);
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        async function loadAudioBuffer(url) {
+            ensureAudioContext();
+            if (decodedAudioCache[url]) {
+                return decodedAudioCache[url];
+            }
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Не удалось загрузить файл: ${url}`);
+            }
+            const arrayBuffer = await response.arrayBuffer();
+            const audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
+            decodedAudioCache[url] = audioBuffer;
+            return audioBuffer;
+        }
+
+        function getCurrentLoopOffset(duration) {
+            if (!audioCtx || !duration) return 0;
+            if (!isTransportRunning) {
+                return pausedLoopOffset % duration;
+            }
+            const elapsed = audioCtx.currentTime - loopBaseStartTime;
+            return ((elapsed % duration) + duration) % duration;
+        }
+
+        async function startInstrumentTrack(instId) {
+            ensureAudioContext();
+            const inst = INSTRUMENTS_BY_ID[instId];
+            if (!inst) return;
+
+            const presetKey = getCurrentPresetKey();
+            const trackUrl = inst.tracks[presetKey];
+
+            try {
+                const buffer = await loadAudioBuffer(trackUrl);
+
+                const shouldPlay = (playbackMode === 'editor' && selectedInstruments.has(instId)) ||
+                    (playbackMode === 'modal' && isModalPlaying && selectedInstruments.has(instId));
+                if (!shouldPlay) return;
+
+                stopInstrumentTrack(instId);
+
+                const now = audioCtx.currentTime;
+
+                if (!isTransportRunning) {
+                    loopBaseStartTime = now - pausedLoopOffset;
+                    isTransportRunning = true;
+                }
+
+                const offset = getCurrentLoopOffset(buffer.duration);
+
+                const sourceNode = audioCtx.createBufferSource();
+                sourceNode.buffer = buffer;
+                sourceNode.loop = true;
+                sourceNode.loopStart = 0;
+                sourceNode.loopEnd = buffer.duration;
+
+                const gainNode = audioCtx.createGain();
+                gainNode.gain.value = 1.0;
+
+                sourceNode.connect(gainNode);
+                gainNode.connect(masterGainNode);
+
+                sourceNode.start(0, offset);
+
+                activeTrackNodes.set(instId, {
+                    sourceNode,
+                    gainNode,
+                    url: trackUrl,
+                    duration: buffer.duration
+                });
+
+                updateStatusUI();
+            } catch (err) {
+                console.error(`Ошибка воспроизведения ${trackUrl}:`, err);
+            }
+        }
+
+        function stopInstrumentTrack(instId) {
+            const active = activeTrackNodes.get(instId);
+            if (active) {
+                try {
+                    active.sourceNode.stop();
+                    active.sourceNode.disconnect();
+                    active.gainNode.disconnect();
+                } catch (e) { }
+                activeTrackNodes.delete(instId);
+            }
+
+            if (activeTrackNodes.size === 0) {
+                isTransportRunning = false;
+                if (playbackMode === 'editor') {
+                    pausedLoopOffset = 0;
+                }
+            }
+            updateStatusUI();
+        }
+
+        function stopAllTracks(saveOffset = false) {
+            if (saveOffset && activeTrackNodes.size > 0) {
+                const firstTrack = activeTrackNodes.values().next().value;
+                if (firstTrack && firstTrack.duration) {
+                    pausedLoopOffset = getCurrentLoopOffset(firstTrack.duration);
+                }
+            } else if (!saveOffset) {
+                pausedLoopOffset = 0;
+            }
+
+            activeTrackNodes.forEach((active) => {
+                try {
+                    active.sourceNode.stop();
+                    active.sourceNode.disconnect();
+                    active.gainNode.disconnect();
+                } catch (e) { }
+            });
+            activeTrackNodes.clear();
+            isTransportRunning = false;
+            updateStatusUI();
+        }
+
+        function syncAllSelectedTracks() {
+            const shouldPlay = (playbackMode === 'editor' && selectedInstruments.size > 0) ||
+                (playbackMode === 'modal' && isModalPlaying && selectedInstruments.size > 0);
+
+            if (!shouldPlay) {
+                stopAllTracks(playbackMode === 'modal');
+                return;
+            }
+
+            selectedInstruments.forEach(instId => {
+                startInstrumentTrack(instId);
+            });
+        }
+
+        function renderInstrumentGroups() {
+            instrumentGroupsContainer.innerHTML = '';
+
+            INSTRUMENT_CATEGORIES.forEach(group => {
+                const col = document.createElement('div');
+                col.className = 'col-12 col-md-6 col-lg-4';
+
+                const card = document.createElement('div');
+                card.className = 'card h-100';
+
+                const cardHeader = document.createElement('div');
+                cardHeader.className = 'card-header fw-semibold small py-2';
+                cardHeader.textContent = group.category;
+
+                const cardBody = document.createElement('div');
+                cardBody.className = 'card-body p-2';
+
+                const btnGrid = document.createElement('div');
+                btnGrid.className = 'row g-2';
+
+                group.items.forEach(inst => {
+                    const itemCol = document.createElement('div');
+                    itemCol.className = 'col-6';
+
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.id = `inst-btn-${inst.id}`;
+                    btn.className = 'btn btn-outline-secondary w-100 d-flex flex-column align-items-center p-2';
+                    btn.dataset.instrumentId = inst.id;
+
+                    const img = document.createElement('img');
+                    img.src = inst.imageUrl;
+                    img.alt = inst.name;
+                    img.className = 'img-fluid rounded mb-1';
+                    img.style.maxHeight = '48px';
+
+                    const nameSpan = document.createElement('span');
+                    nameSpan.className = 'small fw-medium';
+                    nameSpan.textContent = inst.name;
+
+                    const statusSmall = document.createElement('small');
+                    statusSmall.className = 'text-muted mt-1';
+                    statusSmall.style.fontSize = '0.7rem';
+                    statusSmall.id = `inst-status-${inst.id}`;
+                    statusSmall.innerHTML = '<i class="bi bi-volume-mute"></i> Выкл.';
+
+                    btn.appendChild(img);
+                    btn.appendChild(nameSpan);
+                    btn.appendChild(statusSmall);
+
+                    btn.addEventListener('click', () => toggleInstrument(inst.id));
+
+                    itemCol.appendChild(btn);
+                    btnGrid.appendChild(itemCol);
+                });
+
+                cardBody.appendChild(btnGrid);
+                card.appendChild(cardHeader);
+                card.appendChild(cardBody);
+                col.appendChild(card);
+                instrumentGroupsContainer.appendChild(col);
+            });
+        }
+
+        function toggleInstrument(instId) {
+            noInstrumentWarning.classList.add('d-none');
+
+            if (selectedInstruments.has(instId)) {
+                selectedInstruments.delete(instId);
+                stopInstrumentTrack(instId);
+            } else {
+                selectedInstruments.add(instId);
+                startInstrumentTrack(instId);
+            }
+
+            updateInstrumentButtonLook(instId);
+            updateStatusUI();
+        }
+
+        function updateInstrumentButtonLook(instId) {
+            const btn = document.getElementById(`inst-btn-${instId}`);
+            const statusSmall = document.getElementById(`inst-status-${instId}`);
+            if (!btn || !statusSmall) return;
+
+            const isSelected = selectedInstruments.has(instId);
+
+            if (isSelected) {
+                btn.classList.remove('btn-outline-secondary');
+                btn.classList.add('btn-primary');
+                statusSmall.className = 'text-white mt-1';
+                statusSmall.innerHTML = '<i class="bi bi-volume-up-fill"></i> Играет';
+            } else {
+                btn.classList.remove('btn-primary');
+                btn.classList.add('btn-outline-secondary');
+                statusSmall.className = 'text-muted mt-1';
+                statusSmall.innerHTML = '<i class="bi bi-volume-mute"></i> Выкл.';
+            }
+        }
+
+        function updateStatusUI() {
+            const count = selectedInstruments.size;
+
+            if (count > 0 && isTransportRunning) {
+                syncStatusBadge.className = 'badge bg-success';
+                syncStatusBadge.innerHTML = '<i class="bi bi-soundwave me-1"></i>Синхронное воспроизведение';
+            } else {
+                syncStatusBadge.className = 'badge bg-secondary';
+                syncStatusBadge.innerHTML = '<i class="bi bi-disc me-1"></i>Дорожки остановлены';
+            }
+        }
+
+        function handlePresetChange() {
+            const checkedMood = document.querySelector('input[name="musicMood"]:checked');
+            const checkedStyle = document.querySelector('input[name="musicStyle"]:checked');
+
+            currentMood = checkedMood ? checkedMood.value : 'fun';
+            currentStyle = checkedStyle ? checkedStyle.value : 'classic';
+
+            const presetKey = getCurrentPresetKey();
+            const labelText = PRESET_LABELS[presetKey] || '';
+
+            activePresetBadge.textContent = labelText;
+            modalPresetBadge.textContent = labelText;
+
+            if (selectedInstruments.size > 0) {
+                stopAllTracks(true);
+                syncAllSelectedTracks();
+            }
+        }
+
+        document.querySelectorAll('input[name="musicMood"], input[name="musicStyle"]').forEach(radio => {
+            radio.addEventListener('change', handlePresetChange);
+        });
+
+        btnResetInstruments.addEventListener('click', () => {
+            const prevSelected = Array.from(selectedInstruments);
+            selectedInstruments.clear();
+            stopAllTracks(false);
+            prevSelected.forEach(id => updateInstrumentButtonLook(id));
+        });
+
+        btnCompose.addEventListener('click', () => {
+            if (selectedInstruments.size === 0) {
+                noInstrumentWarning.classList.remove('d-none');
+                return;
+            }
+
+            noInstrumentWarning.classList.add('d-none');
+
+            modalSelectedInstrumentsList.innerHTML = '';
+            selectedInstruments.forEach(instId => {
+                const inst = INSTRUMENTS_BY_ID[instId];
+                const badge = document.createElement('span');
+                badge.className = 'badge bg-primary';
+                badge.textContent = `${inst.name} (${inst.category})`;
+                modalSelectedInstrumentsList.appendChild(badge);
+            });
+
+            const firstInstId = Array.from(selectedInstruments)[0];
+            const firstInst = INSTRUMENTS_BY_ID[firstInstId];
+            const presetKey = getCurrentPresetKey();
+
+            playbackMode = 'modal';
+            isModalPlaying = true;
+            stopAllTracks(false);
+
+            if (masterGainNode) {
+                masterGainNode.gain.value = modalVolume;
+            }
+
+            updateModalPlayPauseUI();
+            syncAllSelectedTracks();
+            startModalProgressLoop();
+            compositionModal.show();
+        });
+
+        btnModalPlayPause.addEventListener('click', () => {
+            isModalPlaying = !isModalPlaying;
+            updateModalPlayPauseUI();
+
+            if (isModalPlaying) {
+                syncAllSelectedTracks();
+            } else {
+                stopAllTracks(true);
+            }
+        });
+
+        function updateModalPlayPauseUI() {
+            if (isModalPlaying) {
+                btnModalPlayPause.className = 'btn btn-warning';
+                modalPlayPauseIcon.className = 'bi bi-pause-fill me-1';
+                modalPlayPauseText.textContent = 'Пауза';
+                modalPlaybackStatus.className = 'badge bg-success';
+                modalPlaybackStatus.textContent = 'Воспроизведение...';
+            } else {
+                btnModalPlayPause.className = 'btn btn-success';
+                modalPlayPauseIcon.className = 'bi bi-play-fill me-1';
+                modalPlayPauseText.textContent = 'Воспроизвести';
+                modalPlaybackStatus.className = 'badge bg-secondary';
+                modalPlaybackStatus.textContent = 'На паузе';
+            }
+        }
+
+        function startModalProgressLoop() {
+            stopModalProgressLoop();
+            progressTimerId = setInterval(() => {
+                if (activeTrackNodes.size > 0 && isTransportRunning) {
+                    const firstTrack = activeTrackNodes.values().next().value;
+                    if (firstTrack && firstTrack.duration) {
+                        const offset = getCurrentLoopOffset(firstTrack.duration);
+                        const percent = (offset / firstTrack.duration) * 100;
+                        modalCompositionProgress.style.width = `${percent.toFixed(1)}%`;
+                    }
+                }
+            }, 100);
+        }
+
+        function stopModalProgressLoop() {
+            if (progressTimerId) {
+                clearInterval(progressTimerId);
+                progressTimerId = null;
+            }
+        }
+
+        async function mixSelectedTracksToBuffer() {
+            const presetKey = getCurrentPresetKey();
+            const buffers = [];
+
+            for (const instId of selectedInstruments) {
+                const inst = INSTRUMENTS_BY_ID[instId];
+                if (!inst) {
+                    continue;
+                }
+
+                const url = inst.tracks[presetKey];
+                const buf = await loadAudioBuffer(url);
+                buffers.push(buf);
+            }
+
+            if (buffers.length === 0) {
+                throw new Error('Нет выбранных дорожек для сведения');
+            }
+
+            const sampleRate = buffers[0].sampleRate;
+            const maxDuration = Math.max(...buffers.map(b => b.duration));
+            const totalSamples = Math.ceil(maxDuration * sampleRate);
+
+            const offlineCtx = new OfflineAudioContext(2, totalSamples, sampleRate);
+
+            buffers.forEach(buffer => {
+                const source = offlineCtx.createBufferSource();
+                source.buffer = buffer;
+                source.connect(offlineCtx.destination);
+                source.start(0);
+            });
+
+            const renderedBuffer = await offlineCtx.startRendering();
+
+            normalizeAudioBuffer(renderedBuffer, modalVolume);
+
+            return renderedBuffer;
+        }
+
+        function normalizeAudioBuffer(audioBuffer, targetVolume = 0.9) {
+            let maxPeak = 0;
+            for (let ch = 0; ch < audioBuffer.numberOfChannels; ch++) {
+                const data = audioBuffer.getChannelData(ch);
+                for (let i = 0; i < data.length; i++) {
+                    const abs = Math.abs(data[i]);
+                    if (abs > maxPeak) {
+                        maxPeak = abs;
+                    }
+                }
+            }
+
+            const gainFactor = maxPeak > 1.0 ? (targetVolume / maxPeak) : targetVolume;
+
+            for (let ch = 0; ch < audioBuffer.numberOfChannels; ch++) {
+                const data = audioBuffer.getChannelData(ch);
+                for (let i = 0; i < data.length; i++) {
+                    data[i] *= gainFactor;
+                }
+            }
+        }
+
+        function encodeAudioBufferToMp3(audioBuffer) {
+            const numChannels = audioBuffer.numberOfChannels;
+            const sampleRate = audioBuffer.sampleRate;
+            const kbps = 192;
+
+            const mp3encoder = new lamejs.Mp3Encoder(numChannels, sampleRate, kbps);
+            const mp3Data = [];
+
+            const leftFloat = audioBuffer.getChannelData(0);
+            const rightFloat = numChannels > 1 ? audioBuffer.getChannelData(1) : leftFloat;
+
+            const floatTo16BitPCM = (floatArr) => {
+                const int16Arr = new Int16Array(floatArr.length);
+                for (let i = 0; i < floatArr.length; i++) {
+                    const s = Math.max(-1, Math.min(1, floatArr[i]));
+                    int16Arr[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+                }
+
+                return int16Arr;
+            };
+
+            const leftPCM = floatTo16BitPCM(leftFloat);
+            const rightPCM = numChannels > 1 ? floatTo16BitPCM(rightFloat) : undefined;
+
+            const sampleBlockSize = 1152;
+            for (let i = 0; i < leftPCM.length; i += sampleBlockSize) {
+                const leftChunk = leftPCM.subarray(i, i + sampleBlockSize);
+                let mp3buf;
+                if (numChannels > 1) {
+                    const rightChunk = rightPCM.subarray(i, i + sampleBlockSize);
+                    mp3buf = mp3encoder.encodeBuffer(leftChunk, rightChunk);
+                } else {
+                    mp3buf = mp3encoder.encodeBuffer(leftChunk);
+                }
+
+                if (mp3buf.length > 0) {
+                    mp3Data.push(mp3buf);
+                }
+            }
+
+            const endBuf = mp3encoder.flush();
+            if (endBuf.length > 0) {
+                mp3Data.push(endBuf);
+            }
+
+            return new Blob(mp3Data, { type: 'audio/mp3' });
+        }
+
+        modalVolumeRange.addEventListener('input', (e) => {
+            const val = Number(e.target.value);
+            modalVolume = val / 100;
+            modalVolumeValue.textContent = `${val}%`;
+            if (masterGainNode) {
+                masterGainNode.gain.value = modalVolume;
+            }
+        });
+
+        compositionModalEl.addEventListener('hidden.bs.modal', () => {
+            stopModalProgressLoop();
+            isModalPlaying = false;
+            playbackMode = 'editor';
+            if (masterGainNode) {
+                masterGainNode.gain.value = 0.8;
+            }
+
+            stopAllTracks(false);
+            syncAllSelectedTracks();
+        });
+
+        btnDownloadMp3.addEventListener('click', async () => {
+            if (selectedInstruments.size === 0) {
+                return;
+            }
+
+            const originalHtml = btnDownloadMp3.innerHTML;
+            btnDownloadMp3.disabled = true;
+            btnDownloadMp3.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Сведение треков...';
+
+            try {
+                await new Promise(r => setTimeout(r, 30));
+
+                const mixedBuffer = await mixSelectedTracksToBuffer();
+                const mp3Blob = encodeAudioBufferToMp3(mixedBuffer);
+
+                const presetKey = getCurrentPresetKey();
+                const downloadUrl = URL.createObjectURL(mp3Blob);
+
+                const tempLink = document.createElement('a');
+                tempLink.href = downloadUrl;
+                tempLink.download = `сам_себе_Чайковский.mp3`;
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
+
+                setTimeout(() => URL.revokeObjectURL(downloadUrl), 5000);
+            } catch (err) {
+                console.error('Ошибка при сведении MP3:', err);
+                alert('Не удалось свести аудиодорожки.');
+            } finally {
+                btnDownloadMp3.disabled = false;
+                btnDownloadMp3.innerHTML = originalHtml;
+            }
+        });
+
+        renderInstrumentGroups();
+    </script>
+</body>
+</html>

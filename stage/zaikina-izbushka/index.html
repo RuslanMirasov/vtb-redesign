@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="theme-color" content="#0A2896" />
-    <meta name="description" content="description" />
+    <meta
+      name="description"
+      content="🎭 Пьеса «Зайкина избушка» для театра дома: удобный сценарий, роли для детей и взрослых, реплики героев и подсказки для репетиций постановки. Домашний театр — проект банка ВТБ."
+    />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preload" as="image" href=" ./../../assets/img/header/bg.webp" />
@@ -13,7 +16,19 @@
     <link rel="icon" type="image/x-icon" href=" ./../../assets/img/favicon.ico" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href=" ./../../assets/css/styles.min.css" />
-    <title>Зайкина избушка</title>
+    <title>Зайкина избушка: 🎄 сценарий сказки для семейного театра дома — Новогодничайте с домашним театром ВТБ</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="«Зайкина избушка»: 🎄 сценарий сказки для семейного театра дома — Новогодничайте с домашним театром ВТБ" />
+    <meta property="og:url" content="https://teatr.vtb.ru/stage/zaikina-izbushka" />
+    <meta property="og:image" content="https://teatr.vtb.ru/assets/img/social_lg.jpg" />
+    <meta property="og:image:secure_url" content="https://teatr.vtb.ru/assets/img/social_lg.jpg" />
+    <meta property="og:image:width" content="1550" />
+    <meta property="og:image:height" content="810" />
+    <meta property="og:image" content="https://teatr.vtb.ru/assets/img/social_sq.jpg" />
+    <meta property="og:image:secure_url" content="https://teatr.vtb.ru/assets/img/social_sq.jpg" />
+    <meta property="og:image:width" content="682" />
+    <meta property="og:image:height" content="682" />
 
     <!-- Yandex.Metrika counter -->
 
@@ -38,25 +53,10 @@
 
       ym(105298510, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: 'dataLayer', accurateTrackBounce: true, trackLinks: true });
     </script>
-
-    <noscript>
-      <div><img src="https://mc.yandex.ru/watch/105298510" style="position: absolute; left: -9999px" alt="" /></div>
-    </noscript>
-
     <!-- /Yandex.Metrika counter -->
   </head>
 
   <body class="body">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QZDRVKGLC"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'G-1QZDRVKGLC');
-    </script>
     <!--HEADER-->
     <header class="header">
       <a href=" ./../../" class="logo">
@@ -96,7 +96,7 @@
           <a href=" ./../../orchestra-pit" class="menu__link">
             <img src=" ./../../assets/img/header/nav4.webp" alt="ВТБ" />
             <b>Оркестровая яма</b>
-            <p>Музыкальное сопровождение вашей постановки</p>
+            <p>Музыкальное сопровождение для пьес</p>
           </a>
         </li>
         <li>
@@ -114,7 +114,8 @@
           </a>
         </li>
       </ul>
-      <!-- <a href=" ./../../holiday-map" data-closed class="menu__link map-link">Карта Eлок</a> -->
+      <a href="./../../videos" class="menu__link map-link">Видео спектаклей</a>
+      <!--<a href=" ./../../holiday-map" class="menu__link map-link">Карта елок</a>-->
     </nav>
 
     <!--FIXED-BACKGROUND-->
@@ -122,12 +123,13 @@
 
     <main class="main main--single">
       <section class="stage-single">
+        <!--go back-->
+        <a href="./../../stage/" class="go-back go-back--poem">
+          <img src="./../../assets/img/svg/go-back.svg" alt="ВТБ" />
+        </a>
+
         <div class="stage-desctiption relative active" data-hide-in-fullscreen>
-          <div class="description">
-            <h1 class="title title--h1">Зайкина избушка</h1>
-            <p class="subtitle ta--c show-in-tablet">Знакомые герои в&nbsp;дерзких образах</p>
-          </div>
-          <ul class="table">
+          <ul class="table show-in-tablet">
             <li class="time">15 мин</li>
             <li class="peoples">5</li>
             <li class="age">
@@ -140,7 +142,9 @@
 
         <aside class="sidebar" data-hide-in-fullscreen data-stiky-sidebar data-sidebar-popup-close>
           <div class="sidebar__content">
+            <!--description (popup in mobil) (sidebar in desctop)-->
             <div class="sidebar__item mobil-only" data-sidebar-mobil-popup="1">
+              <!--ДУБЛИКАТ ОПИСАНИЯ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ-->
               <button type="button" data-sidebar-popup-close class="sidebar-popup-close-button"></button>
               <div class="stage-desctiption relative active" data-hide-in-fullscreen>
                 <ul class="table">
@@ -173,8 +177,9 @@
               <!--FIXED PANEL-->
               <section class="stage-single stage-single--fixed">
                 <div class="fix-buttons-panel" data-styky-limit>
-                  <a href="./../../directors-room" class="fix-button">В кабинет режиссера</a>
+                  <a href="./../../directors-room/tips/zaikina-izbushka/" class="fix-button">Советы автора</a>
                   <button class="fix-button" onclick="window.printPlay()">Печать</button>
+                  <a href="./../../videos/#zaikina-izbushka" class="fix-button">Посмотреть видео спектакля</a>
                   <a href="#" class="fix-button" onclick="window.generatePDF()">Скачать в PDF</a>
                   <!-- <button class="fix-button" data-full-screen>На полный экран</button> -->
                 </div>
@@ -241,7 +246,7 @@
                     </button>
                   </li>
                   <li>
-                    <button type="button" class="play-button" data-sound-src="./../../assets/sounds/zaikina-izbushka/05_fly.mp3">ПолEт птицы</button>
+                    <button type="button" class="play-button" data-sound-src="./../../assets/sounds/zaikina-izbushka/05_fly.mp3">Полет птицы</button>
                   </li>
                   <li>
                     <button type="button" class="play-button" data-sound-src="./../../assets/sounds/zaikina-izbushka/06_doorchime.mp3">
@@ -264,48 +269,69 @@
             </div>
           </div>
         </aside>
+
         <!--CONTENT ARTICLE-->
         <article class="stage-single__content" id="print-block">
-          <h2 class="slogan">Знакомые герои в&nbsp;дерзких образах</h2>
+          <h1 class="title title--h1 blue">Зайкина избушка</h1>
 
-          <h3 class="title title--28 blue">Аннотация</h3>
+          <span><p>Автор: Полина Пушкаева</p></span>
+
+          <h3 class="title title--24 mt-10">Аннотация</h3>
 
           <i class="full">
-            Остросюжетное драмеди о&nbsp;том, как, непонятно какими путями, в&nbsp;самых безнадежных ситуациях, все заканчивается хорошо. Главное -
-            выбрать правильную маску. Предупреждение! В&nbsp;зверином мире большого города клювом не&nbsp;щелкай. В&nbsp;бесконечном лесу возможностей
-            не&nbsp;сходи со&nbsp;своей тропинки. Грозный оскал не&nbsp;спрячешь за&nbsp;мягкой шерсткой. Рекомендовано всем поклонникам творчества
-            Квентина Тарантино.
+            Остросюжетное драмеди о&nbsp;том, как, непонятно какими путями, в&nbsp;самых безнадежных ситуациях, все заканчивается хорошо. Главное
+            &ndash; выбрать правильную маску. <br />
+            <br />&nbsp;<br />
+            Предупреждение!<br />
+            <br />&nbsp;<br />
+            В&nbsp;зверином мире большого города клювом не&nbsp;щелкай.<br />
+            В&nbsp;бесконечном лесу возможностей не&nbsp;сходи со&nbsp;своей тропинки.<br />
+            Грозный оскал не&nbsp;спрячешь за&nbsp;мягкой шерсткой.<br />
+            Рекомендовано всем поклонникам творчества Квентина Тарантино.
           </i>
 
-          <h3 class="title title--28 blue">Действующие лица</h3>
-
+          <h3 class="title title--24 mb-10">Действующие лица</h3>
+          <br />
           <p>
-            <b>БУРЫЙ.</b> Взрослый мужчина 30-35 лет. Типаж: взрослый, немного тугодум, меланхоличный, грузный, высокий, бородатый, заросший.
-            С&nbsp;низким грудным голосом. Профессия - "решает особые вопросики". Он не&nbsp;особо знает, как общаться с&nbsp;женщинами, поэтому часто
+            <b>БУРЫЙ.</b>&nbsp;Взрослый мужчина 30-35 лет. Типаж: взрослый, немного тугодум, меланхоличный, грузный, высокий, бородатый, заросший.
+            С&nbsp;низким грудным голосом. Профессия - «решает особые вопросики». Он не&nbsp;особо знает, как общаться с&nbsp;женщинами, поэтому часто
             грубоват. Но,&nbsp;все это - больше от&nbsp;страха. Короче, со&nbsp;словами, женщинами и&nbsp;со&nbsp;словами к&nbsp;женщинам у&nbsp;него
-            - беда.<br />
-            <b>ВУЛФИ.</b> Взрослый мужчина 30-35 лет. Типаж: красавчик, галантный, улыбчивый, флиртующий, худощавый либо слегка накаченный, стильный.
-            С&nbsp;вкрадчивым мелодичным голосом. Очень уверен в&nbsp;себе. Волосы зализаны или собраны в&nbsp;хвостик. Коллега Бурого. Его манера
-            общения с&nbsp;женщинами - контроль и&nbsp;давление. Это - тоже от&nbsp;страха. Но,&nbsp;в&nbsp;отличие от&nbsp;Бурого, он никогда
-            в&nbsp;этом не&nbsp;признается. Грубиян и&nbsp;эмоциональный подросток.<br />
-            <b>КИСА.</b> Девушка 20-25 лет. Типаж: симпатичная, ярко красит волосы и&nbsp;лицо, ярко одевается. Любит разноцветные шубки. Носит очень
-            красивый яркий маникюр. Изящная, гибкая. Взрывная. Прокачана в&nbsp;психологии. Говорит быстро. Девушка Вулфи, бывшая жена Бурого.<br />
-            <b>КУРА.</b> Девушка 20-25 лет. Типаж: "девчонка из&nbsp;соседнего двора". Худенькая, не&nbsp;красится, одета скромно, удобно (джинсы,
-            свитер, ботинки/кроссовки). Честная, открытая, целеустремленная. Голос звонкий, немного детский. Носит куртку доставщика и&nbsp;короб
-            доставщика. Курьер.<br />
-            <b>ЛИСА.</b> Девушка 30-35 лет. Типаж: женщина, созданная пластическим хирургом. Очень ухоженная, очень красивая, одевается модно
+            - беда.
+          </p>
+          <p>
+            <b>ВУЛФИ.</b>&nbsp;Взрослый мужчина 30-35 лет. Типаж: красавчик, галантный, улыбчивый, флиртующий, худощавый либо слегка накаченный,
+            стильный. С&nbsp;вкрадчивым мелодичным голосом. Очень уверен в&nbsp;себе. Волосы зализаны или собраны в&nbsp;хвостик. Коллега Бурого. Его
+            манера общения с&nbsp;женщинами - контроль и&nbsp;давление. Это - тоже от&nbsp;страха. Но,&nbsp;в&nbsp;отличие от&nbsp;Бурого, он никогда
+            в&nbsp;этом не&nbsp;признается. Грубиян и&nbsp;эмоциональный подросток.
+          </p>
+          <p>
+            <b>КИСА.</b>&nbsp;Девушка 20-25 лет. Типаж: симпатичная, ярко красит волосы и&nbsp;лицо, ярко одевается. Любит разноцветные шубки. Носит
+            очень красивый яркий маникюр. Изящная, гибкая. Взрывная. Прокачана в&nbsp;психологии. Говорит быстро. Девушка Вулфи, бывшая жена Бурого.
+          </p>
+          <p>
+            <b>КУРА.</b>&nbsp;Девушка 20-25 лет. Типаж: «девчонка из&nbsp;соседнего двора». Худенькая, не&nbsp;красится, одета скромно, удобно
+            (джинсы, свитер, ботинки/кроссовки). Честная, открытая, целеустремленная. Голос звонкий, немного детский. Носит куртку доставщика
+            и&nbsp;короб доставщика. Курьер.
+          </p>
+          <p>
+            <b>ЛИСА.</b>&nbsp;Девушка 30-35 лет. Типаж: женщина, созданная пластическим хирургом. Очень ухоженная, очень красивая, одевается модно
             и&nbsp;дорого, в&nbsp;стиле old money. Знает себе цену. Ведет себя как главный приз по&nbsp;жизни. Очень спокойна. Говорит медленно,
-            вкрадчиво. С&nbsp;мужчинами покорна и&nbsp;игрива, с&nbsp;женщинами высокомерна. Девушка начальника Бурого и&nbsp;Вулфи, любовница
-            Вулфи.<br />
-            <b>ЗАЯЦ.</b> Старичок 80 лет. Типаж: среднестатистический российский пенсионер. Одет скромно и&nbsp;тепло. Старомодно. В&nbsp;больших
-            очках. В&nbsp;вязаной шапочке. С&nbsp;доброй детской улыбкой. Наивный, немного грустный. Говорит тихим голосом.<br />
-            <b>ВОРОН.</b> Типаж: мистический призрак ночи, но&nbsp;в&nbsp;виде обычной птицы. Черные крылья, острый клюв. Везде летает, все знает.
-            Только каркает. Гордый, обидчивый, мстительный.<br />
-            <b>АВТОР.</b> Типаж: может быть и&nbsp;женщиной, и&nbsp;мужчиной. Мудрый, ироничный. Бог этого маленького мира. Тепло относится
+            вкрадчиво. С&nbsp;мужчинами покорна и&nbsp;игрива, с&nbsp;женщинами высокомерна. Девушка начальника Бурого и&nbsp;Вулфи, любовница Вулфи.
+          </p>
+          <p>
+            <b>ЗАЯЦ.</b>&nbsp;Старичок 80 лет. Типаж: среднестатистический российский пенсионер. Одет скромно и&nbsp;тепло. Старомодно. В&nbsp;больших
+            очках. В&nbsp;вязаной шапочке. С&nbsp;доброй детской улыбкой. Наивный, немного грустный. Говорит тихим голосом.
+          </p>
+          <p>
+            <b>ВОРОН.</b>&nbsp;Типаж: мистический призрак ночи, но&nbsp;в&nbsp;виде обычной птицы. Черные крылья, острый клюв. Везде летает, все
+            знает. Только каркает. Гордый, обидчивый, мстительный.
+          </p>
+          <p>
+            <b>АВТОР.</b>&nbsp;Типаж: может быть и&nbsp;женщиной, и&nbsp;мужчиной. Мудрый, ироничный. Бог этого маленького мира. Тепло относится
             ко&nbsp;всем героям.
           </p>
 
-          <h3 class="title title--28 blue">Действие первое</h3>
+          <div class="pdf-soft-break"></div>
 
           <br />
           <h4>ПЕРВАЯ СЦЕНА</h4>
@@ -353,7 +379,7 @@
           <p data-name="БУРЫЙ"><b>БУРЫЙ:</b> На&nbsp;фиг ты ее вообще взял?</p>
 
           <p data-name="КИСА">
-            <b>КИСА:</b> Эй, Але! У&nbsp;меня ногти! Если опоздаю, потом месяц ждать новой записи! Я&nbsp;на&nbsp;НГ в&nbsp;октябре записывалась.
+            <b>КИСА:</b> Эй, але! У&nbsp;меня ногти! Если опоздаю, потом месяц ждать новой записи! Я&nbsp;на&nbsp;НГ в&nbsp;октябре записывалась.
           </p>
 
           <p data-name="БУРЫЙ"><b>БУРЫЙ:</b> А&nbsp;такси у&nbsp;нас что, вымерло?</p>
@@ -371,11 +397,9 @@
 
           <i>
             <span>
-              Удар о&nbsp;капот.
-              <button type="button" data-sound-src="./../../assets/sounds/zaikina-izbushka/02_punchl.mp3"></button>
+              Удар о&nbsp;капот.&nbsp;<button type="button" data-sound-src="./../../assets/sounds/zaikina-izbushka/02_punchl.mp3"></button>
             </span>
-
-            Несколько секунд - тишина
+            Несколько секунд - тишина.
           </i>
 
           <p data-name="КИСА"><b>КИСА:</b> (жалобно) Вулфиии…</p>
@@ -410,7 +434,7 @@
 
           <p data-name="ВУЛФИ"><b>ВУЛФИ:</b> Она не&nbsp;специально.</p>
 
-          <p data-name="ВУЛФИ и БУРЫЙ"><b>ВУЛФИ и БУРЫЙ:</b> (хором) Она специально.</p>
+          <p data-name="ВУЛФИ,БУРЫЙ"><b>ВУЛФИ и БУРЫЙ:</b> (хором) Она специально.</p>
 
           <i> (Оба парня жили (Бурый) или живут (Вулфи) с&nbsp;Кисой и&nbsp;очень хорошо знают, что она все делает назло. Это ирония) </i>
 
@@ -477,6 +501,8 @@
 
           <p data-name="КУРА"><b>КУРА:</b> АААААААААААААААААААААААА!</p>
 
+          <div class="pdf-soft-break"></div>
+
           <p data-name="ЗАЯЦ"><b>ЗАЯЦ:</b> ААААААААААААААААААА!</p>
 
           <i>Собака Шоша истошно лает.</i>
@@ -511,11 +537,11 @@
           <p data-name="ЗАЯЦ"><b>ЗАЯЦ:</b> Вы меня спрашиваете?</p>
 
           <p data-name="КУРА">
-            <b>КУРА:</b> Я ехала на&nbsp;велике, везла заказ. Потом свет, боль - и&nbsp;ничего не&nbsp;помню. Велик! Блин, где мой велик?
+            <b>КУРА:</b> Я ехала на&nbsp;велике, везла заказ. Потом свет, боль &ndash; и&nbsp;ничего не&nbsp;помню. Велик! Блин, где мой велик?
             А&nbsp;заказ? Ну все, меня убьют.
           </p>
 
-          <p data-name="ЗАЯЦ"><b>ЗАЯЦ:</b> Да ну, прекратите. Деньги - дело наживное. Главное, вы живы.</p>
+          <p data-name="ЗАЯЦ"><b>ЗАЯЦ:</b> Да ну, прекратите. Деньги &ndash; дело наживное. Главное, вы живы.</p>
 
           <p data-name="КУРА"><b>КУРА:</b> Жива. Но&nbsp;в&nbsp;полной...</p>
 
@@ -540,11 +566,11 @@
 
           <p data-name="ЗАЯЦ"><b>ЗАЯЦ:</b> Да вы не&nbsp;бойтесь. Я не&nbsp;маньяк какой-то.</p>
 
-          <p data-name="КУРА"><b>КУРА:</b> все маньяки так говорят. Ну&nbsp;и&nbsp;как-то неудобно… Что ваша семья подумает?</p>
+          <p data-name="КУРА"><b>КУРА:</b> Все маньяки так говорят. Ну&nbsp;и&nbsp;как-то неудобно… Что ваша семья подумает?</p>
 
           <p data-name="ЗАЯЦ">
-            <b>ЗАЯЦ:</b> Моя семья - вон, Шоша. Жена умерла, дети выросли, внуки далеко живут. Так что… Давайте так - я доверяю вам, а&nbsp;вы
-            доверяете мне.
+            <b>ЗАЯЦ:</b> Моя семья &ndash; вон, Шоша. Жена умерла, дети выросли, внуки далеко живут. Так что… Давайте так &ndash; я доверяю вам,
+            а&nbsp;вы доверяете мне.
           </p>
 
           <p data-name="АВТОР"><b>АВТОР:</b> Заяц поднимает Куру и&nbsp;осторожно ведет ее за&nbsp;руку. Шоша бежит за&nbsp;ними.</p>
@@ -553,11 +579,13 @@
           <h4>ТРЕТЬЯ СЦЕНА</h4>
           <i class="full">Действующие лица: Автор, Лиса, Кура, потом Вулфи и&nbsp;Бурый.</i>
 
+          <div class="pdf-soft-break"></div>
+
           <p class="stage-single__content--sound" data-name="АВТОР">
             <b>АВТОР:</b>
 
             Современный ЖК. Чистый, новенький. Пару дней спустя у&nbsp;Куры наконец-то находится время, чтобы навестить Зайца и&nbsp;отдать ему долг.
-            Кура, прихрамывая, поднимается по&nbsp;лестнице уже знакомого ей ЖК "Лубяной" и&nbsp;звонит в&nbsp;
+            Кура, прихрамывая, поднимается по&nbsp;лестнице уже знакомого ей ЖК «Лубяной» и&nbsp;звонит в&nbsp;
 
             <span>
               дверь.
@@ -603,7 +631,7 @@
           <p data-name="КУРА"><b>КУРА:</b> Да, да (отдает пакет). Я наверное и&nbsp;правда сегодня подтупливаю.</p>
 
           <p data-name="АВТОР">
-            <b>АВТОР:</b> Кура смотрит в&nbsp;угол квартиры и&nbsp;видит сложенные друг на&nbsp;друга собачьи миски, на&nbsp;которых написано "Шоша".
+            <b>АВТОР:</b> Кура смотрит в&nbsp;угол квартиры и&nbsp;видит сложенные друг на&nbsp;друга собачьи миски, на&nbsp;которых написано «Шоша».
           </p>
 
           <p data-name="КУРА"><b>КУРА:</b> Ой, у&nbsp;вас собака?</p>
@@ -633,6 +661,8 @@
             <b>ВУЛФИ:</b> (КУРЕ) Курочка моя, я понимаю, что выгляжу сегодня очень аппетитно. Но&nbsp;можно я все-таки выйду из&nbsp;лифта, да? Ага?
             Спасибо.
           </p>
+
+          <div class="pdf-soft-break"></div>
 
           <p data-name="АВТОР">
             <b>АВТОР:</b> Вулфи и&nbsp;Бурый проталкиваются через Куру. Бурый ржет. Вулфи звонит в&nbsp;квартиру 105. Кура наблюдает из-за угла,
@@ -684,7 +714,7 @@
 
           <p data-name="АВТОР">
             <b>АВТОР:</b> Небольшой, но&nbsp;дорогой бар. Есть пара посетителей. Стильная обстановка, незаметные официанты. Бурый и&nbsp;Вулфи сидят
-            за&nbsp;столиком. все украшено к&nbsp;Новому году. Тихонько играет новогодняя музыка.
+            за&nbsp;столиком. Все украшено к&nbsp;Новому году. Тихонько играет новогодняя музыка.
           </p>
 
           <p data-name="БУРЫЙ"><b>БУРЫЙ:</b> Я бы выпил что-нибудь.</p>
@@ -705,7 +735,7 @@
 
           <p data-name="ЛИСА"><b>ЛИСА:</b> Угу.</p>
 
-          <p data-name="БУРЫЙ"><b>БУРЫЙ:</b> За&nbsp;обычный молочный коктейль - тысяча рублей? Просто молоко и&nbsp;сок? Один стакан?</p>
+          <p data-name="БУРЫЙ"><b>БУРЫЙ:</b> За&nbsp;обычный молочный коктейль &ndash; тысяча рублей? Просто молоко и&nbsp;сок? Один стакан?</p>
 
           <p data-name="ЛИСА"><b>ЛИСА:</b> Угу.</p>
 
@@ -715,7 +745,7 @@
 
           <p data-name="ВУЛФИ"><b>ВУЛФИ:</b> Может, и&nbsp;не&nbsp;нужно?</p>
 
-          <p data-name="АВТОР"><b>АВТОР:</b> Вулфи очень близко наклоняется к&nbsp;Лизе. Слишком близко.</p>
+          <p data-name="АВТОР"><b>АВТОР:</b> Вулфи очень близко наклоняется к&nbsp;Лисе. Слишком близко.</p>
 
           <p data-name="ЛИСА"><b>ЛИСА:</b> Может быть. Ну&nbsp;что, ребята, с&nbsp;Наступающим?</p>
 
@@ -734,8 +764,8 @@
           <p data-name="БУРЫЙ"><b>БУРЫЙ:</b> Ща посмотрим. Привет, чат жэпэтэ, что такое маромойка?</p>
 
           <p data-name="АВТОР">
-            <b>АВТОР:</b> Маромойка - грязный опустившийся человек, ничтожество, женщина с&nbsp;низкой социальной ответственностью. Синонимы -
-            уродина, чучело, страшилище, образина, уродка, выдра.
+            <b>АВТОР:</b> Маромойка &ndash; грязный опустившийся человек, ничтожество, женщина с&nbsp;низкой социальной ответственностью. Синонимы
+            &ndash; уродина, чучело, страшилище, образина, уродка, выдра.
           </p>
 
           <p data-name="ЛИСА"><b>ЛИСА:</b> Вулфи, порешай как-нибудь ситуацию.</p>
@@ -746,7 +776,7 @@
 
           <p data-name="ВУЛФИ"><b>ВУЛФИ:</b> Кисуль, давай ты домой пойдешь ножками, да?</p>
 
-          <p data-name="КИСА"><b>КИСА:</b> Эй! Але! Ты кого защищать должен? Эй, Але, принципы, да? Осознанность в&nbsp;отношениях, да?</p>
+          <p data-name="КИСА"><b>КИСА:</b> Эй! Але! Ты кого защищать должен? Эй, але, принципы, да? Осознанность в&nbsp;отношениях, да?</p>
 
           <p data-name="ВУЛФИ"><b>ВУЛФИ:</b> Замолкни и&nbsp;иди домой, я сказал!</p>
 
@@ -776,6 +806,7 @@
             <b>АВТОР:</b> Лиса медленно тянет через трубочку молочный коктейль. Трубочка шумно тянет остатки молока и&nbsp;красного ягодного сока.
           </p>
 
+          <div class="pdf-soft-break"></div>
           <br />
           <h4>ПЯТАЯ СЦЕНА</h4>
           <i class="full">Действующие лица: Автор, Вулфи, Лиса, потом Кура, потом Киса.</i>
@@ -854,14 +885,16 @@
           <h4>ШЕСТАЯ СЦЕНА</h4>
           <i class="full">Действующие лица: Автор, Ворон, Заяц, потом Вулфи и&nbsp;Бурый.</i>
 
+          <div class="pdf-soft-break"></div>
+
           <p data-name="АВТОР">
             <b>АВТОР:</b> Ночь. Падает белый снег с&nbsp;черного неба на&nbsp;белый снег черной земли. Подъезд старой грязной хрущевки-общаги.
             Антисанитария и&nbsp;грусть. Шоша бежит впереди хозяина. Понурый Заяц подходит к&nbsp;почтовому ящику. Вынимает рекламные проспекты,
-            и&nbsp;среди них - конверт. Заяц открывает конверт. Он видит документы на&nbsp;квартиру, записанные на&nbsp;его имя, и&nbsp;ключи. Заяц
-            поднимает глаза вверх, чтобы не&nbsp;плакать.
+            и&nbsp;среди них &ndash; конверт. Заяц открывает конверт. Он видит документы на&nbsp;квартиру, записанные на&nbsp;его имя, и&nbsp;ключи.
+            Заяц поднимает глаза вверх, чтобы не&nbsp;плакать.
           </p>
 
-          <p data-name="ЗАЯЦ"><b>ЗАЯЦ:</b> Жизнь - прекрасная и&nbsp;волшебная штука, Шоша.</p>
+          <p data-name="ЗАЯЦ"><b>ЗАЯЦ:</b> Жизнь &ndash; прекрасная и&nbsp;волшебная штука, Шоша.</p>
 
           <p class="stage-single__content--sound" data-name="АВТОР">
             <b>АВТОР:</b>
@@ -870,7 +903,7 @@
 
             <span>
               гавкает.
-              <button type="button" data-sound-src="./../../assets/sounds/zaikina-izbushka/05 music.mp3"></button>
+              <button type="button" data-sound-src="./../../assets/sounds/zaikina-izbushka/09_dog-bark.mp3"></button>
               &nbsp;
             </span>
 
@@ -935,6 +968,21 @@
       </li>
     </menu>
 
+    <!--POPUPS-->
+    <div class="backdrop" data-backdrop>
+      <!-- WARNING-->
+      <div class="popup" data-popup="warning">
+        <div class="popupContent">
+          <img src="./../../assets/img/stage/icon-18.webp" alt="ВТБ" />
+          <h2 class="title title--24">Пьеса не&nbsp;предназначена для&nbsp;лиц, младше 18 лет.</h2>
+          <div class="buttons">
+            <a href="./../../stage/" class="button button--white"><span>Выйти</span></a>
+            <button type="button" class="button" data-popup-close><span>Продолжить</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
       integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
@@ -942,5 +990,11 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src=" ./../../assets/js/scripts.js" type="module"></script>
+
+    <script>
+      window.addEventListener('load', () => {
+        window.popup.open('warning');
+      });
+    </script>
   </body>
 </html>

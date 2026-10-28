@@ -2,173 +2,347 @@
   "points": [
     {
       "pointType": "TownSquare",
-      "title": "г. Казань, пл. Тысячелетия, 2, Казанский Цирк",
-      "coordinates": [49.10060199999996, 55.79869756893798]
+      "description": "Казань, Горкинско-Ометьевский парк",
+      "image": "https://avatars.mds.yandex.net/get-altay/15712112/2a00000198e0a1e375e82c98fb3f41ea986c/XL",
+      "title": "Горкинско-Ометьевский парк",
+      "url": "https://yandex.com/maps/org/kazan_state_circus/1243578519/?ll=49.100602%2C55.798698&mode=search&sctx=ZAAAAAgDEAAaKAoSCVX5npEIQ0JAEW3jT1Q2rkZAEhIJT8qkhjYAWz8RS7A4nPnVTD8iBgABAgMEBSgKOABAyFlIAWoCcnWdAc3MzD2gAQCoAQC9AcPucLrCAQWXgf7QBIICTtCzLiDQmtCw0LfQsNC90YwsINC%2F0LsuINCi0YvRgdGP0YfQtdC70LXRgtC40Y8sIDIsINCa0LDQt9Cw0L3RgdC60LjQuSDQptC40YDQuooCAJICAjQzmgIMZGVza3RvcC1tYXBz&sll=49.100602%2C55.798698&sspn=0.013822%2C0.004632&text=%D0%B3.%20%D0%9A%D0%B0%D0%B7%D0%B0%D0%BD%D1%8C%2C%20%D0%BF%D0%BB.%20%D0%A2%D1%8B%D1%81%D1%8F%D1%87%D0%B5%D0%BB%D0%B5%D1%82%D0%B8%D1%8F%2C%202%2C%20%D0%9A%D0%B0%D0%B7%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9%20%D0%A6%D0%B8%D1%80%D0%BA&z=17.12",
+      "coordinates": [ 49.20893327159324, 55.76105915833463 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Волгоград, ул. Краснознаменская, 1, Территория детского городского парка",
-      "coordinates": [44.51635131773505, 48.70081882265467]
+      "description": "Волгоград, ул. Краснознаменская, 1",
+      "image": "",
+      "title": "Детский городскогй парк",
+      "url": "https://yandex.com/maps/38/volgograd/house/krasnoznamenskaya_ulitsa_3/YE0YcwZjT0IPQFpifXtxcXVrYQ==/?ll=44.513678%2C48.700985&z=17.12",
+      "coordinates": [ 44.51635131773505, 48.70081882265467 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Воронеж, Адмиралтейская площадь",
-      "coordinates": [39.21584018584441, 51.657503176961306]
+      "description": "Воронеж, Адмиралтейская площадь",
+      "image": "",
+      "title": "Адмиралтейская площадь",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 39.21584018584441, 51.657503176961306 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Екатеринбург, ул. Карла Либкнехта, 48, Площадь возле Театра Юного Зрителя",
-      "coordinates": [60.61004432009888, 56.8473315541379]
+      "description": "Екатеринбург, ул. Карла Либкнехта, 48",
+      "image": "https://core-pht-proxy.maps.yandex.ru/v1/photos/download?photo_id=az3MquZhUVf4Rf25PaWF9A&image_size=XL",
+      "title": "Площадь возле Театра Юного Зрителя",
+      "url": "https://yandex.com/maps/?ll=60.61004432009888%2C56.8473315541379&z=18&pt=60.61004432009888,56.8473315541379,pm2rdm",
+      "coordinates": [ 60.61004432009888, 56.8473315541379 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Краснодар, ул. Красная, 118, Площадь отеля Мариотт",
-      "coordinates": [38.97442546875184, 45.03301619888294]
+      "description": "Краснодар, ул. Красная, 118",
+      "image": "",
+      "title": "Площадь отеля Мариотт",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 38.97442546875184, 45.03301619888294 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Красноярск, Предмостная площадь",
-      "coordinates": [92.88806223610686, 55.992488587235094]
+      "description": "Красноярск, Предмостная площадь",
+      "image": "",
+      "title": "Предмостная площадь",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 92.88806223610686, 55.992488587235094 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Нижний Новгород, ул. Белинского, 59/2, Театр оперы и балета им. А.С. Пушкина",
-      "coordinates": [44.01678855886069, 56.31544106185458]
+      "description": "Нижний Новгород, пл. Маркина",
+      "image": "",
+      "title": "Площадь имени Маркина",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 43.98846736494212, 56.3290006551099 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Новосибирск, Красный просп., 18/1, Площадь у концертного зала им.Каца",
-      "coordinates": [82.92400114648805, 55.02106480152032]
+      "description": "Новосибирск, Красный просп., 18/1",
+      "image": "",
+      "title": "Площадь у концертного зала им.Каца",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 82.92400114648805, 55.02106480152032 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Омск, просп. Карла Маркса, 43Б, Площадь у Омского государственного цирка",
-      "coordinates": [73.38832132439792, 54.95610030839777]
+      "description": "Омск, просп. Карла Маркса, 43Б",
+      "image": "",
+      "title": "Площадь у Омского государственного цирка",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 73.38832132439792, 54.95610030839777 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Пермь, Комсомольский просп. 79, Площадь перед ДК им. Солдатова",
-      "coordinates": [56.25172777018348, 57.99096559473627]
+      "description": "Пермь, Комсомольский просп. 79",
+      "image": "https://core-pht-proxy.maps.yandex.ru/v1/photos/download?photo_id=az3MquZhUVf4Rf25PaWF9A&image_size=XL",
+      "title": "Площадь перед ДК им. Солдатова",
+      "url": "https://yandex.com/maps/?ll=56.25172777018348%2C57.99096559473627&z=18&pt=56.25172777018348,57.99096559473627,pm2rdm",
+      "coordinates": [ 56.25172777018348, 57.99096559473627 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Ростов-на-Дону, ул. Большая Садовая, 134, Площадь перед Ростовским государственным музыкальным театром",
-      "coordinates": [39.73211690971748, 47.22502616821526]
+      "description": "Ростов-на-Дону, ул. Большая Садовая, 134",
+      "image": "",
+      "title": "Площадь перед Ростовским государственным музыкальным театром",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 39.73211690971748, 47.22502616821526 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Самара, ул. Молодогвардейская, 220, Площадь у Цирка",
-      "coordinates": [50.113827197414416, 53.20490284203961]
+      "description": "Самара, ул. Молодогвардейская, 220",
+      "image": "",
+      "title": "Площадь у Цирка",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 50.113827197414416, 53.20490284203961 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Уфа, ул. Чернышевского, 88, Городской культурный исторический центр Арт квадрат",
-      "coordinates": [55.94604118088148, 54.72864665138581]
+      "description": "Уфа, Проспект Октября, 33",
+      "image": "",
+      "title": "Площадь перед Детской Государственной Филармонией",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 55.9975612142944, 54.751077551485665 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Санкт-Петербург, Невский просп., 35, Площадь Гостиного двора",
-      "coordinates": [30.332483910726076, 59.93438124009902]
+      "description": "Санкт-Петербург, Невский просп., 35",
+      "image": "",
+      "title": "Площадь Гостиного двора",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 30.332483910726076, 59.93438124009902 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Керчь, ул. Войкова, 30",
-      "coordinates": [36.5235158429222, 45.36087882113913]
+      "description": "Керчь, ул. Войкова, 30",
+      "image": "https://avatars.mds.yandex.net/get-altay/16136444/2a0000019a0c2a29a49325d2d91de9273a57/XL",
+      "title": "Детская школа искусств им.&nbsp;Р.В.&nbsp;Сердюка",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 36.5235158429222, 45.36087882113913 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Севастополь, ул. Павла Корчагина, 1, Площадь перед ДКР",
-      "coordinates": [33.43469075760266, 44.58412513777046]
+      "description": "Севастополь, ул. Павла Корчагина, 1",
+      "image": "",
+      "title": "Площадь перед ДКР",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 33.43469075760266, 44.58412513777046 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Симферополь, Пересечение ул. Пушкина и ул. Горького",
-      "coordinates": [34.097392139564505, 44.94999372370741]
+      "description": "Симферополь, Пересечение ул. Пушкина и ул. Горького",
+      "image": "",
+      "title": "Пересечение ул. Пушкина и ул. Горького",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 34.097392139564505, 44.94999372370741 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Феодосия, ПГТ Приморский, ул. Советская, 6",
-      "coordinates": [35.48798025463102, 45.11612247527324]
+      "description": "Феодосия, ПГТ Приморский, ул. Советская, 6",
+      "image": "",
+      "title": "МБУК Дворец культуры Бриз",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 35.48798025463102, 45.11612247527324 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Ялта, ул. Набережная им. Ленина, Площадь концертного зала Юбилейный",
-      "coordinates": [34.16319926776692, 44.492888974316266]
+      "description": "Ялта, ул. Набережная им. Ленина",
+      "image": "",
+      "title": "Площадь концертного зала Юбилейный",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 34.16319926776692, 44.492888974316266 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Симферополь, ул. Аджимушкая, 1",
-      "coordinates": [34.095904087800974, 44.95024135243778]
+      "description": "Симферополь, ул. Аджимушкая, 1",
+      "image": "",
+      "title": "Городская елка",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 34.095904087800974, 44.95024135243778 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Петропавловск-Камчатский, просп. Рыбаков, 1, Территория городского фонтана",
-      "coordinates": [158.6373738716888, 53.05552690844792]
+      "description": "Петропавловск-Камчатский, просп. Рыбаков, 1",
+      "image": "",
+      "title": "Территория городского фонтана",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 158.6373738716888, 53.05552690844792 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Геленджик, ул. Революционная, 32, Центр спортивной подготовки водных видов спорта",
-      "coordinates": [38.06567162392517, 44.555091197672965]
+      "description": "Геленджик, ул. Революционная, 32",
+      "image": "",
+      "title": "Центр спортивной подготовки водных видов спорта",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 38.06567162392517, 44.555091197672965 ]
     },
     {
       "pointType": "TownSquare",
-      "title": "г. Благовещенск, ул. Ленина, 100, Площадь Общественно-культурного центра",
-      "coordinates": [127.54427645634448, 50.25589783057535]
+      "description": "Благовещенск, ул. Ленина, 100",
+      "image": "",
+      "title": "Площадь Общественно-культурного центра",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 127.54427645634448, 50.25589783057535 ]
+    },
+    {
+      "pointType": "TownSquare",
+      "description": "Москва, Лубянская площадь",
+      "image": "",
+      "title": "Лубянская площадь",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 37.626816563823574, 55.759586776969854 ]
+    },
+    {
+      "pointType": "TownSquare",
+      "description": "Москва, Поклонная гора",
+      "image": "",
+      "title": "Поклонная гора",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 37.51661697296428, 55.735523270951255 ]
+    },
+    {
+      "pointType": "TownSquare",
+      "description": "Москва, Новоарбатский мост",
+      "image": "",
+      "title": "Новоарбатский мост",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 37.57449496898592, 55.752333868897445 ]
+    },
+    {
+      "pointType": "TownSquare",
+      "description": "Москва, Арбатская площадь",
+      "image": "",
+      "title": "Арбатская площадь",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 37.601286631282726, 55.75197273759069 ]
+    },
+    {
+      "pointType": "TownSquare",
+      "description": "Москва, Боровицкая площадь",
+      "image": "",
+      "title": "Боровицкая площадь",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 37.608947321871, 55.748719345610986 ]
+    },
+    {
+      "pointType": "TownSquare",
+      "description": "Москва, Смоленская-Сенная площадь",
+      "image": "",
+      "title": "Смоленская-Сенная площадь",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 37.582143424606315, 55.745915421518156 ]
+    },
+    {
+      "pointType": "TownSquare",
+      "description": "Москва, Москва-Сити",
+      "image": "",
+      "title": "Москва-Сити",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 37.53731651128386, 55.74905071448102 ]
+    },
+    {
+      "pointType": "TownSquare",
+      "description": "Луганск, ул. Героя России В.Н. Зозулина, 7Б",
+      "image": "",
+      "title": "Луганский академический театр кукол",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 39.31379849999992, 48.57309757386508 ]
+    },
+    {
+      "pointType": "TownSquare",
+      "description": "Мариуполь, пр-т. Металлургов, 52",
+      "image": "",
+      "title": "Мариупольский Республиканский Академический Ордена «Знак Почета» Русский Драматический Театр",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 37.542144729325855, 47.09235018451437 ]
+    },
+    {
+      "pointType": "TownSquare",
+      "description": "Мелитополь, ул. Чайковского, 61",
+      "image": "",
+      "title": "Дворец культуры железнодорожников Военно-Гражданской администрации Запорожской области",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 35.35696200395759, 46.87266401334083 ]
     },
     {
       "pointType": "Theatre",
-      "title": "Большой театр, г. Москва, Театральная площадь, 1",
-      "coordinates": [37.618765292686554, 55.75992119797138]
+      "description": "Большой театр: \nМосква, Театральная площадь, 1",
+      "image": "./../assets/img/yandex-map/bolshoy.webp",
+      "title": "Елка из новогодней коллекции ВТБ «Сказка о царе Салтане»",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 37.618765292686554, 55.75992119797138 ]
     },
     {
       "pointType": "Theatre",
-      "title": "МХТ им. А.П. Чехова, г. Москва, Камергерский пер., 3, стр. 1",
-      "coordinates": [37.61317736808195, 55.76011067049549]
+      "description": "МХТ им А.П.Чехова: \nМосква, Камергерский пер., 3, стр. 1",
+      "image": "./../assets/img/yandex-map/mht.webp",
+      "title": "Елка из новогодней коллекции ВТБ «Конек-горбунок»",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 37.61317736808195, 55.76011067049549 ]
     },
     {
       "pointType": "Theatre",
-      "title": "РАМТ, г. Москва, Театральная площадь, 2",
-      "coordinates": [37.61744819387202, 55.75912230019554]
+      "description": "РАМТ: \nМосква, Театральная площадь, 2",
+      "image": "./../assets/img/yandex-map/ramt.webp",
+      "title": "Елка из новогодней коллекции ВТБ «Морозко»",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 37.61744819387202, 55.75912230019554 ]
     },
     {
       "pointType": "Theatre",
-      "title": "РАМТ, г. Москва, Театральная площадь, 2",
-      "coordinates": [37.61758498653177, 55.759305303514324]
+      "description": "Современник: \nМосква, Чистопрудный бул., 19, стр. 1",
+      "image": "./../assets/img/yandex-map/sovremennik.webp",
+      "title": "Елка из новогодней коллекции ВТБ «Заячья избушка»",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 37.64586187483395, 55.761748053979495 ]
     },
     {
       "pointType": "Theatre",
-      "title": "Театр Современник, г. Москва, Чистопрудный бул., 19, стр. 1",
-      "coordinates": [37.64586187483395, 55.761748053979495]
+      "description": "Мастерская П. Фоменко: \nМосква, наб. Тараса Шевченко, 29",
+      "image": "./../assets/img/yandex-map/fomenko.webp",
+      "title": "Елка из новогодней коллекции ВТБ «Двенадцать месяцев»",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 37.53509677479931, 55.74340407350448 ]
     },
     {
       "pointType": "Theatre",
-      "title": "Театр-мастерская Петра Фоменко, Москва, наб. Тараса Шевченко, 29",
-      "coordinates": [37.53509677479931, 55.74340407350448]
+      "description": "Театр Терезы Дуровой: \nМосква, Павловская ул., 6",
+      "image": "./../assets/img/yandex-map/durova.webp",
+      "title": "Елка из новогодней коллекции ВТБ «По щучьему велению»",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 37.62684401719666, 55.719541543979346 ]
     },
     {
       "pointType": "Theatre",
-      "title": "Театр Терезы Дуровой, г. Москва, Павловская ул., 6",
-      "coordinates": [37.62684401719666, 55.719541543979346]
+      "description": "Театр им. Евгения Вахтангова: \nМосква, ул. Арбат, 26",
+      "image": "./../assets/img/yandex-map/vahtangov.webp",
+      "title": "Елка из новогодней коллекции ВТБ «Золотой петушок»",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 37.591560004299104, 55.74973016206665 ]
     },
     {
       "pointType": "Theatre",
-      "title": "Театр им. Евгения Вахтангова, г. Москва, ул. Арбат, 26",
-      "coordinates": [37.591560004299104, 55.74973016206665]
+      "description": "Санкт-Петербургская филармония им. Д.Д. Шостаковича: \nСанкт-Петербург, Михайловская ул., 2/9",
+      "image": "./../assets/img/yandex-map/shostakovich.webp",
+      "title": "Елка из новогодней коллекции ВТБ «По щучьему велению»",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 30.331756486146986, 59.936280367974376 ]
     },
     {
       "pointType": "Theatre",
-      "title": "Филармония им. Д.Д. Шостаковича, г. Санкт-Петербург, Михайловская ул., 2/9",
-      "coordinates": [30.331756486146986, 59.936280367974376]
+      "description": "Нижегородский театр оперы и балета: \nНижний Новгород, ул. Белинского, 59/2",
+      "image": "./../assets/img/yandex-map/nizhegorodskiy.webp",
+      "title": "Елка из новогодней коллекции ВТБ «Золотой петушок»",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 44.01698167790974, 56.31577497522718 ]
     },
     {
       "pointType": "Theatre",
-      "title": "Нижегородский театр оперы и балета, г. Нижний Новгород, ул. Белинского, 59/2",
-      "coordinates": [44.01698167790974, 56.31577497522718]
-    },
-    {
-      "pointType": "Theatre",
-      "title": "Театр им. Федора Волкова, г. Ярославль, пл. Волкова, 1",
-      "coordinates": [39.884604838623034, 57.62691241439627]
+      "description": "Драматический театр им. Ф.Г. Волкова: \nЯрославль, пл. Волкова, 1",
+      "image": "./../assets/img/yandex-map/volkov.webp",
+      "title": "Елка из новогодней коллекции ВТБ «Двенадцать месяцев»",
+      "url": "https://yandex.com/maps",
+      "coordinates": [ 39.884604838623034, 57.62691241439627 ]
     }
   ]
 }

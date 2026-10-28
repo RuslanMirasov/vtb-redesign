@@ -1,0 +1,40 @@
+.theme-switcher {
+  display: block;
+  position: fixed;
+  z-index: 1000;
+  left: myclamp(8px, 10px, 1440px, 2560px);
+  bottom: myclamp(8px, 10px, 1440px, 2560px);
+  width: myclamp(65px, 85px, 1440px, 2560px);
+  height: myclamp(100px, 115px, 1440px, 2560px);
+  background: url('../img/vyazanyi-konek/snegovik-1.gif') no-repeat center center/contain;
+  transition: 1s;
+  opacity: 0;
+  transform: translate(-200%, 0%);
+  @media (max-width: 1023px) {
+    left: 2px;
+  }
+  &.theme-switcher--stage {
+    @media (max-width: 1023px) {
+      bottom: 60px;
+    }
+  }
+}
+
+.loaded {
+  .theme-switcher {
+    opacity: 1;
+    transform: translate(0%, 0%);
+  }
+}
+
+.full-screen {
+  .theme-switcher {
+    opacity: 0;
+    transform: translate(-200%, 0%);
+  }
+}
+
+.theme-switcher.hidden {
+  opacity: 0;
+  transform: translate(-200%, 0%);
+}

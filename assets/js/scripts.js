@@ -4,11 +4,14 @@ import { initTabs } from './tabs.js';
 import { initScrollToBlock } from './scrollToBlock.js';
 import { initSounds } from './playSound.js';
 import { initRundomColorSelect } from './rundomColor.js';
-import { initPrint } from './print.js';
 import { initSidebarPopups, initStikySidebar } from './stiky-sidebar.js';
 import { popup } from './popup.js';
 import { saveAnswerToSession, getTestResult, renderResults } from './test.js';
 import { generatePDF, printPlay } from './stage.js';
+import { initYandexMap } from './yandex-map.js';
+import { initPredictions } from './predictions.js';
+import { initThemeSwitcher } from './theme-switcher.js';
+import { initAudioPlayer } from './audioPlayer.js';
 
 window.printPlay = printPlay;
 window.generatePDF = generatePDF;
@@ -16,6 +19,9 @@ window.saveAnswerToSession = saveAnswerToSession;
 window.getTestResult = getTestResult;
 window.renderResults = renderResults;
 
+hidePreloader();
+
+initThemeSwitcher();
 fixScreenHeight();
 initScrollArea();
 initNavigationMenu();
@@ -26,23 +32,25 @@ initScrollToBlock();
 initTabs();
 initSounds();
 initRundomColorSelect();
-initPrint();
 initStikySidebar();
 popup.init();
 initSidebarPopups();
-
-hidePreloader();
+initPredictions();
+initYandexMap();
 
 document.addEventListener('DOMContentLoaded', () => {
+  initAudioPlayer();
   const stageSlider = window.swipers?.['stage-slider'];
-  if (!stageSlider) return;
+  const soundsSlider = window.swipers?.['sound-slider'];
 
-  stageSlider.on('slideChange', () => {
-    const index = stageSlider.activeIndex;
-    const slideEl = stageSlider.slides[index];
-    const number = slideEl?.dataset?.number;
-    if (number) {
-      onStageSlideChange(Number(number));
-    }
-  });
+  if (stageSlider) {
+    stageSlider.on('slideChange', () => {
+      const index = stageSlider.activeIndex;
+      const slideEl = stageSlider.slides[index];
+      const number = slideEl?.dataset?.number;
+      if (number) {
+        onStageSlideChange(Number(number));
+      }
+    });
+  }
 });

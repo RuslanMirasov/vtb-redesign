@@ -58,7 +58,7 @@
   flex-wrap: wrap;
   width: 100%;
   justify-content: flex-start;
-  max-width: myclamp(1200px, 1200px, 1440px, 2560px);
+  max-width: myclamp(880px, 880px, 1440px, 2560px);
   gap: 8px;
   margin: myclamp(30px, 50px, 1440px, 2560px) auto;
   margin-bottom: myclamp(50px, 50px, 1440px, 2560px);
@@ -76,10 +76,10 @@
     flex-shrink: 0;
     width: calc((100% - 24px) / 4);
     min-height: myclamp(74px, 150px, 1440px, 2560px);
-    background: url(../img/wardrobe/bg.webp) no-repeat center center / cover;
+    background: url('../img/wardrobe/bg.webp') no-repeat center center / cover;
     border-radius: myclamp(16px, 16px, 1440px, 2560px);
-    padding: myclamp(16px, 16px, 1440px, 2560px);
-    padding-left: myclamp(74px, 74px, 1440px, 2560px);
+    padding: myclamp(18px, 18px, 1440px, 2560px);
+    padding-top: myclamp(24px, 24px, 1440px, 2560px);
     color: var(--blue);
 
     @media (max-width: 1279px) {
@@ -101,11 +101,11 @@
       height: myclamp(42px, 42px, 1440px, 2560px);
       border-radius: 10px;
       background: #cceeff url('../img/svg/checkbox.svg') no-repeat center center;
-      background-size: myclamp(22px, 22px, 1440px, 2560px) auto;
+      background: url('../img/push-pin.webp') no-repeat center center / cover;
       position: absolute;
       left: 0px;
       top: 0px;
-      transform: translate(myclamp(16px, 16px, 1440px, 2560px), myclamp(16px, 16px, 1440px, 2560px));
+      transform: translate(4px, -20px);
     }
 
     p,
@@ -117,6 +117,18 @@
     a {
       color: #00aaff;
       text-decoration: underline;
+      transition: color 0.3s;
+      &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+      }
+      // &:hover {
+      //   color: var(--blue-medium);
+      // }
     }
   }
 }
@@ -188,7 +200,7 @@
   max-width: myclamp(375px, 1000px, 1440px, 2560px);
   margin: 0 auto;
   margin-top: myclamp(30px, 50px, 1440px, 2560px);
-  margin-bottom: myclamp(140px, 80px, 1440px, 2560px);
+  margin-bottom: myclamp(250px, 80px, 1440px, 2560px);
 
   @media (max-width: 767px) {
     width: 82%;

@@ -13,6 +13,7 @@
   transform: scale(1) translate(0px, 0px);
 
   &.scaleble {
+    transition: transform 0s;
     transform: scale(0) translate(0px, 0px);
   }
 
@@ -20,8 +21,29 @@
     transform: scale(1) translate(0px, myclamp(50px, 60px, 1440px, 1440px));
   }
 
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: var(--blue) url('../img/vyazanyi-konek/header/bg.webp') repeat;
+    background-size: 11px 15px;
+    transition: opacity 2s;
+    opacity: 0;
+  }
+
   @media (max-width: 767px) {
     background: var(--blue) url('../img/header/nav-bg-mobil.webp') no-repeat center center/cover;
+  }
+}
+
+.snow {
+  .fixed-background {
+    &:before {
+      opacity: 1;
+    }
   }
 }
 
@@ -62,16 +84,57 @@
   }
 }
 
+@media (max-width: 767px) {
+  .full-screen {
+    .go-back,
+    .mobil-nav-menu,
+    .header {
+      display: none;
+    }
+  }
+}
+
 .loaded .header {
   transform: translate(0%, 0%);
 }
 
 .logo {
-  display: block;
+  position: relative;
   width: myclamp(79.06px, 90.36px, 1440px, 1440px);
   height: myclamp(28px, 32px, 1440px, 1440px);
-  &.logo--center {
-    margin: 0 auto;
+  perspective: 800px; // создаем 3D-глубину
+  transform-style: preserve-3d;
+
+  img,
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 1.5s ease;
+    display: block;
+  }
+
+  img {
+    transform: rotateY(0deg);
+  }
+
+  &:before {
+    content: '';
+    background: url('../img/logo.webp') no-repeat center center / contain;
+    transform: rotateY(180deg);
+  }
+
+  &.switch {
+    img {
+      transform: rotateY(180deg);
+    }
+
+    &:before {
+      transform: rotateY(0deg);
+    }
   }
 }
 
@@ -259,6 +322,7 @@
   font-weight: 500;
   align-self: end;
   justify-self: center;
+  padding-top: 10px;
 }
 
 .column {
@@ -278,6 +342,15 @@
     display: block;
     height: 100%;
     width: auto;
+
+    @media (max-width: 1023px) {
+      max-width: 16vw;
+      object-fit: fill;
+    }
+
+    @media (max-width: 767px) {
+      max-width: 20vw;
+    }
   }
   &.column--left {
     left: 0px;

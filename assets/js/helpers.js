@@ -8,57 +8,50 @@ export const debounce = (fn, delay = 150) => {
 
 export const hidePreloader = () => {
   const preloader = document.querySelector('[data-preloader]');
+  const preloaderImage = document.querySelector('.preloader__image');
   const header = document.querySelector('.header');
-  const mainSection = document.querySelector('.section--hero');
   const columnLeft = document.querySelector('.column--left');
   const columnRight = document.querySelector('.column--right');
   const fixedBackground = document.querySelector('.fixed-background');
-  const preloaderImage = document.querySelector('.preloader__image');
-  const isMainPage = fixedBackground ? fixedBackground.classList.contains('scaleble') : false;
+  const isMainPage = fixedBackground?.classList.contains('is-main');
 
-  const delay = isMainPage ? 1200 : 500;
-  const delay2 = isMainPage ? 1000 : 0;
+  if (!preloader) return;
 
   if (isMainPage) {
-    requestAnimationFrame(() => {
-      preloaderImage.style.height = '100%';
-      columnLeft.classList.add('in-main-page');
-      columnRight.classList.add('in-main-page');
-    });
+    columnLeft.classList.add('in-main-page');
+    columnRight.classList.add('in-main-page');
   }
 
   const handlerLoad = () => {
     preloader?.classList.add('hidden');
     fixedBackground?.classList.remove('scaleble');
-    if (isMainPage) {
-      mainSection.classList.add('show');
-    }
+
+    setTimeout(() => {
+      preloader.classList.add('remove-bg');
+    }, 400);
 
     setTimeout(() => {
       document.body.classList.add('loaded');
-    }, delay);
+    }, 1500);
 
     setTimeout(() => {
       preloader?.remove();
       header?.classList.remove('scaleble');
       columnLeft?.classList.remove('scaleble');
       columnRight?.classList.remove('scaleble');
-      if (isMainPage) {
-        mainSection.classList.remove('show');
-      }
-    }, 3000);
+    }, 4000);
   };
 
-  document.addEventListener('DOMContentLoaded', () => {
-    requestAnimationFrame(() => {
-      setTimeout(handlerLoad, delay2);
-    });
+  window.addEventListener('load', () => {
+    if (preloaderImage) preloaderImage.style.height = '100%';
+    setTimeout(handlerLoad, 1500);
   });
 };
 
 export const initNavigationMenu = () => {
   const burger = document.querySelector('.burger');
   const menu = document.querySelector('.navigation ');
+  const logo = document.querySelector('.logo ');
   const menuLinks = document.querySelectorAll('.menu__link');
   const main = document.querySelector('.main');
   const columnLeft = document.querySelector('.column--left');
@@ -69,6 +62,7 @@ export const initNavigationMenu = () => {
   const mobilNavMenu = document.querySelector('.mobil-nav-menu');
   const goBackButton = document.querySelector('.go-back');
   const tipNavigation = document.querySelector('.tip-navigation');
+  const themeSwitcher = document.querySelector('.theme-switcher');
 
   const toggleMenu = () => {
     burger?.classList.toggle('open');
@@ -82,11 +76,55 @@ export const initNavigationMenu = () => {
     goBackButton?.classList.toggle('hidden');
     fixedBackground?.classList.toggle('move');
     tipNavigation?.classList.toggle('hidden');
+    themeSwitcher?.classList.toggle('hidden');
   };
 
   if (burger) burger.addEventListener('click', toggleMenu);
   menuLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+  // if (logo) {
+  //   const cycle = () => {
+  //     logo.classList.toggle('switch');
+  //   };
+
+  //   setInterval(cycle, 15000);
+  // }
 };
+
+function ensureClosedPopup(errorText) {
+  let backdrop = document.querySelector('[data-backdrop]');
+
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'backdrop';
+    backdrop.setAttribute('data-backdrop', '');
+    document.body.appendChild(backdrop);
+  }
+
+  let popupClosed = document.querySelector('[data-popup="closed"]');
+
+  if (!popupClosed) {
+    popupClosed = document.createElement('div');
+    popupClosed.className = 'popup';
+    popupClosed.setAttribute('data-popup', 'closed');
+    popupClosed.setAttribute('data-popup-close', '');
+
+    popupClosed.innerHTML = `
+      <div class="popupContent">
+        <button type="button" class="popup__close" data-popup-close></button>
+        <br />
+        <h2 class="title title--24">${errorText}</h2>
+        <button type="button" class="button" data-popup-close>
+          <span>Закрыть</span>
+        </button>
+      </div>
+    `;
+
+    backdrop.appendChild(popupClosed);
+  }
+
+  window.popup.open('closed');
+}
 
 export const initLinksMiddleware = () => {
   document.addEventListener('click', e => {
@@ -95,7 +133,8 @@ export const initLinksMiddleware = () => {
 
     if (link.hasAttribute('data-closed')) {
       e.preventDefault();
-      alert('В помещении идут приготовления. Скоро оно распахнет для вас свои двери!');
+      const errorText = link.dataset.text || 'Идут приготовления. <br>Скоро дверь откроется.';
+      ensureClosedPopup(errorText);
       return;
     }
 
@@ -103,6 +142,12 @@ export const initLinksMiddleware = () => {
     if (!href || href.startsWith('#') || href.startsWith('javascript:') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
 
     e.preventDefault();
+
+    const activePopup = document.querySelector('[data-popup].active');
+
+    if (activePopup) {
+      window.popup.close();
+    }
 
     document.body.classList.remove('loaded');
 
@@ -126,6 +171,14 @@ export const initLinksMiddleware = () => {
 
     if (linkPath === currentPath) {
       link.setAttribute('aria-current', 'page');
+    }
+  });
+
+  window.addEventListener('pageshow', event => {
+    if (event.persisted) {
+      document.body.classList.add('loaded');
+    } else {
+      document.body.classList.add('loaded');
     }
   });
 };

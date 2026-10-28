@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="theme-color" content="#0A2896" />
-    <meta name="description"
-        content="Создайте свой домашний театр с ВТБ! Пьесы по любимым сказкам, сценарии и вдохновение для волшебных вечеров." />
+    <meta
+      name="description"
+      content="🎭 Фойе домашнего театра: начните новогоднюю сказочную постановку дома — выберите пьесу, подготовьте сценарий, костюмы и семейные репетиции. Домашний театр — проект банка ВТБ."
+    />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preload" as="image" href="./assets/img/header/bg.webp" />
@@ -15,341 +16,382 @@
     <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./assets/css/styles.min.css" />
-    <title>Домашний театр ВТБ — новогодние сказки для всей семьи</title>
+    <title>Фойе домашнего театра: 🎄 новогодние постановки, сценарий и репетиции — Новогодничайте с домашним театром ВТБ</title>
+
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Фойе домашнего театра: 🎄 новогодние постановки, сценарий и репетиции — Новогодничайте с домашним театром ВТБ"
+    />
+    <meta property="og:url" content="https://teatr.vtb.ru/" />
+    <meta property="og:image" content="https://teatr.vtb.ru/assets/img/social_lg.jpg" />
+    <meta property="og:image:secure_url" content="https://teatr.vtb.ru/assets/img/social_lg.jpg" />
+    <meta property="og:image:width" content="1550" />
+    <meta property="og:image:height" content="810" />
+    <meta property="og:image" content="https://teatr.vtb.ru/assets/img/social_sq.jpg" />
+    <meta property="og:image:secure_url" content="https://teatr.vtb.ru/assets/img/social_sq.jpg" />
+    <meta property="og:image:width" content="682" />
+    <meta property="og:image:height" content="682" />
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
-        (function (m, e, t, r, i, k, a) {
-            m[i] =
-                m[i] ||
-                function () {
-                    (m[i].a = m[i].a || []).push(arguments);
-                };
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
 
-            m[i].l = 1 * new Date();
+        m[i].l = 1 * new Date();
 
-            for (var j = 0; j < document.scripts.length; j++) {
-                if (document.scripts[j].src === r) {
-                    return;
-                }
-            }
-
-            (k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]), (k.async = 1), (k.src = r), a.parentNode.insertBefore(k, a);
-        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=105298510', 'ym');
-
-        ym(105298510, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: 'dataLayer', accurateTrackBounce: true, trackLinks: true });
-    </script>
-
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/105298510" style="position: absolute; left: -9999px" alt="" /></div>
-    </noscript>
-    <!-- /Yandex.Metrika counter -->
-</head>
-
-<body class="body">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QZDRVKGLC"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) {
+            return;
+          }
         }
-        gtag('js', new Date());
-        gtag('config', 'G-1QZDRVKGLC');
-    </script>
-    <!--HEADER-->
-    <header class="header scaleble">
-        <a href="./" class="logo">
-            <img src="./assets/img/logo.svg" alt="ВТБ" />
-        </a>
 
-        <button class="burger">
-            <span>Меню бургер</span>
-        </button>
+        (k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]), (k.async = 1), (k.src = r), a.parentNode.insertBefore(k, a);
+      })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=105298510', 'ym');
+
+      ym(105298510, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: 'dataLayer', accurateTrackBounce: true, trackLinks: true });
+    </script>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+
+  <body class="body">
+    <!-- <button class="theme-switcher" data-popup-open="information"></button> -->
+
+    <!--HEADER-->
+    <header class="header">
+      <a href="./" class="logo">
+        <img src="./assets/img/logo.svg" alt="ВТБ" />
+      </a>
+
+      <button class="burger">
+        <span>Меню бургер</span>
+      </button>
     </header>
 
     <!--NAVIGATION-->
     <nav class="navigation">
-        <ul class="menu">
-            <li>
-                <a href="./stage" class="menu__link">
-                    <img src="./assets/img/header/nav1.webp" alt="ВТБ" />
-                    <b>Сцена</b>
-                    <p>Ставьте пьесы для домашнего театра</p>
-                </a>
-            </li>
-            <li>
-                <a href="./wardrobe" class="menu__link">
-                    <img src="./assets/img/header/nav2.webp" alt="ВТБ" />
-                    <b>Костюмерная</b>
-                    <p>Подберите яркие наряды&nbsp;героев</p>
-                </a>
-            </li>
-            <li>
-                <a href="./makeup-room" class="menu__link">
-                    <img src="./assets/img/header/nav3.webp" alt="ВТБ" />
-                    <b>Гримерная</b>
-                    <p>Используйте наши идеи сказочных образов</p>
-                </a>
-            </li>
-            <li>
-                <a href="./orchestra-pit" class="menu__link">
-                    <img src="./assets/img/header/nav4.webp" alt="ВТБ" />
-                    <b>Оркестровая яма</b>
-                    <p>Послушайте аудиоверсии&nbsp;сказок</p>
-                </a>
-            </li>
-            <li>
-                <a href="./buffet" class="menu__link">
-                    <img src="./assets/img/header/nav5.webp" alt="ВТБ" />
-                    <b>Буфет</b>
-                    <p>Создайте праздничное настроение</p>
-                </a>
-            </li>
-            <li>
-                <a href="./directors-room" class="menu__link">
-                    <img src="./assets/img/header/nav6.webp" alt="ВТБ" />
-                    <b>Кабинет режиссера</b>
-                    <p>Откройте пространство для&nbsp;творчества</p>
-                </a>
-            </li>
-        </ul>
-        <!-- <a href="./holiday-map" data-closed class="menu__link map-link">Карта елок</a> -->
+      <ul class="menu">
+        <li>
+          <a href="./stage" class="menu__link">
+            <img src="./assets/img/header/nav1.webp" alt="ВТБ" />
+            <b>Сцена</b>
+            <p>Пьесы&nbsp;для домашнего театра</p>
+          </a>
+        </li>
+        <li>
+          <a href="./wardrobe" class="menu__link">
+            <img src="./assets/img/header/nav2.webp" alt="ВТБ" />
+            <b>Костюмерная</b>
+            <p>Подборка нарядов для главных&nbsp;героев</p>
+          </a>
+        </li>
+        <li>
+          <a href="./makeup-room" class="menu__link">
+            <img src="./assets/img/header/nav3.webp" alt="ВТБ" />
+            <b>Гримерная</b>
+            <p>Идеи макияжа для сказочного преображения</p>
+          </a>
+        </li>
+        <li>
+          <a href="./orchestra-pit" class="menu__link">
+            <img src="./assets/img/header/nav4.webp" alt="ВТБ" />
+            <b>Оркестровая яма</b>
+            <p>Музыкальное сопровождение для пьес</p>
+          </a>
+        </li>
+        <li>
+          <a href="./buffet" class="menu__link">
+            <img src="./assets/img/header/nav5.webp" alt="ВТБ" />
+            <b>Буфет</b>
+            <p>Украшения и рецепты для праздничного стола</p>
+          </a>
+        </li>
+        <li>
+          <a href="./directors-room" class="menu__link">
+            <img src="./assets/img/header/nav6.webp" alt="ВТБ" />
+            <b>Кабинет режиссера</b>
+            <p>Советы для домашнего спектакля и&nbsp;чек-лист для подготовки к&nbsp;празднику</p>
+          </a>
+        </li>
+      </ul>
+      <a href="./videos" class="menu__link map-link">Видео спектаклей</a>
+      <!--<a href="./holiday-map" class="menu__link map-link">Карта елок</a>-->
     </nav>
 
     <!--PRELOADER-->
     <div class="preloader" data-preloader>
-        <div class="preloader__content">
-            <div class="preloader__image"></div>
-            <div class="preloader__text">
-                <h2>Домашний театр открывает двери</h2>
-                <p>Создаем сказку вместе с ВТБ</p>
-            </div>
+      <div class="preloader__content">
+        <div class="preloader__image"></div>
+        <div class="preloader__text">
+            <h2>Домашний театр открывает двери</h2>
+            <p>Создаем сказку вместе с ВТБ</p>
         </div>
+      </div>
     </div>
 
-    <div class="fixed-background scaleble"></div>
+    <div class="fixed-background is-main"></div>
 
     <main class="main">
-        <section class="section section--hero">
-            <div class="titles">
-                <h1 class="title title--h1">Присоединяйтесь к&nbsp;волшебству</h1>
-                <p class="subtitle">
-                    ВТБ пригласил театральных режиссеров и драматургов создать пьесы для домашнего театра.<br />
-                    Вас ждет много идей для праздника.
-                </p>
-            </div>
+      <section class="section section--hero">
+        <div class="titles">
+          <h1 class="title title--h1">Домашний&nbsp;театр. <br class="show-in-mobil" />Сказки</h1>
+          <p class="subtitle">
+            ВТБ пригласил театральных режиссеров и&nbsp;драматургов создать пьесы для&nbsp;домашнего театра. Вас ждет много идей для&nbsp;праздника.
+          </p>
 
-            <div class="foue">
-                <div class="scroll-area" data-scroll-area>
-                    <div class="foue__navigation">
-                        <div class="foue__content">
-                            <img src="./assets/img/foue/foue_sluj.webp" alt="ВТБ" class="foue-image" />
-                            <a href="./directors-room" class="door door--director"></a>
-                            <a href="./buffet" class="door door--buffet"></a>
-                            <a href="./makeup-room" class="door door--makeup"></a>
-                            <a href="./stage" class="door door--stage"></a>
-                            <a href="./wardrobe" class="door door--wardrobe"></a>
-                            <a href="./orchestra-pit" class="door door--orchestra"></a>
-                            <a href="./vtb-offer" data-closed class="door door--vtb-offer"></a>
-                            <a href="./secret-room" data-closed class="door door--secret"></a>
-                            <img src="./assets/img/foue/key.gif" alt="ВТБ" class="key" />
-                        </div>
-                    </div>
-                </div>
+          <button type="button" class="button" onclick="window.popup.open('intro')"><span>С чего начать?</span></button>
+        </div>
+
+        <div class="foue">
+          <div class="scroll-area" data-scroll-area>
+            <div class="foue__navigation">
+              <div class="foue__content">
+                <img src="./assets/img/foue/foue_vid.webp" alt="ВТБ" class="foue-image" />
+                <a href="./directors-room" class="door door--director"></a>
+                <a href="./buffet" class="door door--buffet"></a>
+                <a href="./makeup-room" class="door door--makeup"></a>
+                <a href="#" class="door door--stage" onclick="window.popup.open('to-scene')"></a>
+                <a href="./wardrobe" class="door door--wardrobe"></a>
+                <a href="./orchestra-pit" class="door door--orchestra"></a>
+                <a href="./videos" class="door door--vtb-offer">
+                  <div class="blick"></div>
+                </a>
+                <a href="./secret-room" class="door door--secret"></a>
+                <img src="./assets/img/foue/key.gif" alt="ВТБ" class="key" />
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!--COLUMNS-->
-    <div class="column column--left scaleble">
-        <img src="./assets/img/header/column-left.webp" alt="ВТБ" />
+    <div class="column column--left">
+      <img src="./assets/img/header/column-left.webp" alt="ВТБ" />
     </div>
-    <div class="column column--right scaleble">
-        <img src="./assets/img/header/column-right.webp" alt="ВТБ" />
+    <div class="column column--right">
+      <img src="./assets/img/header/column-right.webp" alt="ВТБ" />
     </div>
     <!-- test-start -->
     <button type="button" class="select-a-play" data-popup-open="test-start">
-        <img src="./assets/img/svg/select-a-play.svg" alt="ВТБ" class="select-a-play__text" />
-        <img src="./assets/img/header/binoculars.webp" alt="ВТБ" class="select-a-play__image" />
+      <img src="./assets/img/svg/select-a-play.svg" alt="ВТБ" class="select-a-play__text" />
+      <img src="./assets/img/header/binoculars.webp" alt="ВТБ" class="select-a-play__image" />
     </button>
 
     <!--TEST-->
     <div class="backdrop" data-backdrop>
-        <!-- START TEST-->
-        <div class="popup" data-popup="test-start" data-popup-close>
-            <div class="popupContent">
-                <button type="button" class="popup__close" data-popup-close></button>
-                <h2 class="title title--28">Пройдите тест</h2>
-                <p class="subtitle subtitle--16">Узнайте, какая пьеса <br />подойдет&nbsp;вам</p>
-                <button class="button" data-popup-open="test-step-1">
-                    <span>Начать</span>
-                </button>
-            </div>
+      <!-- START TEST-->
+      <div class="popup" data-popup="test-start" data-popup-close>
+        <div class="popupContent">
+          <button type="button" class="popup__close" data-popup-close></button>
+          <h2 class="title title--28">Пройдите тест</h2>
+          <p class="subtitle subtitle--16">Узнайте, какая пьеса <br />подойдет&nbsp;вам</p>
+          <button class="button" data-popup-open="test-step-1">
+            <span>Начать</span>
+          </button>
         </div>
+      </div>
 
-        <!--TEST STEP 1-->
-        <script>
-            const saveStepOne = e => {
-                e.preventDefault();
-                const answer1 = new FormData(e.target).get('who-play');
-                window.saveAnswerToSession('question1', answer1);
-                window.popup.open('test-step-2');
-            };
-        </script>
-        <div class="popup" data-popup="test-step-1" data-popup-close>
-            <div class="popupContent">
-                <button type="button" class="popup__close" data-popup-close></button>
-                <h2 class="title title--28">Какая пьеса <br />вам подходит?</h2>
-                <p class="test-question"><strong>01</strong><span>Кто будет играть в пьесе?</span></p>
-                <form action="#" class="form form--test" novalidate onsubmit="saveStepOne(event)">
-                    <label class="radio">
-                        <input type="radio" name="who-play" value="Большая семья — с детьми, бабушками и дедушками" />
-                        <span>Большая семья — с детьми, <br />бабушками и дедушками</span>
-                    </label>
+      <!--TEST STEP 1-->
+      <script>
+        const saveStepOne = e => {
+          e.preventDefault();
+          const answer1 = new FormData(e.target).get('who-play');
+          window.saveAnswerToSession('question1', answer1);
+          window.popup.open('test-step-2');
+        };
+      </script>
+      <div class="popup" data-popup="test-step-1" data-popup-close>
+        <div class="popupContent">
+          <button type="button" class="popup__close" data-popup-close></button>
+          <h2 class="title title--28">Какая пьеса <br />вам подходит?</h2>
+          <p class="test-question"><strong>01</strong><span>Кто будет играть в пьесе?</span></p>
+          <form action="#" class="form form--test" novalidate onsubmit="saveStepOne(event)">
+            <label class="radio">
+              <input type="radio" name="who-play" value="Большая семья — с детьми, бабушками и дедушками" />
+              <span>Большая семья — с детьми, <br />бабушками и дедушками</span>
+            </label>
 
-                    <label class="radio">
-                        <input type="radio" name="who-play" value="Веселая компания на вечеринке" />
-                        <span>Веселая компания на вечеринке</span>
-                    </label>
+            <label class="radio">
+              <input type="radio" name="who-play" value="Веселая компания на вечеринке" />
+              <span>Веселая компания на вечеринке</span>
+            </label>
 
-                    <label class="radio">
-                        <input type="radio" name="who-play" value="Мама, папа, я, а еще, может быть, друзья" />
-                        <span>Мама, папа, я, а еще, <br />может быть, друзья</span>
-                    </label>
+            <label class="radio">
+              <input type="radio" name="who-play" value="Мама, папа, я, а еще, может быть, друзья" />
+              <span>Мама, папа, я, а еще, <br />может быть, друзья</span>
+            </label>
 
-                    <label class="radio">
-                        <input type="radio" name="who-play" value="Вдвоем" />
-                        <span>Вдвоем</span>
-                    </label>
+            <label class="radio">
+              <input type="radio" name="who-play" value="Вдвоем" />
+              <span>Вдвоем</span>
+            </label>
 
-                    <label class="radio">
-                        <input type="radio" name="who-play" value="Я сам(а)" />
-                        <span>Я сам(а)</span>
-                    </label>
+            <label class="radio">
+              <input type="radio" name="who-play" value="Я сам(а)" />
+              <span>Я сам(а)</span>
+            </label>
 
-                    <div class="form-buttons">
-                        <button type="submit" class="button">
-                            <span>Далее</span>
-                        </button>
-                    </div>
-                </form>
+            <div class="form-buttons">
+              <button type="submit" class="button">
+                <span>Далее</span>
+              </button>
             </div>
+          </form>
         </div>
+      </div>
 
-        <!--TEST STEP 2-->
-        <script>
-            const saveStepTwo = e => {
-                e.preventDefault();
-                const answer2 = new FormData(e.target).get('favorite-film');
-                window.saveAnswerToSession('question2', answer2);
-                window.popup.open('test-step-3');
-            };
-        </script>
-        <div class="popup" data-popup="test-step-2" data-popup-close>
-            <div class="popupContent">
-                <button type="button" class="popup__close" data-popup-close></button>
-                <h2 class="title title--28">Какая пьеса <br />вам подходит?</h2>
-                <p class="test-question"><strong>02</strong><span>Ваш любимый жанр в&nbsp;кино?</span></p>
-                <form action="#" class="form form--test" novalidate onsubmit="saveStepTwo(event)">
-                    <label class="radio">
-                        <input type="radio" name="favorite-film" value="Приключения" />
-                        <span>Приключения</span>
-                    </label>
+      <!--TEST STEP 2-->
+      <script>
+        const saveStepTwo = e => {
+          e.preventDefault();
+          const answer2 = new FormData(e.target).get('favorite-film');
+          window.saveAnswerToSession('question2', answer2);
+          window.popup.open('test-step-3');
+        };
+      </script>
+      <div class="popup" data-popup="test-step-2" data-popup-close>
+        <div class="popupContent">
+          <button type="button" class="popup__close" data-popup-close></button>
+          <h2 class="title title--28">Какая пьеса <br />вам подходит?</h2>
+          <p class="test-question"><strong>02</strong><span>Ваш любимый жанр в&nbsp;кино?</span></p>
+          <form action="#" class="form form--test" novalidate onsubmit="saveStepTwo(event)">
+            <label class="radio">
+              <input type="radio" name="favorite-film" value="Приключения" />
+              <span>Приключения</span>
+            </label>
 
-                    <label class="radio">
-                        <input type="radio" name="favorite-film" value="Мелодрама" />
-                        <span>Мелодрама</span>
-                    </label>
+            <label class="radio">
+              <input type="radio" name="favorite-film" value="Мелодрама" />
+              <span>Мелодрама</span>
+            </label>
 
-                    <label class="radio">
-                        <input type="radio" name="favorite-film" value="Триллер" />
-                        <span>Триллер</span>
-                    </label>
+            <label class="radio">
+              <input type="radio" name="favorite-film" value="Триллер" />
+              <span>Триллер</span>
+            </label>
 
-                    <label class="radio">
-                        <input type="radio" name="favorite-film" value="Артхаус" />
-                        <span>Артхаус</span>
-                    </label>
+            <label class="radio">
+              <input type="radio" name="favorite-film" value="Артхаус" />
+              <span>Артхаус</span>
+            </label>
 
-                    <div class="form-buttons">
-                        <button type="button" class="button button--white" data-popup-open="test-step-1">
-                            <span>Назад</span>
-                        </button>
-                        <button type="submit" class="button">
-                            <span>Далее</span>
-                        </button>
-                    </div>
-                </form>
+            <div class="form-buttons">
+              <button type="button" class="button button--white" data-popup-open="test-step-1">
+                <span>Назад</span>
+              </button>
+              <button type="submit" class="button">
+                <span>Далее</span>
+              </button>
             </div>
+          </form>
         </div>
+      </div>
 
-        <!--TEST STEP 3-->
-        <script>
-            const saveStepThree = e => {
-                e.preventDefault();
-                const answer3 = new FormData(e.target).get('hobby');
-                window.saveAnswerToSession('question3', answer3);
-                const result = window.getTestResult();
-                window.renderResults(result);
-                window.popup.open('test-result');
-            };
-        </script>
-        <div class="popup" data-popup="test-step-3" data-popup-close>
-            <div class="popupContent">
-                <button type="button" class="popup__close" data-popup-close></button>
-                <h2 class="title title--28">Какая пьеса <br />вам подходит?</h2>
-                <p class="test-question"><strong>03</strong><span>Что у вас получается лучше всего?</span></p>
-                <form action="#" class="form form--test" novalidate onsubmit="saveStepThree(event)">
-                    <label class="radio">
-                        <input type="radio" name="hobby" value="Петь и танцевать" />
-                        <span>Петь и танцевать</span>
-                    </label>
+      <!--TEST STEP 3-->
+      <script>
+        const saveStepThree = e => {
+          e.preventDefault();
+          const answer3 = new FormData(e.target).get('hobby');
+          window.saveAnswerToSession('question3', answer3);
+          const result = window.getTestResult();
+          window.renderResults(result);
+          window.popup.open('test-result');
+        };
+      </script>
+      <div class="popup" data-popup="test-step-3" data-popup-close>
+        <div class="popupContent">
+          <button type="button" class="popup__close" data-popup-close></button>
+          <h2 class="title title--28">Какая пьеса <br />вам подходит?</h2>
+          <p class="test-question"><strong>03</strong><span>Что у вас получается лучше всего?</span></p>
+          <form action="#" class="form form--test" novalidate onsubmit="saveStepThree(event)">
+            <label class="radio">
+              <input type="radio" name="hobby" value="Петь и танцевать" />
+              <span>Петь и танцевать</span>
+            </label>
 
-                    <label class="radio">
-                        <input type="radio" name="hobby" value="Читать стихи" />
-                        <span>Читать стихи</span>
-                    </label>
+            <label class="radio">
+              <input type="radio" name="hobby" value="Читать стихи" />
+              <span>Читать стихи</span>
+            </label>
 
-                    <label class="radio">
-                        <input type="radio" name="hobby" value="Стендап" />
-                        <span>Стендап</span>
-                    </label>
+            <label class="radio">
+              <input type="radio" name="hobby" value="Стендап" />
+              <span>Стендап</span>
+            </label>
 
-                    <label class="radio">
-                        <input type="radio" name="hobby" value="Создавать уют" />
-                        <span>Создавать уют</span>
-                    </label>
+            <label class="radio">
+              <input type="radio" name="hobby" value="Создавать уют" />
+              <span>Создавать уют</span>
+            </label>
 
-                    <div class="form-buttons">
-                        <button type="button" class="button button--white" data-popup-open="test-step-2">
-                            <span>Назад</span>
-                        </button>
-                        <button type="submit" class="button">
-                            <span>Далее</span>
-                        </button>
-                    </div>
-                </form>
+            <div class="form-buttons">
+              <button type="button" class="button button--white" data-popup-open="test-step-2">
+                <span>Назад</span>
+              </button>
+              <button type="submit" class="button">
+                <span>Далее</span>
+              </button>
             </div>
+          </form>
         </div>
+      </div>
 
-        <!--TEST END (RENDER RESULTS)-->
-        <div class="popup" data-popup="test-result" data-popup-close>
-            <div class="popupContent" data-path="./" data-test-results-block>
-                <button type="button" class="popup__close" data-popup-close></button>
-            </div>
+      <!--TEST END (RENDER RESULTS)-->
+      <div class="popup" data-popup="test-result" data-popup-close>
+        <div class="popupContent" data-path="./" data-test-results-block>
+          <button type="button" class="popup__close" data-popup-close></button>
         </div>
+      </div>
+
+      <!-- INTRO-->
+      <div class="popup" data-popup="intro" data-popup-close>
+        <div class="popupContent">
+          <button type="button" class="popup__close" data-popup-close></button>
+
+          <p class="title title--24">Целый сказочный мир <br />теперь прямо у&nbsp;вас дома.</p>
+          <p class="subtitle subtitle--16">
+            В&nbsp;нашем волшебном театре много комнат, и&nbsp;все продумано так, чтобы каждый мог почувствовать себя актером, художником и&nbsp;даже
+            режиссером.<br />
+            Ставьте спектакли по&nbsp;мотивам любимых сказок, используя визуальные подсказки, плейлисты и&nbsp;творческие инструкции от&nbsp;авторов
+            пьес.<br />
+            Перевоплощайтесь в&nbsp;сказочных героев, посетив <b>костюмерную</b> и&nbsp;<b>гримерную</b>.<br />
+            Создавайте праздничную атмосферу дома с&nbsp;идеями для&nbsp;домашнего стола из&nbsp;нашего <b>театрального буфета</b>.<br />
+            Обязательно загляните в <b>потайную комнату</b>, чтобы <!--разыграть увлекательный квест,--> создать картины с&nbsp;героями сказок и&nbsp;связать
+            теплый подарок.
+          </p>
+        </div>
+      </div>
+
+      <!-- INFORMATION-->
+      <div class="popup" data-popup="information" data-popup-close>
+        <div class="popupContent">
+          <button type="button" class="popup__close" data-popup-close></button>
+
+          <!-- <p class="title title--24">Добро пожаловать!</p> -->
+          <p class="subtitle subtitle--16">
+            Добро пожаловать в&nbsp;фойе домашнего театра ВТБ! Отсюда вы&nbsp;можете попасть в&nbsp;любую комнату, даже потайную!
+          </p>
+          <p class="subtitle subtitle--16">Для начала пройдите тест, который поможет выбрать идеальную пьесу для вашей компании.</p>
+        </div>
+      </div>
+
+      <!-- SCENE START POPUP-->
+      <div class="popup" data-popup="to-scene" data-popup-close>
+        <div class="popupContent">
+          <button type="button" class="popup__close" data-popup-close></button>
+          <h2 class="title title--28">Кто сегодня в&nbsp;главной роли? В&nbsp;Новогоднем театре — каждый!</h2>
+          <p class="subtitle subtitle--16">Выберите сказку, соберите семью или&nbsp;друзей и&nbsp;создайте свой новогодний&nbsp;спектакль.</p>
+          <a href="./stage/" class="button"> <span>Далее</span> </a>
+        </div>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./assets/js/scripts.js" type="module"></script>
-    <script>
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                window.popup.open('test-start');
-            }, 3500);
-        });
-    </script>
-</body>
-
+  </body>
 </html>

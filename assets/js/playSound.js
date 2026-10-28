@@ -49,7 +49,7 @@ export const initSounds = () => {
       currentButton = btn;
       currentButton.classList.add('play');
 
-      // Ждём готовность или проигрываем сразу
+      // Ждем готовность или проигрываем сразу
       if (audio.readyState >= 3) {
         audio.play();
       } else {

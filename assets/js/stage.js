@@ -1,37 +1,47 @@
 export function generatePDF() {
-  const element = document.getElementById('print-block');
-  const oldMaxWidth = element.style.maxWidth;
-  element.style.maxWidth = '100%';
-  const opt = {
-    margin: 10,
-    filename: 'Пьеса.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 1, letterRendering: true },
-    jsPDF: {
-      unit: 'pt',
-      format: 'letter',
-      orientation: 'portrait',
-    },
-    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
-  };
+    const element = document.getElementById('print-block');
 
-  html2pdf()
-    .set(opt)
-    .from(element)
-    .save()
-    .then(() => {
-      element.style.maxWidth = oldMaxWidth;
-    })
-    .catch(() => {
-      element.style.maxWidth = oldMaxWidth;
-    });
+    element.classList.add('pdf-mode');
+
+    console.time('pdf');
+
+    const opt = {
+        margin: 0,
+        filename: 'Пьеса.pdf',
+        image: { type: 'jpeg', quality: 0.7 },
+    html2canvas: { scale: 1.5, letterRendering: false },
+        jsPDF: {
+            unit: 'pt',
+            format: 'a4',
+            orientation: 'portrait',
+        },
+        pagebreak:
+        {
+            mode: ['css'],
+            before: '.pdf-soft-break'
+        },
+    };
+
+    html2pdf()
+        .set(opt)
+        .from(element)
+        .save()
+        .then(() => {
+            console.timeEnd('pdf');
+            element.classList.remove('pdf-mode');
+        })
+        .catch((error) => {
+            console.log(error);
+            console.timeEnd('pdf');
+            element.classList.remove('pdf-mode');
+        });
 }
 
 export function printPlay() {
   const el = document.getElementById('print-block');
   if (!el) return;
 
-  const printWindow = window.open('', '_blank', 'width=800,height=600');
+  const printWindow = window.open('', '_blank');
   if (!printWindow) return;
 
   const doc = printWindow.document;
@@ -52,7 +62,7 @@ export function printPlay() {
                     <link rel="preload" as="image" href="/vtb/assets/img/logo.svg" />
                     <link rel="icon" type="image/x-icon" href="/vtb/assets/img/favicon.ico" />
                     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-                    <link rel="stylesheet" href="/vtb/assets/css/styles.min.css" />
+                    <link rel="stylesheet" href="/assets/css/styles.min.css" />
                     <style>
                         html, body {
                             height: auto !important;
@@ -63,6 +73,8 @@ export function printPlay() {
                         #print-block {
                             height: auto !important;
                             min-height: auto !important;
+                            width: 100%; !important;
+                            max-width: 100%; !important;
                             overflow: visible !important;
                             position: static !important;
                             transform: none !important;
@@ -85,13 +97,63 @@ export function printPlay() {
                                 -webkit-print-color-adjust: exact;
                                 print-color-adjust: exact;
                             }
+                            body {
+                                background: white !important;
+                            }
+
+                            .stage-single__content {
+                                display: flex;
+                                position: relative;
+                                width: 100%;
+                                flex-direction: column;
+                                justify-content: flex-start;
+                                align-items: center; /* чтобы не центрировалось */
+                                font-family: Inter, Arial;
+                                text-align: center;
+                                font-size: 14px;
+                                line-height: 1.3;
+                                gap:12px;
+                            }
+
+                            /* Универсальный отступ между элементами */
+
+                            .stage-single__content button[data-sound-src] {
+                                display: none;
+                            }
+
+                            .stage-single__content h3 {
+                                font-size: 24px;
+                                display:block;
+                                text-align:center;
+                            }
+                            .stage-single__content p {
+                                margin: 0;
+                                padding: 0;
+                                text-align:left;
+                                align-self: flex-start
+                            }
+
+                            .stage-single__content i {
+                                display:inline-flex;
+                                width:auto;
+                                flex-direction:column;
+                                margin-bottom: 10px;
+                                margin-top: 10px;
+                                font-style: italic;
+                                font-weight: 500;
+                            }
+
+                            .stage-single__content i:before,
+                            .stage-single__content i:after {
+                                content: none;
+                            }
                         }
                     </style>
                     <title>Путешествие Конька-Горбунка</title>
                 </head>
                 <body>
             `);
-  doc.close();
+    doc.close();
 
   const clone = el.cloneNode(true);
   doc.body.appendChild(clone);
@@ -100,9 +162,9 @@ export function printPlay() {
     void doc.body.offsetHeight;
 
     setTimeout(() => {
-      printWindow.focus();
-      printWindow.print();
-      printWindow.close();
+        printWindow.focus();
+        printWindow.print();
+        printWindow.close();
     }, 100);
   };
 

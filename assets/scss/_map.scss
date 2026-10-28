@@ -29,3 +29,83 @@
   margin: 0 auto;
   flex: 1;
 }
+
+.ymaps3x0--marker {
+  &:hover,
+  &:focus {
+    z-index: 2 !important;
+  }
+}
+
+.marker-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -100%);
+}
+
+.marker-text {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  background: #0024b3;
+  color: #fff;
+  display: none;
+  z-index: 10;
+}
+
+.marker-text.visible {
+  display: block;
+}
+
+.marker {
+  position: relative;
+}
+
+.marker .image {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.map-thumbnail {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border-radius: 30px;
+  overflow: hidden;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.2);
+  img {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+  }
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 75%;
+  }
+}
+
+.cluster-count {
+  color: #0024b3;
+  position: absolute;
+  font-size: 11px;
+  transform: translate(0px, 4px);
+  font-weight: 500;
+}

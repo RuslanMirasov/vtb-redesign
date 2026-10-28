@@ -5,6 +5,7 @@
   --bg: #0024b3;
   --blue: #0a2896;
   --blue-medium: #1e4bd2;
+  --blue-light: #cceeff;
   --cyan: #00aaff;
   --color: #ffffff;
   --white: #ffffff;
@@ -31,7 +32,11 @@
 @import 'section__buffet';
 @import 'section_director';
 @import 'section__orchestra';
+@import 'section__secret';
+@import 'section__offer';
 @import 'soon';
 @import 'popup';
 @import 'forms';
 @import 'map';
+@import 'theme-switcher';
+@import 'vk';

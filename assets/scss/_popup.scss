@@ -72,6 +72,9 @@
 
   .button {
     min-width: auto;
+    span {
+      pointer-events: none;
+    }
   }
 
   .button[type='submit'] {
@@ -115,6 +118,35 @@
   }
 }
 
+[data-popup='sounds'] {
+  .popupContent {
+    max-width: myclamp(700px, 700px, 1440px, 2560px);
+    padding-top: myclamp(30px, 30px, 1440px, 2560px);
+  }
+}
+
+[data-popup='intro'] .popupContent,
+[data-popup='information'] .popupContent {
+  max-width: myclamp(375px, 680px, 1440px, 2560px);
+  @media (max-width: 659px) {
+    max-width: 100%;
+  }
+}
+[data-popup='information'] .popupContent {
+  padding: myclamp(46px, 46px, 1440px, 2560px) myclamp(24px, 26px, 1440px, 2560px);
+}
+
+[data-popup='map-info'] .popupContent,
+[data-popup='offer-tip-1'] .popupContent,
+[data-popup='offer-tip-2'] .popupContent,
+[data-popup='offer-tip-3'] .popupContent,
+[data-popup='offer-tip-4'] .popupContent,
+[data-popup='offer-tip-5'] .popupContent,
+[data-popup='warning'] .popupContent,
+[data-popup='to-scene'] .popupContent,
+[data-popup='intro'] .popupContent,
+[data-popup='information'] .popupContent,
+[data-popup='closed'] .popupContent,
 [data-popup='test-start'] .popupContent,
 [data-popup='test-step-1'] .popupContent,
 [data-popup='test-step-2'] .popupContent,
@@ -131,7 +163,9 @@
   }
 }
 
-[data-popup='test-start'] .popupContent {
+[data-popup='to-scene'] .popupContent,
+[data-popup='test-start'] .popupContent,
+[data-popup='closed'] .popupContent {
   padding-bottom: myclamp(90px, 120px, 1440px, 2560px);
   .button {
     min-width: 170px;
@@ -141,6 +175,15 @@
   }
 }
 
+[data-popup='map-info'] .popupContent,
+[data-popup='offer-tip-1'] .popupContent,
+[data-popup='offer-tip-2'] .popupContent,
+[data-popup='offer-tip-3'] .popupContent,
+[data-popup='offer-tip-4'] .popupContent,
+[data-popup='offer-tip-5'] .popupContent,
+[data-popup='warning'] .popupContent,
+[data-popup='intro'] .popupContent,
+[data-popup='information'] .popupContent,
 [data-popup='test-step-1'] .popupContent,
 [data-popup='test-step-2'] .popupContent,
 [data-popup='test-step-3'] .popupContent,
@@ -182,5 +225,54 @@
     display: block;
     height: 80%;
     bottom: 20%;
+  }
+}
+
+[data-popup='tip'] .popupContent {
+  max-width: myclamp(375px, 480px, 1440px, 2560px);
+}
+
+[data-popup='to-scene'] .popupContent {
+  padding-top: myclamp(60px, 60px, 1440px, 2560px);
+}
+
+[data-popup='map-info'] .popupContent {
+  padding-top: myclamp(60px, 60px, 1440px, 2560px);
+}
+
+[data-popup='warning'] .popupContent {
+  .buttons {
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 20px;
+    .button {
+      min-width: auto;
+      flex: 1;
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  .popupContent {
+    max-width: 100%;
+  }
+}
+
+.popup-preloader {
+  display: block;
+  width: myclamp(148px, 148px, 1440px, 2560px);
+  height: myclamp(148px, 148px, 1440px, 2560px);
+  margin: auto;
+  margin-bottom: myclamp(30px, 30px, 1440px, 2560px);
+  animation: spin-invers 10s linear infinite;
+
+  img {
+    width: 100%;
+    height: 100%;
   }
 }

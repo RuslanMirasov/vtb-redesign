@@ -1,3 +1,60 @@
+// .preloader {
+//   display: flex;
+//   position: fixed;
+//   left: 0px;
+//   top: 0px;
+//   width: 100%;
+//   height: 100%;
+//   flex-direction: column;
+//   justify-content: center;
+//   background: var(--bg) url('../img/preloader/knit.webp') no-repeat center center/cover;
+//   align-items: center;
+//   align-content: center;
+//   z-index: 9999;
+//   opacity: 1;
+//   transition: opacity 1.5s ease-out 0.5s;
+
+//   &.hidden {
+//     opacity: 0;
+//     pointer-events: none;
+//   }
+// }
+
+// .preloader__image {
+//   display: block;
+//   position: absolute;
+//   width: 100%;
+//   height: auto;
+//   transition: transform 2s ease-in 0s, opacity 1.5s ease-out 0.5s;
+//   background: url('../img/preloader/intro.webp') no-repeat center center/cover;
+//   opacity: 1;
+//   transform: scale(1);
+//   transform-origin: 20% center;
+
+//   &:before {
+//     content: '';
+//     display: block;
+//     width: 100%;
+//     padding-top: 50%;
+//   }
+
+//   @media (orientation: portrait) {
+//     transform-origin: 22% center;
+//     position: relative;
+//     height: auto;
+//   }
+// }
+
+// .hidden {
+//   .preloader__image {
+//     transform: scale(15);
+//   }
+//   @media (orientation: portrait) {
+//     .preloader__image {
+//       transform: scale(45);
+//     }
+//   }
+// }
 .preloader {
   display: flex;
   position: fixed;
@@ -9,10 +66,41 @@
   justify-content: center;
   align-items: center;
   align-content: center;
-  z-index: 100;
+  z-index: 999;
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100svh;
+    background: white url('../img/preloader/bg.webp') no-repeat center center/cover;
+    opacity: 1;
+    transition: opacity 1s;
+  }
 
   &.hidden {
     pointer-events: none;
+
+    .preloader__image {
+      transform: scale(150) translate(0%, 0%);
+      opacity: 1;
+      background: url('../img/preloader/castle-door.webp') no-repeat center bottom/cover;
+    }
+    .preloader__content {
+      &:before {
+        opacity: 0;
+      }
+
+      .preloader__text {
+        opacity: 0;
+      }
+    }
+  }
+  &.remove-bg {
+    &:before {
+      opacity: 0;
+    }
   }
 }
 
@@ -26,15 +114,14 @@
   align-content: center;
 
   &:before {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     left: 0px;
     top: 0px;
     width: 100%;
     height: 100%;
-    background: url("../img/preloader/castle.webp") no-repeat center
-      bottom/cover;
+    background: url('../img/preloader/castle.webp') no-repeat center bottom/cover;
     opacity: 0.3;
     transition: 0.6s;
   }
@@ -46,11 +133,9 @@
     bottom: 0px;
     width: 100%;
     height: 0%;
-    transition: height 1s linear 0s, transform 2s ease-in 0s,
-      opacity 2s ease-out 0s;
-    background: url("../img/preloader/castle.webp") no-repeat center
-        bottom/cover,
-      url("../img/preloader/castle-door.webp") no-repeat center bottom/cover;
+    transition: height 1s linear 0s, transform 2s ease-in 0s, opacity 2s ease-out 0s;
+    background: url('../img/preloader/castle.webp') no-repeat center bottom/cover,
+      url('../img/preloader/castle-door.webp') no-repeat center bottom/cover;
     opacity: 1;
     transform: scale(1) translate(0%, 0%);
     transform-origin: center 85%;
@@ -71,24 +156,6 @@
     }
     p {
       margin-top: 28px;
-    }
-  }
-}
-
-.hidden {
-  .preloader__image {
-    transform: scale(150) translate(0%, 0%);
-    opacity: 1;
-    background: url("../img/preloader/castle-door.webp") no-repeat center
-      bottom/cover;
-  }
-  .preloader__content {
-    &:before {
-      opacity: 0;
-    }
-
-    .preloader__text {
-      opacity: 0;
     }
   }
 }

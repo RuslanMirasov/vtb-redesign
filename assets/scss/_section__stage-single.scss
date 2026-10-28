@@ -28,7 +28,8 @@
 .full-screen {
   .stage-single {
     @media (max-width: 767px) {
-      margin-top: myclamp(50px, 96px, 1440px, 2560px);
+      margin-top: 0px;
+      margin-bottom: 0px;
       max-width: 100%;
     }
   }
@@ -44,7 +45,6 @@
   flex-direction: column;
   gap: 40px;
   width: myclamp(375px, 375px, 1440px, 2560px);
-
   scrollbar-width: none; /* Firefox */
   &::-webkit-scrollbar {
     display: none; /* Chrome/Safari */
@@ -71,6 +71,7 @@
     border-radius: 30px;
     background: rgba(255, 255, 255, 0.2);
     text-align: center;
+    padding-bottom: 80px;
   }
 
   .sidebar__list {
@@ -147,7 +148,19 @@
     text-align: center;
     font-size: myclamp(14px, 14px, 1440px, 2560px);
     line-height: 1.3;
-    padding-bottom: myclamp(14px, 14px, 1440px, 2560px);
+    + span {
+      padding: 10px 0px;
+    }
+  }
+
+  .title--24 {
+    margin-bottom: -10px;
+    &.mb-10 {
+      margin-bottom: 10px;
+    }
+    &.mt-10 {
+      margin-top: 10px;
+    }
   }
 
   p {
@@ -168,19 +181,23 @@
   }
 
   i {
-    display: flex;
+    display: inline-block;
     position: relative;
     width: auto;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+    // flex-wrap: wrap;
+    // justify-content: center;
+    // align-items: center;
+    // align-content: center;
     font-size: myclamp(14px, 14px, 1440px, 2560px);
     line-height: 1.3;
     font-weight: 500;
     font-family: var(--italic);
     font-style: italic;
     padding: 20px myclamp(24px, 40px, 1440px, 2560px);
+
+    button {
+      display: inline;
+    }
 
     span {
       display: inline-flex;
@@ -200,6 +217,8 @@
       background: url('../img/header/star-blue.webp') no-repeat center center;
       background-size: 160%;
       position: absolute;
+      top: 50%;
+      margin-top: -10px;
     }
     &:before {
       left: 0px;
@@ -211,13 +230,6 @@
     &.full {
       width: 100%;
     }
-  }
-
-  button[data-sound-src] {
-    display: inline;
-    background: url('../img/sound.webp') no-repeat center center/cover;
-    width: myclamp(18px, 18px, 1440px, 2560px);
-    height: myclamp(18px, 18px, 1440px, 2560px);
   }
 
   .poem {
@@ -237,6 +249,52 @@
     p {
       width: 100%;
     }
+  }
+
+  &.pdf-mode {
+    width: 794px;
+    max-width: 794px;
+    padding: 26px;
+    font-size: 14px;
+
+    .title--h1 {
+      font-size: 40px;
+      line-height: 1;
+    }
+
+    .title--24 {
+      font-size: 24px;
+    }
+
+    .slogan {
+      font-size: 14px;
+    }
+
+    i {
+      font-size: 14px;
+      padding: 24px 30px;
+    }
+
+    button[data-sound-src] {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  button[data-sound-src] {
+    display: inline;
+    background: url('../img/sound.webp') no-repeat center center/cover;
+    width: myclamp(18px, 18px, 1440px, 2560px);
+    height: myclamp(18px, 18px, 1440px, 2560px);
+  }
+}
+
+.subtitle {
+  button[data-sound-src] {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    transform: translate(0%, 15%);
+    background: url('../img/sound_w.webp') no-repeat center center/cover;
   }
 }
 
@@ -368,7 +426,7 @@
     position: fixed;
     justify-content: center;
     align-items: center;
-    align-content: center;
+    align-content: flex-end;
     width: 100%;
     height: calc(100svh - 60px - myclamp(50px, 60px, 1440px, 1440px));
     left: 0px;
@@ -454,7 +512,7 @@
   [data-sidebar-mobil-popup] {
     display: none;
     background: var(--blue) url('../img/header/nav-bg-mobil.webp') no-repeat center center/cover;
-    border-radius: 30px;
+    border-radius: 30px 30px 0px 0px;
     padding-top: 50px;
     position: relative;
     gap: 30px;

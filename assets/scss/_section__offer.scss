@@ -1,0 +1,144 @@
+.section--offer {
+  display: block;
+  padding: myclamp(20px, 20px, 1440px, 2560px) 0px myclamp(50px, 50px, 1440px, 2560px) 0px;
+
+  .buttons {
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 20px;
+    @media (max-width: 767px) {
+      .button {
+        min-width: 270px;
+      }
+    }
+  }
+
+  .post-description__content {
+    width: 100%;
+    max-width: 100%;
+    border-radius: myclamp(16px, 16px, 1440px, 2560px);
+    padding: myclamp(16px, 32px, 1440px, 2560px);
+    margin-bottom: myclamp(16px, 24px, 1440px, 2560px);
+    transform: rotate(0deg);
+
+    .button {
+      min-width: myclamp(270px, 270px, 1440px, 1440px);
+      height: auto;
+      min-height: myclamp(40px, 40px, 1440px, 2560px);
+      span {
+        width: 100%;
+        padding: 5px 30px;
+        line-height: 1.2;
+        text-align: center;
+        @media (max-width: 767px) {
+          padding: 5px 20px;
+        }
+      }
+    }
+
+    &:before {
+      content: none;
+    }
+
+    ul {
+      width: 100%;
+      max-width: 100%;
+      padding: 0;
+      &.no-bullets {
+        li {
+          &:before {
+            content: none;
+          }
+        }
+      }
+
+      li {
+        p {
+          font-size: myclamp(16px, 18px, 1440px, 2560px);
+          [data-popup-open] {
+            cursor: pointer;
+          }
+        }
+        @media (max-width: 767px) {
+          &:nth-child(1),
+          &:nth-child(2) {
+            padding-right: 64px;
+          }
+          br {
+            display: none;
+            &.keep-in-mobil {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    .flex {
+      display: flex;
+      position: relative;
+      width: 100%;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: center;
+      align-items: stretch;
+      align-content: stretch;
+      gap: myclamp(20px, 36px, 1440px, 2560px);
+      .inner {
+        width: calc((100% - myclamp(20px, 36px, 1440px, 2560px)) / 2);
+        @media (max-width: 767px) {
+          width: 100%;
+          margin: 10px auto;
+        }
+
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+        gap: 20px;
+
+        .button {
+          margin-top: auto;
+        }
+      }
+    }
+  }
+}
+
+.old-price {
+  display: inline-block;
+  width: auto;
+  position: relative;
+  &:before {
+    content: '';
+    width: 100%;
+    height: myclamp(2px, 2px, 1440px, 2560px);
+    background: #0224b3;
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translate(0%, -50%) rotate(16deg);
+  }
+}
+
+img.offer-tab-image {
+  display: block;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: myclamp(110px, 170px, 1440px, 2560px);
+  height: myclamp(124px, 190px, 1440px, 2560px);
+  flex-shrink: 0;
+}
+
+img.offer-tab-brend {
+  width: 100%;
+  display: block;
+}

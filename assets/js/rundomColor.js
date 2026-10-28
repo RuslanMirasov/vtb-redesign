@@ -1,52 +1,3 @@
-// export const initRundomColorSelect = () => {
-//   const colorSelectButtons = document.querySelectorAll('[data-random-color]');
-
-//   if (!colorSelectButtons.length) return;
-
-//   const defaltColor = 'rgba(21, 0, 125, 0.4)';
-
-//   const colors = [
-//     'rgba(21, 0, 125, 0.3)',
-//     'rgba(156, 183, 255, 0.6)',
-//     'rgba(212, 156, 255, 0.6)',
-//     'rgba(255, 156, 247, 0.6)',
-//     'rgba(255, 158, 158, 0.6)',
-//     'rgba(255, 211, 156, 0.6)',
-//     'rgba(255, 247, 156, 0.6)',
-//     'rgba(255, 247, 156, 0.6)',
-//     'rgba(156, 255, 163, 0.6)',
-//     'rgba(107, 157, 0, 0.4)',
-//     'rgba(171, 210, 159, 0.6)',
-//     'rgba(156, 248, 255, 0.6)',
-//     'rgba(214, 214, 214, 0.6)',
-//     'rgba(134, 94, 94, 0.4)',
-//   ];
-
-//   const selectedColors = [];
-
-//   const handleSetColor = e => {
-//     const button = e.currentTarget;
-//     const isChecked = button.classList.contains('checked');
-//     const name = button.dataset.name.toLowerCase();
-
-//     if (!button || !name) return;
-
-//     const textCollection = [...document.querySelectorAll('[data-name]')];
-//     const filtered = textCollection.filter(el => el.dataset.name.toLowerCase().includes(name));
-
-//     if (!isChecked) {
-//       button.classList.add('checked');
-//       filtered.forEach(el => (el.style.backgroundColor = 'red'));
-//       return;
-//     }
-
-//     button.classList.remove('checked');
-//     filtered.forEach(el => (el.style.backgroundColor = ''));
-//   };
-
-//   colorSelectButtons.forEach(btn => btn.addEventListener('click', handleSetColor));
-// };
-
 export const initRundomColorSelect = () => {
   const colorSelectButtons = document.querySelectorAll('[data-random-color]');
   if (!colorSelectButtons.length) return;
@@ -54,32 +5,36 @@ export const initRundomColorSelect = () => {
   const defaultColor = 'rgba(21, 0, 125, 0.4)';
 
   let colors = [
-    'rgba(21, 0, 125, 0.3)', //0.3
-    'rgba(156, 183, 255, 0.4)', //0.6
-    'rgba(212, 156, 255, 0.4)', //0.6
-    'rgba(255, 156, 247, 0.4)', //0.6
-    'rgba(255, 158, 158, 0.4)', //0.6
-    'rgba(255, 211, 156, 0.4)', //0.6
-    'rgba(255, 247, 156, 0.4)', //0.6
-    'rgba(255, 247, 156, 0.4)', //0.6
-    'rgba(156, 255, 163, 0.4)', //0.6
-    'rgba(107, 157, 0, 0.4)', //0.4
-    'rgba(171, 210, 159, 0.4)', //0.6
-    'rgba(156, 248, 255, 0.4)', //0.6
-    'rgba(214, 214, 214, 0.4)', //0.6
-    'rgba(134, 94, 94, 0.4)', //0.4
+    'rgba(21, 0, 125, 0.3)',
+    'rgba(156, 183, 255, 0.4)',
+    'rgba(212, 156, 255, 0.4)',
+    'rgba(255, 156, 247, 0.4)',
+    'rgba(255, 158, 158, 0.4)',
+    'rgba(255, 211, 156, 0.4)',
+    'rgba(255, 247, 156, 0.4)',
+    'rgba(255, 247, 156, 0.4)',
+    'rgba(156, 255, 163, 0.4)',
+    'rgba(107, 157, 0, 0.4)',
+    'rgba(171, 210, 159, 0.4)',
+    'rgba(156, 248, 255, 0.4)',
+    'rgba(214, 214, 214, 0.4)',
+    'rgba(134, 94, 94, 0.4)',
   ];
 
-  let selectedColors = [];
+  // Map: имя → цвет
+  let selectedColors = new Map();
+
+  // Кэшируем все реплики заранее
+  const textNodes = [...document.querySelectorAll('[data-name]')].map(el => {
+    const names = el.dataset.name.split(',').map(n => n.trim().toLowerCase());
+    return { el, names };
+  });
 
   const getRandomColor = () => {
     if (colors.length === 0) return defaultColor;
-
     const index = Math.floor(Math.random() * colors.length);
     const color = colors[index];
-
     colors.splice(index, 1);
-
     return color;
   };
 
@@ -89,6 +44,26 @@ export const initRundomColorSelect = () => {
     }
   };
 
+  const updateAllElements = () => {
+    textNodes.forEach(({ el, names }) => {
+      // цвета всех участвующих персонажей
+      const myColors = names.map(n => selectedColors.get(n)).filter(Boolean);
+
+      if (myColors.length === 0) {
+        el.style.background = '';
+        return;
+      }
+
+      if (myColors.length === 1) {
+        el.style.background = myColors[0];
+        return;
+      }
+
+      // Градиент
+      el.style.background = `linear-gradient(to left, ${myColors.join(',')})`;
+    });
+  };
+
   const handleSetColor = e => {
     const button = e.currentTarget;
     const name = button.dataset.name?.toLowerCase();
@@ -96,37 +71,27 @@ export const initRundomColorSelect = () => {
 
     const isChecked = button.classList.contains('checked');
 
-    const textCollection = [...document.querySelectorAll('[data-name]')];
-    const filtered = textCollection.filter(el => el.dataset.name?.toLowerCase().includes(name));
-
     if (isChecked) {
+      // Снимаем выделение
       button.classList.remove('checked');
 
-      const found = selectedColors.find(obj => obj.name === name);
+      const oldColor = selectedColors.get(name);
+      if (oldColor) freeColorBack(oldColor);
 
-      if (found) {
-        freeColorBack(found.color);
-      }
+      selectedColors.delete(name);
 
-      selectedColors = selectedColors.filter(obj => obj.name !== name);
-
-      filtered.forEach(el => (el.style.backgroundColor = ''));
-
+      updateAllElements();
       return;
     }
 
+    // Ставим выделение
     button.classList.add('checked');
-    let colorObj = selectedColors.find(obj => obj.name === name);
 
-    let color;
-    if (colorObj) {
-      color = colorObj.color;
-    } else {
-      color = getRandomColor();
-      selectedColors.push({ name, color });
+    if (!selectedColors.has(name)) {
+      selectedColors.set(name, getRandomColor());
     }
 
-    filtered.forEach(el => (el.style.backgroundColor = color));
+    updateAllElements();
   };
 
   colorSelectButtons.forEach(btn => btn.addEventListener('click', handleSetColor));

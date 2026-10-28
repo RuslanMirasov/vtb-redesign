@@ -1,0 +1,537 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-примерочная</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+</head>
+<body class="bg-light py-4">
+
+    <div class="container" style="max-width: 960px;">
+
+        <div class="d-flex flex-wrap justify-content-between align-items-center bg-white border rounded p-2 mb-3 small text-muted">
+            <div>
+                <i class="bi bi-gear me-1"></i>
+                Примерок за сегодня: <strong id="attemptsCounterBadge" class="text-dark">0 / 5</strong>
+            </div>
+            <div class="d-flex gap-2 align-items-center">
+                <button type="button" class="btn btn-outline-secondary btn-sm py-0" id="btnResetLimit" title="Сбросить дневной счётчик для теста">
+                    Сбросить счётчик (тест)
+                </button>
+            </div>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h1 class="h3 mb-2">AI-примерочная</h1>
+                <p class="text-muted mb-4">
+                    Загрузите свою фотографию, выберите понравившегося сказочного персонажа и примерьте на себя его сценический костюм!
+                </p>
+
+                <div id="statusAlert" class="alert d-none" role="alert"></div>
+
+                <div class="mb-4">
+                    <label for="userPhotoInput" class="form-label fw-semibold">
+                        1. Загрузите вашу фотографию
+                    </label>
+                    <input class="form-control" type="file" id="userPhotoInput" accept="image/jpeg,image/png,image/webp">
+
+                    <div id="userPhotoPreviewWrapper" class="mt-3 d-none">
+                        <div class="d-inline-flex align-items-center gap-3 p-2 border rounded bg-light">
+                            <img id="userPhotoPreview" src="" alt="Ваше фото" class="img-thumbnail" style="width: 90px; height: 90px; object-fit: cover;">
+                            <div>
+                                <div class="small fw-semibold" id="userPhotoName">photo.jpg</div>
+                                <button type="button" class="btn btn-outline-danger btn-sm mt-1" id="btnClearPhoto">
+                                    <i class="bi bi-trash me-1"></i>Удалить фото
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <label class="form-label fw-semibold mb-0">
+                            2. Выберите костюм сказочного персонажа
+                        </label>
+                        <span class="badge bg-secondary" id="selectedCostumeBadge">Костюм не выбран</span>
+                    </div>
+
+                    <div id="costumesLoading" class="text-center py-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Загрузка костюмов...</span>
+                        </div>
+                        <div class="small text-muted mt-2">Загрузка персонажей...</div>
+                    </div>
+
+                    <div id="costumesGrid" class="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-3 d-none">
+                    </div>
+                </div>
+
+                <div class="d-grid d-sm-flex justify-content-sm-end pt-2 border-top">
+                    <button type="button" class="btn btn-primary btn-lg px-4" id="btnTryOn">
+                        <i class="bi bi-magic me-2"></i>Примерить костюм
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultModalLabel">Ваш сказочный образ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+
+                <div class="modal-body text-center">
+                    <div id="generationLoadingState" class="py-5">
+                        <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;" role="status">
+                            <span class="visually-hidden">Генерация изображения...</span>
+                        </div>
+                        <h6 class="mb-1">Примеряем костюм...</h6>
+                        <p class="text-muted small mb-0" id="generationStatusText">
+                            Генерация образа
+                        </p>
+                    </div>
+
+                    <div id="generationReadyState" class="d-none">
+                        <div class="mb-3">
+                            <img id="generatedResultImage" src="" alt="Сгенерированный образ" class="img-fluid rounded border shadow-sm" style="max-height: 420px;">
+                        </div>
+
+                        <p class="small text-muted mb-3" id="generatedResultCaption"></p>
+
+                        <div class="d-grid mb-3">
+                            <button type="button" class="btn btn-success" id="btnDownloadImage">
+                                <i class="bi bi-download me-2"></i>Скачать изображение
+                            </button>
+                        </div>
+
+                        <div class="border rounded p-3 bg-light text-start">
+                            <div class="small fw-semibold text-muted mb-2 text-center">
+                                Поделиться образом и ссылкой на страницу:
+                            </div>
+                            <div class="row row-cols-2 g-2">
+                                <div class="col">
+                                    <button type="button" class="btn btn-outline-primary btn-sm w-100" data-share="vk">
+                                        <i class="bi bi-share me-1"></i>ВКонтакте
+                                    </button>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-outline-warning text-dark btn-sm w-100" data-share="ok">
+                                        <i class="bi bi-share me-1"></i>Одноклассники
+                                    </button>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-outline-dark btn-sm w-100" data-share="max">
+                                        <i class="bi bi-share me-1"></i>MAX
+                                    </button>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-outline-info text-dark btn-sm w-100" data-share="tg">
+                                        <i class="bi bi-share me-1"></i>Телеграм
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="shareFeedback" class="form-text text-success text-center mt-2 d-none"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const API_CONFIG = {
+            USE_MOCK_API: true,
+            ENDPOINTS: {
+                GET_COSTUMES: '/api/character/list',
+                POST_TRY_ON: '/api/generation/try-on',
+                GET_STATUS: (id) => `/api/generation/${encodeURIComponent(id)}/status`,
+            },
+            POLLING_INTERVAL_MS: 2500,
+            MAX_DAILY_ATTEMPTS: 5
+        };
+
+        class CostumeApiService {
+            constructor(config) {
+                this.config = config;
+                this.hubConnection = null;
+            }
+
+            async getCostumes() {
+                const response = await fetch(this.config.ENDPOINTS.GET_COSTUMES, {
+                    method: 'GET',
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Ошибка загрузки костюмов: ${response.status}`);
+                }
+                return await response.json();
+            }
+
+            async submitTryOn(photoFile, costumeId) {
+                const formData = new FormData();
+                formData.append('photo', photoFile);
+                formData.append('characterType', costumeId);
+
+                const response = await fetch(this.config.ENDPOINTS.POST_TRY_ON, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Ошибка отправки запроса на генерацию: ${response.status}`);
+                }
+                return await response.json();
+            }
+
+            async waitForCompletionByPolling(jobId) {
+                while (true) {
+                    const response = await fetch(this.config.ENDPOINTS.GET_STATUS(jobId), {
+                        method: 'GET',
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Ошибка проверки статуса: ${response.status}`);
+                    }
+
+                    const status = await response.json();
+                    if (status === 1) {
+                        return `/api/media/swap-requests/${jobId}/result`;
+                    }
+                    if (status === 2) {
+                        throw new Error('Не удалось сгенерировать изображение.');
+                    }
+
+                    await new Promise(r => setTimeout(r, this.config.POLLING_INTERVAL_MS));
+                }
+            }
+        }
+
+        const DailyLimitTracker = {
+            STORAGE_KEY: 'fairy_costume_tryon_daily_limit',
+
+            getTodayDateString() {
+                const now = new Date();
+                return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+            },
+
+            getCount() {
+                try {
+                    const raw = localStorage.getItem(this.STORAGE_KEY);
+                    if (!raw) return 0;
+                    const parsed = JSON.parse(raw);
+                    if (parsed.date !== this.getTodayDateString()) {
+                        return 0;
+                    }
+                    return Number(parsed.count) || 0;
+                } catch {
+                    return 0;
+                }
+            },
+
+            increment() {
+                const nextCount = this.getCount() + 1;
+                try {
+                    localStorage.setItem(this.STORAGE_KEY, JSON.stringify({
+                        date: this.getTodayDateString(),
+                        count: nextCount
+                    }));
+                } catch (e) {
+                    console.warn('Не удалось сохранить счётчик в localStorage', e);
+                }
+                return nextCount;
+            },
+
+            reset() {
+                try {
+                    localStorage.removeItem(this.STORAGE_KEY);
+                } catch (e) {
+                    console.warn(e);
+                }
+            }
+        };
+
+        const apiService = new CostumeApiService(API_CONFIG);
+        let costumesList = [];
+        let selectedCostumeId = null;
+        let uploadedPhotoFile = null;
+        let uploadedPhotoDataUrl = null;
+        let currentGeneratedImageUrl = null;
+
+        const statusAlert = document.getElementById('statusAlert');
+        const attemptsCounterBadge = document.getElementById('attemptsCounterBadge');
+        const btnResetLimit = document.getElementById('btnResetLimit');
+
+        const userPhotoInput = document.getElementById('userPhotoInput');
+        const userPhotoPreviewWrapper = document.getElementById('userPhotoPreviewWrapper');
+        const userPhotoPreview = document.getElementById('userPhotoPreview');
+        const userPhotoName = document.getElementById('userPhotoName');
+        const btnClearPhoto = document.getElementById('btnClearPhoto');
+
+        const costumesLoading = document.getElementById('costumesLoading');
+        const costumesGrid = document.getElementById('costumesGrid');
+        const selectedCostumeBadge = document.getElementById('selectedCostumeBadge');
+        const btnTryOn = document.getElementById('btnTryOn');
+
+        const resultModalEl = document.getElementById('resultModal');
+        const resultModal = new bootstrap.Modal(resultModalEl);
+        const generationLoadingState = document.getElementById('generationLoadingState');
+        const generationStatusText = document.getElementById('generationStatusText');
+        const generationReadyState = document.getElementById('generationReadyState');
+        const generatedResultImage = document.getElementById('generatedResultImage');
+        const generatedResultCaption = document.getElementById('generatedResultCaption');
+        const btnDownloadImage = document.getElementById('btnDownloadImage');
+        const shareFeedback = document.getElementById('shareFeedback');
+
+        function showAlert(message, type = 'warning') {
+            statusAlert.className = `alert alert-${type}`;
+            statusAlert.textContent = message;
+            statusAlert.classList.remove('d-none');
+            statusAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function hideAlert() {
+            statusAlert.classList.add('d-none');
+        }
+
+        function updateAttemptsUI() {
+            const count = DailyLimitTracker.getCount();
+            attemptsCounterBadge.textContent = `${count} / ${API_CONFIG.MAX_DAILY_ATTEMPTS}`;
+        }
+
+        async function loadCostumesFromController() {
+            try {
+                costumesLoading.classList.remove('d-none');
+                costumesGrid.classList.add('d-none');
+
+                costumesList = await apiService.getCostumes();
+                renderCostumesPanel(costumesList);
+
+                costumesLoading.classList.add('d-none');
+                costumesGrid.classList.remove('d-none');
+            } catch (error) {
+                costumesLoading.classList.add('d-none');
+                showAlert('Не удалось загрузить список костюмов из API контроллера.', 'danger');
+            }
+        }
+
+        function renderCostumesPanel(costumes) {
+            costumesGrid.innerHTML = '';
+
+            costumes.forEach(costume => {
+                const isSelected = costume.id === selectedCostumeId;
+                const col = document.createElement('div');
+                col.className = 'col';
+
+                const card = document.createElement('div');
+                card.className = `card h-100 ${isSelected ? 'border-primary border-2 bg-primary bg-opacity-10' : ''}`;
+                card.style.cursor = 'pointer';
+                card.setAttribute('role', 'button');
+                card.setAttribute('tabindex', '0');
+
+                card.innerHTML = `
+                    <img src="${costume.imageUrl}" class="card-img-top" alt="${costume.name}" style="height: 180px; object-fit: contain;">
+                    <div class="card-body p-2 text-center d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="fw-semibold small">${costume.name}</div>
+                            <div class="text-muted" style="font-size: 0.75rem;">«${costume.play}»</div>
+                        </div>
+                        <div class="mt-2">
+                            <span class="badge ${isSelected ? 'bg-primary' : 'bg-light text-dark border'} w-100">
+                                ${isSelected ? '<i class="bi bi-check2 me-1"></i>Выбрано' : 'Выбрать'}
+                            </span>
+                        </div>
+                    </div>
+                `;
+
+                const selectHandler = () => {
+                    selectedCostumeId = costume.id;
+                    selectedCostumeBadge.textContent = `Выбран: ${costume.name}`;
+                    selectedCostumeBadge.className = 'badge bg-primary';
+                    hideAlert();
+                    renderCostumesPanel(costumesList);
+                };
+
+                card.addEventListener('click', selectHandler);
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        selectHandler();
+                    }
+                });
+
+                col.appendChild(card);
+                costumesGrid.appendChild(col);
+            });
+        }
+
+        userPhotoInput.addEventListener('change', (e) => {
+            const file = e.target.files && e.target.files[0];
+            if (!file) return;
+
+            uploadedPhotoFile = file;
+            userPhotoName.textContent = file.name;
+
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                uploadedPhotoDataUrl = ev.target.result;
+                userPhotoPreview.src = uploadedPhotoDataUrl;
+                userPhotoPreviewWrapper.classList.remove('d-none');
+                hideAlert();
+            };
+            reader.readAsDataURL(file);
+        });
+
+        btnClearPhoto.addEventListener('click', () => {
+            userPhotoInput.value = '';
+            uploadedPhotoFile = null;
+            uploadedPhotoDataUrl = null;
+            userPhotoPreviewWrapper.classList.add('d-none');
+        });
+
+        btnTryOn.addEventListener('click', async () => {
+            hideAlert();
+
+            const currentAttempts = DailyLimitTracker.getCount();
+            if (currentAttempts >= API_CONFIG.MAX_DAILY_ATTEMPTS) {
+                showAlert('На сегодня количество примерок закончилось, приходите завтра.', 'warning');
+                return;
+            }
+
+            if (!uploadedPhotoFile || !uploadedPhotoDataUrl) {
+                showAlert('Пожалуйста, загрузите вашу фотографию перед примеркой.', 'warning');
+                return;
+            }
+
+            if (!selectedCostumeId) {
+                showAlert('Пожалуйста, выберите один из 5 костюмов сказочных персонажей.', 'warning');
+                return;
+            }
+
+            generationLoadingState.classList.remove('d-none');
+            generationReadyState.classList.add('d-none');
+            shareFeedback.classList.add('d-none');
+            generationStatusText.textContent = 'Идет генерация образа...';
+            resultModal.show();
+
+            try {
+                const jobId = await apiService.submitTryOn(uploadedPhotoFile, selectedCostumeId);
+
+                finalImageUrl = await apiService.waitForCompletionByPolling(jobId);
+
+                DailyLimitTracker.increment();
+                updateAttemptsUI();
+
+                const chosenCostume = costumesList.find(c => c.id === selectedCostumeId);
+                currentGeneratedImageUrl = finalImageUrl;
+                generatedResultImage.src = finalImageUrl;
+                generatedResultCaption.textContent = `Вы примерили костюм персонажа «${chosenCostume.name}» (спектакль «${chosenCostume.play}»).`;
+
+                generationLoadingState.classList.add('d-none');
+                generationReadyState.classList.remove('d-none');
+            } catch (error) {
+                resultModal.hide();
+                showAlert(error.message || 'Произошла ошибка при генерации изображения.', 'danger');
+            }
+        });
+
+        btnDownloadImage.addEventListener('click', async () => {
+            if (!currentGeneratedImageUrl) return;
+
+            const chosenCostume = costumesList.find(c => c.id === selectedCostumeId);
+            const safeName = chosenCostume ? chosenCostume.name.toLowerCase().replace(/\s+/g, '-') : 'costume';
+
+            try {
+                const link = document.createElement('a');
+                link.href = currentGeneratedImageUrl;
+                link.download = `fairy-costume-${safeName}.png`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } catch (err) {
+                console.error('Ошибка скачивания файла:', err);
+            }
+        });
+
+        document.querySelectorAll('[data-share]').forEach(button => {
+            button.addEventListener('click', async () => {
+                const network = button.getAttribute('data-share');
+                const chosenCostume = costumesList.find(c => c.id === selectedCostumeId);
+                const pageUrl = window.location.href;
+                const shareTitle = chosenCostume
+                    ? `Я примерил(а) сказочный костюм «${chosenCostume.name}»! Попробуй и ты:`
+                    : 'Примерь костюм сказочного персонажа на себя!';
+
+                const publicImageUrl = (currentGeneratedImageUrl && !currentGeneratedImageUrl.startsWith('data:'))
+                    ? currentGeneratedImageUrl
+                    : '';
+
+                let shareUrl = '';
+
+                switch (network) {
+                    case 'vk':
+                        shareUrl = `https://vk.com/share.php?url=${encodeURIComponent(pageUrl)}&title=${encodeURIComponent(shareTitle)}${publicImageUrl ? `&image=${encodeURIComponent(publicImageUrl)}` : ''}`;
+                        window.open(shareUrl, '_blank', 'noopener,noreferrer,width=640,height=480');
+                        break;
+
+                    case 'ok':
+                        shareUrl = `https://connect.ok.ru/offer?url=${encodeURIComponent(pageUrl)}&title=${encodeURIComponent(shareTitle)}${publicImageUrl ? `&imageUrl=${encodeURIComponent(publicImageUrl)}` : ''}`;
+                        window.open(shareUrl, '_blank', 'noopener,noreferrer,width=640,height=480');
+                        break;
+
+                    case 'tg':
+                        shareUrl = `https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareTitle)}`;
+                        window.open(shareUrl, '_blank', 'noopener,noreferrer,width=640,height=480');
+                        break;
+
+                    case 'max':
+                        if (navigator.share) {
+                            try {
+                                await navigator.share({
+                                    title: 'Сказочная примерочная',
+                                    text: shareTitle,
+                                    url: pageUrl
+                                });
+                                return;
+                            } catch {
+                            }
+                        }
+                        shareUrl = `https://max.ru/share?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareTitle)}`;
+                        window.open(shareUrl, '_blank', 'noopener,noreferrer,width=640,height=480');
+                        break;
+                }
+
+                shareFeedback.textContent = 'Окно отправки открыто!';
+                shareFeedback.classList.remove('d-none');
+            });
+        });
+
+        btnResetLimit.addEventListener('click', () => {
+            DailyLimitTracker.reset();
+            updateAttemptsUI();
+            hideAlert();
+        });
+
+        updateAttemptsUI();
+        loadCostumesFromController();
+    </script>
+</body>
+</html>
