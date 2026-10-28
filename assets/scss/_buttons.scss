@@ -1,0 +1,241 @@
+.button {
+  display: inline-flex;
+  position: relative;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  user-select: none;
+  background: var(--red);
+  height: myclamp(40px, 40px, 1440px, 2560px);
+  border-radius: 100px;
+  overflow: hidden;
+  border-bottom: 3px solid var(--white);
+  box-sizing: content-box;
+  transition: 0.3s;
+
+  &.button--white {
+    border: 2px solid var(--white);
+    background: rgba(0, 0, 0, 0);
+    height: myclamp(36px, 36px, 1440px, 2560px);
+    span {
+      padding: 0px myclamp(20px, 30px, 1440px, 2560px);
+    }
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    z-index: 1;
+    position: absolute;
+    bottom: -3px;
+    background: var(--white);
+    width: 51%;
+    height: calc(100% + 3px);
+    transition: 0.5s;
+  }
+
+  &:before {
+    left: 0px;
+    transform: translate(-101%, 0%);
+  }
+
+  &:after {
+    right: 0px;
+    transform: translate(101%, 0%);
+  }
+
+  span {
+    display: block;
+    position: relative;
+    color: var(--white);
+    transition: 0.5s;
+    font-weight: 500;
+    font-size: myclamp(16px, 16px, 1440px, 2560px);
+    line-height: 1;
+    padding: 0px myclamp(30px, 60px, 1440px, 2560px);
+    z-index: 2;
+    &:before {
+      content: '';
+      width: 50px;
+      height: 200px;
+      position: absolute;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, var(--white) 50%, rgba(0, 0, 0, 0) 100%);
+      opacity: 0.7;
+      top: 50%;
+      left: -50px;
+      animation: move-across 4s linear infinite;
+    }
+  }
+  @media (hover: hover) {
+    &:hover {
+      span {
+        color: var(--blue);
+      }
+      &:before,
+      &:after {
+        transform: translate(0%, 0%);
+      }
+    }
+  }
+}
+
+@keyframes move-across {
+  0%,
+  70% {
+    transform: translate(-20px, -50%) rotate(25deg);
+  }
+  100% {
+    transform: translate(300px, -50%) rotate(25deg);
+  }
+}
+
+.play-button {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  padding-right: myclamp(42px, 42px, 1440px, 2560px);
+  padding-left: myclamp(10px, 10px, 1440px, 2560px);
+  padding-top: myclamp(10px, 10px, 1440px, 2560px);
+  padding-bottom: myclamp(10px, 10px, 1440px, 2560px);
+  height: myclamp(32px, 32px, 1440px, 2560px);
+  font-size: myclamp(18px, 18px, 1440px, 2560px);
+  font-weight: 600;
+  transition: 0.3s;
+  background: rgba(255, 255, 255, 0);
+  border-radius: myclamp(10px, 10px, 1440px, 2560px);
+  text-align: left;
+  font-size: myclamp(18px, 18px, 1440px, 2560px);
+  line-height: 1;
+  font-weight: 600;
+  &:before {
+    content: '';
+    position: absolute;
+    right: 0px;
+    width: myclamp(32px, 32px, 1440px, 2560px);
+    height: myclamp(32px, 32px, 1440px, 2560px);
+    border-radius: myclamp(10px, 10px, 1440px, 2560px);
+    overflow: hidden;
+    background: url('../img/play-button.webp') no-repeat center center/cover;
+  }
+
+  &.play {
+    &:before {
+      background: url('../img/stop-button.webp') no-repeat center center/cover;
+    }
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+.select-button {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  padding-left: myclamp(50px, 50px, 1440px, 2560px);
+  padding-right: myclamp(10px, 10px, 1440px, 2560px);
+  padding-top: myclamp(10px, 10px, 1440px, 2560px);
+  padding-bottom: myclamp(10px, 10px, 1440px, 2560px);
+  height: myclamp(32px, 32px, 1440px, 2560px);
+  font-size: myclamp(18px, 18px, 1440px, 2560px);
+  font-weight: 600;
+  transition: 0.3s;
+  background: rgba(255, 255, 255, 0);
+  border-radius: myclamp(10px, 10px, 1440px, 2560px);
+  text-align: left;
+  font-size: myclamp(18px, 18px, 1440px, 2560px);
+  font-weight: 600;
+  &:before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    width: myclamp(26px, 26px, 1440px, 2560px);
+    height: myclamp(26px, 26px, 1440px, 2560px);
+    border-radius: myclamp(8px, 8px, 1440px, 2560px);
+    overflow: hidden;
+    background: #fff;
+  }
+
+  &.checked {
+    &:before {
+      background: #fff url('../img/checkbox.webp') no-repeat center center/cover;
+    }
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+.full-screen-button {
+  width: myclamp(52px, 52px, 1440px, 2560px);
+  height: myclamp(52px, 52px, 1440px, 2560px);
+  background: #ca181f url('../img/open-full-screen.webp') no-repeat center center/cover;
+  border-radius: 20px;
+  position: fixed;
+  right: 2%;
+  bottom: 2.5%;
+  z-index: 100;
+  opacity: 1;
+  transition: opacity 0.5s;
+  pointer-events: all;
+
+  &.active {
+    background: #ca181f url('../img/close-full-screen.webp') no-repeat center center/cover;
+  }
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @media (max-width: 1023px) {
+    right: 10px;
+    bottom: 70px;
+  }
+}
+
+.go-back {
+  display: flex;
+  position: absolute;
+  z-index: 15;
+  left: myclamp(35px, 80px, 1440px, 1440px);
+  top: myclamp(90px, 120px, 1440px, 1440px);
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: myclamp(32px, 42px, 1440px, 2560px);
+  height: myclamp(32px, 42px, 1440px, 2560px);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+
+  img {
+    height: 100%;
+  }
+}
+
+.loaded {
+  .go-back {
+    opacity: 1;
+    pointer-events: all;
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}

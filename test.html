@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Sticky Layout</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        overflow: hidden; /* body не скроллится */
+        font-family: sans-serif;
+      }
+
+      main {
+        height: 100%;
+        overflow-y: auto; /* скроллится только main */
+        background: #f0f0f0;
+      }
+
+      .scroll-area {
+        width: 100%;
+        height: 200px;
+        overflow-y: auto;
+        pointer-events: all;
+      }
+
+      section {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 0px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .sidebar-wrapper {
+        width: 300px;
+        position: sticky;
+        top: 0px;
+        overflow-y: auto;
+        height: 100svh;
+        flex-shrink: 0;
+        pointer-events: none;
+        padding-bottom: 200px;
+        scrollbar-width: none; /* Firefox */
+      }
+      .sidebar-wrapper::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+      }
+
+      .sidebar {
+        position: relative;
+        width: 300px;
+        background: #ffb3b3;
+        padding: 20px;
+        border-radius: 12px;
+      }
+
+      .page-content {
+        flex: 1;
+        background: #b3d9ff;
+        padding: 20px;
+        border-radius: 12px;
+      }
+
+      .page-content p,
+      .sidebar p {
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <div class="titles">
+          <h1>Title</h1>
+          <p style="padding: 10px 0px">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quidem nemo consequatur consectetur sed aspernatur amet magnam neque
+            voluptatem. Deleniti et aperiam illum ipsam dicta quae voluptates doloremque consequuntur odio. Unde maiores omnis aliquam eaque, dolorem
+            possimus laudantium quam magnam inventore enim ab iure. Quos adipisci dignissimos, consequuntur dolores natus debitis doloremque sint
+            culpa. Magnam quia repellendus eos omnis corporis.
+          </p>
+          <p style="padding: 10px 0px">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quidem nemo consequatur consectetur sed aspernatur amet magnam neque
+            voluptatem. Deleniti et aperiam illum ipsam dicta quae voluptates doloremque consequuntur odio. Unde maiores omnis aliquam eaque, dolorem
+            possimus laudantium quam magnam inventore enim ab iure. Quos adipisci dignissimos, consequuntur dolores natus debitis doloremque sint
+            culpa. Magnam quia repellendus eos omnis corporis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quidem nemo
+            consequatur consectetur sed aspernatur amet magnam neque voluptatem. Deleniti et aperiam illum ipsam dicta quae voluptates doloremque
+            consequuntur odio. Unde maiores omnis aliquam eaque, dolorem possimus laudantium quam magnam inventore enim ab iure. Quos adipisci
+            dignissimos, consequuntur dolores natus debitis doloremque sint culpa. Magnam quia repellendus eos omnis corporis.
+          </p>
+        </div>
+
+        <aside class="sidebar-wrapper">
+          <div class="sidebar">
+            <h2>Sidebar</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</p>
+            <p>Suspendisse potenti. Cras sodales volutpat enim.</p>
+            <div class="scroll-area">
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit doloremque quo modi sapiente. Beatae explicabo cumque mollitia
+                natus ullam voluptatibus. Sunt perspiciatis quam alias, esse harum provident? Aut, eius. Lorem ipsum dolor sit, amet consectetur
+                adipisicing elit. Eum fugit doloremque quo modi sapiente. Beatae explicabo cumque mollitia natus ullam voluptatibus. Sunt perspiciatis
+                quam alias, esse harum provident? Aut, eius. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit doloremque quo modi
+                sapiente. Beatae explicabo cumque mollitia natus ullam voluptatibus. Sunt perspiciatis quam alias, esse harum provident? Aut, eius.
+              </p>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit doloremque quo modi sapiente. Beatae explicabo cumque mollitia
+                natus ullam voluptatibus. Sunt perspiciatis quam alias, esse harum provident? Aut, eius. Lorem ipsum dolor sit, amet consectetur
+                adipisicing elit. Eum fugit doloremque quo modi sapiente. Beatae explicabo cumque mollitia natus ullam voluptatibus. Sunt perspiciatis
+                quam alias, esse harum provident? Aut, eius. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit doloremque quo modi
+                sapiente. Beatae explicabo cumque mollitia natus ullam voluptatibus. Sunt perspiciatis quam alias, esse harum provident? Aut, eius.
+              </p>
+            </div>
+            <p>Integer blandit lorem et tortor ullamcorper, at gravida arcu porta.</p>
+            <p>Donec consequat, sapien eget pretium iaculis.</p>
+            <p>Aliquam erat volutpat. Suspendisse bibendum risus non velit porttitor.</p>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit doloremque quo modi sapiente. Beatae explicabo cumque mollitia natus
+              ullam voluptatibus. Sunt perspiciatis quam alias, esse harum provident? Aut, eius. Lorem ipsum dolor sit, amet consectetur adipisicing
+              elit. Eum fugit doloremque quo modi sapiente. Beatae explicabo cumque mollitia natus ullam voluptatibus. Sunt perspiciatis quam alias,
+              esse harum provident? Aut, eius. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit doloremque quo modi sapiente.
+              Beatae explicabo cumque mollitia natus ullam voluptatibus. Sunt perspiciatis quam alias, esse harum provident? Aut, eius.
+            </p>
+          </div>
+        </aside>
+
+        <div class="page-content">
+          <h2>Content</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi odio, natus corrupti explicabo modi. Facere dolorum repellat
+            repellendus.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus
+            assumenda officiis voluptate. Labore voluptatum assumenda nesciunt, perferendis eos autem aperiam? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Ex placeat, dicta, possimus similique neque blanditiis saepe eaque et repellendus assumenda officiis voluptate. Labore
+            voluptatum assumenda nesciunt, perferendis eos autem aperiam?
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const main = document.querySelector('main');
+      const sidebarWrapper = document.querySelector('.sidebar-wrapper');
+
+      let lastMainScroll = 0;
+
+      main.addEventListener('scroll', () => {
+        const current = main.scrollTop;
+        const delta = current - lastMainScroll;
+
+        const isStuck = sidebarWrapper.getBoundingClientRect().top === 0;
+
+        if (isStuck) {
+          sidebarWrapper.scrollTop += delta;
+        }
+
+        lastMainScroll = current;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="theme-color" content="#0A2896" />
+    <meta name="description" content="President" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" as="image" href="./../assets/img/header/bg.webp" />
+    <link rel="preload" as="image" href="./../assets/img/header/column-left.webp" />
+    <link rel="preload" as="image" href="./../assets/img/header/column-right.webp" />
+    <link rel="preload" as="image" href="./../assets/img/logo.svg" />
+    <link rel="icon" type="image/x-icon" href="./../assets/img/favicon.ico" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./../assets/css/styles.min.css" />
+    <title>ВТБ | Оркестровая яма</title>
+
+    <!-- Yandex.Metrika counter -->
+
+    <script type="text/javascript">
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+
+        m[i].l = 1 * new Date();
+
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) {
+            return;
+          }
+        }
+
+        (k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]), (k.async = 1), (k.src = r), a.parentNode.insertBefore(k, a);
+      })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=105298510', 'ym');
+
+      ym(105298510, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: 'dataLayer', accurateTrackBounce: true, trackLinks: true });
+    </script>
+
+    <noscript
+      ><div><img src="https://mc.yandex.ru/watch/105298510" style="position: absolute; left: -9999px" alt="" /></div
+    ></noscript>
+
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body class="body">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QZDRVKGLC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-1QZDRVKGLC');
+    </script>
+
+    <!--HEADER-->
+    <header class="header">
+      <a href="./../" class="logo">
+        <img src="./../assets/img/logo.svg" alt="ВТБ" />
+      </a>
+
+      <button class="burger">
+        <span>Меню бургер</span>
+      </button>
+    </header>
+
+    <!--NAVIGATION-->
+    <nav class="navigation">
+      <ul class="menu">
+        <li>
+          <a href="./../stage" class="menu__link">
+            <img src="./../assets/img/header/nav1.webp" alt="ВТБ" />
+            <b>Сцена</b>
+            <p>Ставьте пьесы для домашнего театра</p>
+          </a>
+        </li>
+        <li>
+          <a href="./../wardrobe" class="menu__link">
+            <img src="./../assets/img/header/nav2.webp" alt="ВТБ" />
+            <b>Костюмерная</b>
+            <p>Подберите яркие наряды&nbsp;героев</p>
+          </a>
+        </li>
+        <li>
+          <a href="./../makeup-room" class="menu__link">
+            <img src="./../assets/img/header/nav3.webp" alt="ВТБ" />
+            <b>Гримёрная</b>
+            <p>Используйте наши идеи сказочных образов</p>
+          </a>
+        </li>
+        <li>
+          <a href="./../orchestra-pit" class="menu__link">
+            <img src="./../assets/img/header/nav4.webp" alt="ВТБ" />
+            <b>Оркестровая яма</b>
+            <p>Послушайте аудиоверсии&nbsp;сказок</p>
+          </a>
+        </li>
+        <li>
+          <a href="./../buffet" class="menu__link">
+            <img src="./../assets/img/header/nav5.webp" alt="ВТБ" />
+            <b>Буфет</b>
+            <p>Создайте праздничное настроение</p>
+          </a>
+        </li>
+        <li>
+          <a href="./../directors-room" class="menu__link">
+            <img src="./../assets/img/header/nav6.webp" alt="ВТБ" />
+            <b>Кабинет режиссёра</b>
+            <p>Откройте пространство для&nbsp;творчества</p>
+          </a>
+        </li>
+      </ul>
+      <!-- <a href="./../holiday-map" data-closed class="menu__link map-link">Карта ёлок</a> -->
+    </nav>
+
+    <div class="fixed-background"></div>
+
+    <main class="main" data-tabs>
+      <section class="section section--orchestra">
+        <div class="titles">
+          <h1 class="title title--h1">Оркестровая яма</h1>
+          <hr />
+          <p class="subtitle subtitle--16">В нашей оркестровой яме всегда играет музыка.</p>
+          <p class="subtitle subtitle--16">Окунитесь в атмосферу аудиоспектакля или&nbsp;тренируйтесь петь под минусовки.</p>
+        </div>
+
+        <div class="sounds">
+          <div class="wardrobe-navigation">
+            <div class="scroll-area">
+              <ul>
+                <li data-tab-link="1" class="tab-button active">По щучьему велению</li>
+                <li data-tab-link="2" class="tab-button">Путешествие Конька-Горбунка</li>
+                <li data-tab-link="3" class="tab-button">Зайкина избушка</li>
+              </ul>
+            </div>
+          </div>
+
+          <!--По щучьему велению-->
+          <div data-tab="1" class="sond-list active">
+            <ul class="sidebar__buttons">
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/po-shuchyemu/01_Vo_pole_bereza_stoyala.mp3">
+                  Мелодия «Во поле береза стояла»
+                </button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/po-shuchyemu/03_opendoor.mp3">Дверь открывается</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/po-shuchyemu/03_opendoor.mp3">Дверь закрывается</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/po-shuchyemu/04_Yemelyas_Song.mp3">
+                  Мелодия «Ой, то не вечер…»
+                </button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/po-shuchyemu/05_splash_water.mp3">Всплеск воды</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/po-shuchyemu/06_wind-cold.mp3">Ветер</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/po-shuchyemu/07_kalinka.mp3">
+                  Мелодия «Калинка-Малинка»
+                </button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/po-shuchyemu/08_accident.mp3">Авария</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/po-shuchyemu/09_sea.mp3">Океан</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/po-shuchyemu/10_splash_water.mp3">Всплеск воды</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/po-shuchyemu/11_buckets.mp3">Вёдра</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/po-shuchyemu/12_bild.mp3">Стройка</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/po-shuchyemu/13_smagic.mp3">Царь</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/po-shuchyemu/14_splash_water.mp3">Всплеск воды</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/po-shuchyemu/15_valenki.mp3">Мелодия «Валенки»</button>
+              </li>
+            </ul>
+          </div>
+
+          <!--Путешествие Конька-Горбунка-->
+          <div data-tab="2" class="sond-list">
+            <ul class="sidebar__buttons">
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/konek-gorbunok/01_intro.mp3">Вступление</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/konek-gorbunok/02_streetnoise.mp3">Базар</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/konek-gorbunok/03_fanf.mp3">Фанфары</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/konek-gorbunok/04_crikets.mp3">Ночной лес</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/konek-gorbunok/05_music.mp3">Танец жар-птиц</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/konek-gorbunok/06_sea.mp3">Океан</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/konek-gorbunok/07_fish.mp3">Рыба-кит</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/konek-gorbunok/08_musicend.mp3">Заключение</button>
+              </li>
+            </ul>
+          </div>
+
+          <!--Зайкина избушка-->
+          <div data-tab="3" class="sond-list">
+            <ul class="sidebar__buttons">
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/zaikina-izbushka/01_intro_fx.mp3">Вступление</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/zaikina-izbushka/02_punchl.mp3">Кулак</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/zaikina-izbushka/03_car-door-cls.mp3">Дверь</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/zaikina-izbushka/04_dog-bark.mp3">Лай собаки</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/zaikina-izbushka/05_fly.mp3">Полёт птицы</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/zaikina-izbushka/06_doorchime.mp3">Дверной звонок</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/zaikina-izbushka/07_elevator.mp3">Лифт</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/zaikina-izbushka/08_bat.mp3">Бита</button>
+              </li>
+              <li>
+                <button type="button" class="play-button" data-sound-src="../assets/sounds/zaikina-izbushka/09_dog-bark.mp3">Лай собаки</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--COLUMNS-->
+    <div class="column column--left">
+      <img src="./../assets/img/header/column-left.webp" alt="ВТБ" />
+    </div>
+    <div class="column column--right">
+      <img src="./../assets/img/header/column-right.webp" alt="ВТБ" />
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./../assets/js/scripts.js" type="module"></script>
+  </body>
+</html>

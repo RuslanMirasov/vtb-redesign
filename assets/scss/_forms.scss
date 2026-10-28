@@ -1,0 +1,73 @@
+.form {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: myclamp(20px, 20px, 1440px, 2560px);
+}
+
+.radio {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 20px;
+  cursor: pointer;
+  span {
+    display: flex;
+    position: relative;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    font-size: myclamp(16px, 16px, 1440px, 2560px);
+    line-height: 1.4;
+    font-weight: 500;
+  }
+  input {
+    display: none;
+    + span {
+      gap: 20px;
+      &:before {
+        content: '';
+        position: relative;
+        width: myclamp(24px, 24px, 1440px, 2560px);
+        height: myclamp(24px, 24px, 1440px, 2560px);
+        border-radius: 100px;
+        background: var(--white);
+        transition: background 0.3s;
+        flex-shrink: 0;
+        border: myclamp(5px, 5px, 1440px, 2560px) solid var(--white);
+        top: myclamp(-1px, -1px, 1440px, 2560px);
+      }
+    }
+    &:checked {
+      + span {
+        &:before {
+          background: var(--blue);
+        }
+      }
+    }
+  }
+}
+
+.form-buttons {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  gap: 20px;
+
+  .button:last-child {
+    margin-left: auto;
+  }
+}

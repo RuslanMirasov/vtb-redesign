@@ -1,0 +1,117 @@
+.section--makeup {
+  position: relative;
+  z-index: 10;
+  .titles {
+    margin-top: myclamp(16px, 32px, 1440px, 2560px);
+    .subtitle {
+      max-width: myclamp(280px, 438px, 1440px, 2560px);
+    }
+  }
+}
+
+section[data-tab] {
+  position: relative;
+  z-index: 1;
+}
+
+.makeup-slider {
+  position: relative;
+  max-width: myclamp(600px, 700px, 1440px, 2560px);
+  margin-top: -40px;
+  margin-bottom: myclamp(30px, 50px, 1440px, 2560px);
+  overflow: visible;
+
+  @media (min-width: 768px) {
+    margin-top: -60px;
+  }
+
+  @media (min-width: 1600px) {
+    margin-top: -90px;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background: url('../img/makup//mirror.webp') no-repeat center top;
+    background-size: 100% auto;
+    width: 100%;
+    max-width: myclamp(375px, 516px, 1440px, 2560px);
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .swiper-arrow {
+    z-index: 19;
+    top: 40%;
+  }
+
+  .swiper-slide {
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: myclamp(20px, 24px, 1440px, 2560px);
+    opacity: 0;
+    transition: opacity 0.3s;
+    &.swiper-slide-active {
+      opacity: 1;
+      .makeup-slider-image__wrapper {
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out 0.5s;
+      }
+    }
+  }
+}
+
+.makeup-slider-image {
+  position: relative;
+  width: 100%;
+  max-width: myclamp(375px, 516px, 1440px, 2560px);
+  height: myclamp(338px, 465px, 1440px, 2560px);
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 90.1162%;
+  }
+}
+
+.makeup-slider-image__wrapper {
+  position: absolute;
+  width: 30.0387%;
+  height: 50.9677%;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: 50%;
+  opacity: 0;
+  transition: 0.3s;
+  top: 15.0537%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  img {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+  }
+  p {
+    position: absolute;
+    display: inline-flex;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    font-size: myclamp(32px, 40px, 1440px, 2560px);
+  }
+}
+
+.makeup-thumbnail {
+  width: myclamp(250px, 270px, 1440px, 2560px);
+  border-radius: myclamp(20px, 20px, 1440px, 2560px);
+}

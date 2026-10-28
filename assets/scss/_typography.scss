@@ -1,0 +1,80 @@
+.titles {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 20px;
+  &.ta--l {
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+  }
+  @media (max-width: 599px) {
+    gap: 12px;
+  }
+
+  &.titles--adwice {
+    max-width: myclamp(320px, 320px, 1440px, 2560px) !important;
+  }
+}
+
+.title {
+  display: block;
+  text-align: center;
+  line-height: 1.2;
+
+  &.title--h1 {
+    font-size: myclamp(28px, 40px, 1440px, 2560px);
+  }
+
+  &.title--h2 {
+    font-size: myclamp(32px, 38px, 1440px, 2560px);
+  }
+
+  &.title--h3 {
+    font-size: myclamp(20px, 28px, 1440px, 2560px);
+  }
+
+  &.title--h4 {
+    font-size: myclamp(24px, 32px, 1440px, 2560px);
+  }
+
+  &.title--28 {
+    font-size: myclamp(28px, 28px, 1440px, 2560px);
+  }
+  &.title--26 {
+    font-size: myclamp(26px, 26px, 1440px, 2560px);
+  }
+  &.title--24 {
+    font-size: myclamp(24px, 24px, 1440px, 2560px);
+  }
+}
+
+.subtitle {
+  font-size: myclamp(16px, 18px, 1440px, 2560px);
+  line-height: 1.4;
+  text-align: center;
+  &.subtitle--16 {
+    font-size: myclamp(16px, 16px, 1440px, 2560px);
+  }
+  &.subtitle--24 {
+    font-size: myclamp(18px, 24px, 1440px, 2560px);
+  }
+  &.subtitle--14 {
+    font-size: myclamp(14px, 14px, 1440px, 2560px);
+  }
+}
+
+.ta--l {
+  .subtitle,
+  .title {
+    text-align: left;
+  }
+}
+
+.w-500 {
+  font-weight: 500;
+}

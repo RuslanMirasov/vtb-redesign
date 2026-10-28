@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="theme-color" content="#0A2896" />
+    <meta name="description" content="Лёгкая театральная закуска" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" as="image" href="./../../assets/img/header/bg.webp" />
+    <link rel="preload" as="image" href="./../../assets/img/header/column-left.webp" />
+    <link rel="preload" as="image" href="./../../assets/img/header/column-right.webp" />
+    <link rel="preload" as="image" href="./../../assets/img/logo.svg" />
+    <link rel="icon" type="image/x-icon" href="./../../assets/img/favicon.ico" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./../../assets/css/styles.min.css" />
+    <title>Лёгкая театральная закуска</title>
+  </head>
+  <body class="body">
+    <!--HEADER-->
+    <header class="header">
+      <a href="./../../" class="logo">
+        <img src="./../../assets/img/logo.svg" alt="ВТБ" />
+      </a>
+
+      <button class="burger">
+        <span>Меню бургер</span>
+      </button>
+    </header>
+
+    <!--NAVIGATION-->
+    <nav class="navigation">
+      <ul class="menu">
+        <li>
+          <a href="./../../stage" class="menu__link">
+            <img src="./../../assets/img/header/nav1.webp" alt="ВТБ" />
+            <b>Сцена</b>
+            <p>Ставьте пьесы для домашнего театра</p>
+          </a>
+        </li>
+        <li>
+          <a href="./../../wardrobe" class="menu__link">
+            <img src="./../../assets/img/header/nav2.webp" alt="ВТБ" />
+            <b>Костюмерная</b>
+            <p>Подберите яркие наряды&nbsp;героев</p>
+          </a>
+        </li>
+        <li>
+          <a href="./../../makeup-room" class="menu__link">
+            <img src="./../../assets/img/header/nav3.webp" alt="ВТБ" />
+            <b>Гримёрная</b>
+            <p>Используйте наши идеи сказочных образов</p>
+          </a>
+        </li>
+        <li>
+          <a href="./../../orchestra-pit" class="menu__link">
+            <img src="./../../assets/img/header/nav4.webp" alt="ВТБ" />
+            <b>Оркестровая яма</b>
+            <p>Послушайте аудиоверсии&nbsp;сказок</p>
+          </a>
+        </li>
+        <li>
+          <a href="./../../buffet" class="menu__link">
+            <img src="./../../assets/img/header/nav5.webp" alt="ВТБ" />
+            <b>Буфет</b>
+            <p>Создайте праздничное настроение</p>
+          </a>
+        </li>
+        <li>
+          <a href="./../../directors-room" class="menu__link">
+            <img src="./../../assets/img/header/nav6.webp" alt="ВТБ" />
+            <b>Кабинет режиссёра</b>
+            <p>Откройте пространство для&nbsp;творчества</p>
+          </a>
+        </li>
+      </ul>
+      <!-- <a href="./../../holiday-map" data-closed class="menu__link map-link">Карта ёлок</a> -->
+    </nav>
+
+    <div class="fixed-background"></div>
+
+    <main class="main">
+      <section class="section section--food">
+        <!--go back-->
+        <a href="./../../buffet" class="go-back">
+          <img src="./../../assets/img/svg/go-back.svg" alt="ВТБ" />
+        </a>
+
+        <div class="titles">
+          <hr class="star show-in-mobil" />
+          <a href="./../../buffet" class="breadcrumb-link">Буфет</a>
+          <hr />
+          <h1 class="title title--h1">Лёгкая театральная закуска</h1>
+          <p class="subtitle subtitle--16">Готовим закуски, которые можно есть&nbsp;во&nbsp;время репетиций, антракте и&nbsp;после спектакля</p>
+        </div>
+
+        <div class="container">
+          <div class="test-image"><img src="./../../assets/img/stage/3_head.gif" alt="ВТБ" class="circle__image" /></div>
+          <h2 class="title title--h4">Сказка<br />«По щучьему велению»</h2>
+
+          <div
+            class="food-slider"
+            data-slider
+            data-speed="500"
+            data-loop="true"
+            data-slides-per-view="4,3,1"
+            data-slides-per-group="1,1,1"
+            data-space-between="40,20,40"
+          >
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                <a href="./1" class="swiper-slide">
+                  <div class="food-slider__image">
+                    <img src="./../../assets/img/buffet/slide-1.webp" alt="ВТБ" />
+                  </div>
+                  <p class="food-slider__text">Свекольные слайсы с&nbsp;сыром фета «Восточный Камень»</p>
+                </a>
+                <a href="./1" class="swiper-slide">
+                  <div class="food-slider__image">
+                    <img src="./../../assets/img/buffet/slide-2.webp" alt="ВТБ" />
+                  </div>
+                  <p class="food-slider__text">Елочки</p>
+                </a>
+                <a href="./1" class="swiper-slide">
+                  <div class="food-slider__image">
+                    <img src="./../../assets/img/buffet/slide-3.webp" alt="ВТБ" />
+                  </div>
+                  <p class="food-slider__text">Брускетики свекольно-селёдочные</p>
+                </a>
+                <a href="./1" class="swiper-slide">
+                  <div class="food-slider__image">
+                    <img src="./../../assets/img/buffet/slide-4.webp" alt="ВТБ" />
+                  </div>
+                  <p class="food-slider__text">Профитрольки</p>
+                </a>
+                <a href="./1" class="swiper-slide">
+                  <div class="food-slider__image">
+                    <img src="./../../assets/img/placeholder.webp" alt="ВТБ" />
+                  </div>
+                  <p class="food-slider__text">Lorem, ipsum dolor sit amet consectetur.</p>
+                </a>
+              </div>
+              <button type="button" class="swiper-arrow" data-arrow-prev></button>
+              <button type="button" class="swiper-arrow" data-arrow-next></button>
+            </div>
+          </div>
+
+          <br />
+
+          <hr />
+
+          <br />
+
+          <a href="./../../secret-room" data-closed class="nex-page-link">
+            <img src="./../../assets/img/header/nav7.webp" alt="ВТБ" />
+            <h3>Потайная комната</h3>
+            <p>Устройте веселый квест</p>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!--COLUMNS-->
+    <div class="column column--left">
+      <img src="./../../assets/img/header/column-left.webp" alt="ВТБ" />
+    </div>
+    <div class="column column--right">
+      <img src="./../../assets/img/header/column-right.webp" alt="ВТБ" />
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./../../assets/js/scripts.js" type="module"></script>
+  </body>
+</html>

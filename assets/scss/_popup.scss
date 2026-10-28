@@ -1,0 +1,186 @@
+.backdrop {
+  display: block;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100svh;
+  background: rgba(1, 10, 43, 0.7);
+  z-index: 9999;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  transition: opacity 0.5s;
+
+  pointer-events: none;
+  opacity: 0;
+
+  &.active {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
+
+.popup {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  min-height: 100svh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 20px 0px;
+  transition: opacity 0.5s, transform 0.5s;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(0px, 60px);
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+    position: relative;
+    transform: translate(0px, 0px);
+  }
+  @media (max-width: 599px) {
+    padding: 0px;
+    justify-content: flex-end;
+    align-items: flex-end;
+    align-content: flex-end;
+  }
+}
+
+.popupContent {
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: myclamp(375px, 375px, 1440px, 2560px);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 24px;
+  background: var(--blue) url('../img/header/nav-bg-mobil.webp') no-repeat center center / cover;
+  border-radius: 30px;
+  padding: myclamp(36px, 36px, 1440px, 2560px) myclamp(24px, 26px, 1440px, 2560px);
+  overflow: hidden;
+  z-index: 1;
+  @media (max-width: 599px) {
+    border-radius: 30px 30px 0px 0px;
+  }
+
+  .button {
+    min-width: auto;
+  }
+
+  .button[type='submit'] {
+    margin-top: 10px;
+    min-width: 170px;
+  }
+}
+
+.popup__close {
+  display: block;
+  position: absolute;
+  width: myclamp(24px, 24px, 1440px, 2560px);
+  height: myclamp(24px, 24px, 1440px, 2560px);
+  right: myclamp(20px, 20px, 1440px, 2560px);
+  top: myclamp(20px, 20px, 1440px, 2560px);
+  background: url(../img/closw-popup.webp) no-repeat center center / cover;
+  transition: transform 0.3s;
+  transform: rotate(0deg);
+  @media (hover: hover) {
+    &:hover {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.test-question {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: myclamp(10px, 10px, 1440px, 2560px);
+  strong {
+    font-size: myclamp(50px, 50px, 1440px, 2560px);
+    color: var(--red);
+    font-weight: 600;
+  }
+  span {
+    font-family: var(--font);
+    font-size: myclamp(20px, 20px, 1440px, 2560px);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+}
+
+[data-popup='test-start'] .popupContent,
+[data-popup='test-step-1'] .popupContent,
+[data-popup='test-step-2'] .popupContent,
+[data-popup='test-step-3'] .popupContent,
+[data-popup='test-result'] .popupContent {
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    background: url('../img/popup/bottom_ornate.webp') no-repeat center top/cover;
+  }
+}
+
+[data-popup='test-start'] .popupContent {
+  padding-bottom: myclamp(90px, 120px, 1440px, 2560px);
+  .button {
+    min-width: 170px;
+  }
+  &:before {
+    height: myclamp(60px, 85px, 1440px, 2560px);
+  }
+}
+
+[data-popup='test-step-1'] .popupContent,
+[data-popup='test-step-2'] .popupContent,
+[data-popup='test-step-3'] .popupContent,
+[data-popup='test-result'] .popupContent {
+  padding-bottom: myclamp(80px, 80px, 1440px, 2560px);
+  &:before {
+    height: myclamp(56px, 56px, 1440px, 2560px);
+  }
+}
+
+[data-popup='test-result'] .popupContent {
+  .subtitle {
+    font-weight: 400;
+    padding: 0px myclamp(10px, 10px, 1440px, 2560px);
+  }
+  .button {
+    margin-bottom: myclamp(10px, 10px, 1440px, 2560px);
+  }
+}
+
+.test-image {
+  display: flex;
+  position: relative;
+  transform: translate(0%, 5%);
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background: url(../img/circle-head.webp) no-repeat center center / contain;
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 50%;
+  }
+
+  img {
+    position: absolute;
+    display: block;
+    height: 80%;
+    bottom: 20%;
+  }
+}

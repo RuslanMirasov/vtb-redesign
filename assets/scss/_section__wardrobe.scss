@@ -1,0 +1,467 @@
+.section--wedrope {
+  .swiper-arrow {
+    z-index: 19;
+  }
+}
+
+.main[data-tabs] {
+  .titles {
+    .star {
+      position: relative;
+      transform: translate(0%, 40%);
+    }
+    margin-top: myclamp(16px, 32px, 1440px, 1440px);
+    .subtitle {
+      max-width: myclamp(270px, 610px, 1440px, 2560px);
+    }
+  }
+
+  .section:not([data-tab]) {
+    z-index: 2;
+  }
+
+  [data-tab] {
+    margin-top: auto;
+  }
+}
+
+.wardrobe-navigation {
+  display: block;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin-top: myclamp(34px, 50px, 1440px, 2560px);
+
+  .scroll-area {
+    display: block;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: -20px;
+  }
+
+  ul {
+    display: flex;
+    position: relative;
+    width: max-content;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: myclamp(6px, 6px, 1440px, 2560px);
+    margin: 0 auto;
+
+    li {
+      padding: myclamp(7px, 7px, 1440px, 2560px) myclamp(20px, 20px, 1440px, 2560px);
+      background: var(--blue-medium);
+      color: var(--white);
+      border-radius: 100px;
+      cursor: pointer;
+      transition: 0.3s;
+      white-space: nowrap;
+      font-weight: 500;
+      font-size: myclamp(14px, 14px, 1440px, 2560px);
+      &.active {
+        background: var(--white);
+        color: var(--blue-medium);
+      }
+    }
+  }
+}
+
+.wardrobe-slider {
+  position: relative;
+  text-align: center;
+  margin-top: auto;
+  margin-top: myclamp(80px, 80px, 1440px, 2560px);
+  z-index: 2;
+  transition: 1s;
+  opacity: 0;
+
+  .swiper-slide {
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 14px;
+    transition: opacity 1s;
+    opacity: 0;
+
+    &.swiper-slide-active {
+      opacity: 1;
+    }
+
+    .thumbnail {
+      max-height: myclamp(325px, 400px, 1440px, 2560px);
+    }
+    .title {
+      color: var(--blue);
+    }
+    .button {
+      margin-top: myclamp(6px, 10px, 1440px, 2560px);
+    }
+  }
+}
+
+.loaded {
+  .wardrobe-slider {
+    opacity: 1;
+  }
+}
+
+.breadcrumb-link {
+  font-size: myclamp(14px, 14px, 1440px, 2560px);
+}
+
+.post {
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: myclamp(200px, 1180px, 1440px, 2560px);
+  padding-top: myclamp(10px, 20px, 1440px, 2560px);
+  padding-bottom: myclamp(50px, 100px, 1440px, 2560px);
+  flex-direction: column;
+  align-items: center;
+  gap: myclamp(50px, 70px, 1440px, 2560px);
+  margin: 0 auto;
+
+  &.post--dark {
+    color: var(--blue);
+  }
+
+  .titles {
+    margin: 0 auto;
+    max-width: myclamp(610px, 610px, 1440px, 2560px);
+    hr {
+      &.big {
+        margin-bottom: 20px;
+        &.invers {
+          margin-bottom: 0px;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
+
+.post-header {
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: myclamp(280px, 862px, 1440px, 2560px);
+  min-height: myclamp(280px, 360px, 1440px, 2560px);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  margin: 0 auto;
+  padding-left: myclamp(280px, 431px, 1440px, 2560px);
+  gap: myclamp(32px, 32px, 1440px, 2560px);
+
+  .title {
+    text-align: left;
+  }
+
+  .post-header__image {
+    position: absolute;
+    transform: rotate(-7.8deg);
+    left: 2%;
+    top: 0px;
+    border-radius: 30px;
+    width: myclamp(280px, 360px, 1440px, 2560px);
+    height: myclamp(280px, 360px, 1440px, 2560px);
+    @media (max-width: 1279px) {
+      left: 0%;
+    }
+  }
+
+  ul {
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+    gap: myclamp(20px, 32px, 1440px, 2560px);
+    padding-left: myclamp(24px, 24px, 1440px, 2560px);
+
+    li {
+      list-style: disc;
+      font-size: myclamp(18px, 18px, 1440px, 2560px);
+      line-height: 1.2;
+    }
+  }
+  @media (max-width: 1023px) {
+    padding-left: 0px;
+    gap: 20px;
+    .title {
+      text-align: center;
+      font-weight: 400;
+    }
+    .post-header__image {
+      position: relative;
+      transform: rotate(0deg);
+      margin: 0 auto;
+    }
+  }
+}
+
+.post-description {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: myclamp(24px, 24px, 1440px, 2560px);
+
+  .post-description__icon {
+    height: myclamp(72px, 160px, 1440px, 2560px);
+  }
+}
+
+.post-description__content {
+  display: flex;
+  position: relative;
+  width: myclamp(300px, 640px, 1440px, 2560px);
+  padding: myclamp(40px, 40px, 1440px, 2560px) myclamp(20px, 20px, 1440px, 2560px);
+  border-radius: myclamp(30px, 30px, 1440px, 2560px);
+  margin-top: myclamp(10px, 20px, 1440px, 2560px);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: myclamp(20px, 20px, 1440px, 2560px);
+  background: url('../img/wardrobe/bg.webp') no-repeat center center/cover;
+  color: var(--blue);
+
+  @media (max-width: 767px) {
+    transform: rotate(2deg);
+    .title {
+      font-size: 28px;
+    }
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: myclamp(10px, 20px, 1440px, 2560px);
+    top: -24px;
+    width: myclamp(57px, 57px, 1440px, 2560px);
+    height: myclamp(59px, 59px, 1440px, 2560px);
+    background: url('../img/push-pin.webp') no-repeat center center/cover;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    max-width: myclamp(460px, 460px, 1440px, 2560px);
+    border-radius: myclamp(20px, 20px, 1440px, 2560px);
+  }
+
+  ul {
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+    gap: myclamp(20px, 20px, 1440px, 2560px);
+    max-width: myclamp(460px, 460px, 1440px, 2560px);
+
+    li {
+      display: flex;
+      position: relative;
+      width: 100%;
+      gap: myclamp(10px, 20px, 1440px, 2560px);
+      font-size: myclamp(18px, 18px, 1440px, 2560px);
+      font-weight: 500;
+      line-height: 1.2;
+      &:before {
+        content: '';
+        display: block;
+        width: myclamp(15px, 21px, 1440px, 2560px);
+        height: myclamp(17px, 23px, 1440px, 2560px);
+        background: url('../img/li.webp') no-repeat center center/cover;
+        flex-shrink: 0;
+        @media (max-width: 767px) {
+          margin-top: 2px;
+        }
+      }
+    }
+  }
+
+  &.small {
+    display: inline-flex;
+    width: auto;
+    padding: myclamp(30px, 40px, 1440px, 2560px) myclamp(20px, 30px, 1440px, 2560px);
+    margin-top: myclamp(20px, 20px, 1440px, 2560px);
+    gap: myclamp(20px, 24px, 1440px, 2560px);
+    .title {
+      font-size: myclamp(28px, 28px, 1440px, 2560px);
+    }
+
+    &.rotated {
+      transform: rotate(2deg);
+    }
+
+    ul {
+      flex-direction: column;
+      gap: myclamp(20px, 20px, 1440px, 2560px);
+      max-width: myclamp(460px, 460px, 1440px, 2560px);
+
+      li {
+        gap: myclamp(10px, 20px, 1440px, 2560px);
+        font-size: myclamp(18px, 20px, 1440px, 2560px);
+        &:before {
+          width: myclamp(15px, 21px, 1440px, 2560px);
+          height: myclamp(17px, 23px, 1440px, 2560px);
+        }
+      }
+    }
+  }
+}
+
+.post-steps {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 40px 2.8169%;
+  margin: 0 auto;
+  @media (max-width: 1279px) {
+    gap: 40px 8%;
+    max-width: myclamp(300px, 640px, 1200px, 2560px);
+  }
+  @media (max-width: 767px) {
+    max-width: 280px;
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 22.8873%;
+    gap: myclamp(12px, 12px, 1440px, 2560px);
+
+    @media (max-width: 1279px) {
+      width: 45%;
+    }
+
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+
+    h3 {
+      display: inline-flex;
+      align-items: center;
+      align-content: center;
+      width: auto;
+      font-size: 32px;
+      gap: 20px;
+      &:before,
+      &:after {
+        content: '';
+        display: block;
+        width: 26px;
+        height: 26px;
+        background: url('../img/header/star.webp') no-repeat center center;
+        background-size: 200%;
+      }
+    }
+
+    h4,
+    h5,
+    h6 {
+      text-align: center;
+      width: 100%;
+      font-size: myclamp(18px, 20px, 1440px, 2560px);
+      margin-bottom: myclamp(-5px, -5px, 1440px, 2560px);
+    }
+
+    img {
+      width: 100%;
+      border-radius: myclamp(20px, 20px, 1440px, 2560px);
+      margin: 0 auto;
+      @media (max-width: 767px) {
+        max-width: 250px;
+      }
+    }
+
+    p {
+      font-size: myclamp(16px, 16px, 1440px, 2560px);
+      line-height: 1.3;
+      @media (max-width: 767px) {
+        text-align: center;
+      }
+    }
+  }
+
+  &.col--3 {
+    li {
+      width: 25.7042%;
+      h4,
+      h5,
+      h6 {
+        font-size: myclamp(18px, 26px, 1440px, 2560px);
+        margin-bottom: myclamp(-5px, -5px, 1440px, 2560px);
+      }
+      p {
+        font-size: myclamp(16px, 18px, 1440px, 2560px);
+      }
+      @media (max-width: 1279px) {
+        width: 45%;
+      }
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.nex-page-link {
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: myclamp(240px, 440px, 1440px, 2560px);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: myclamp(16px, 20px, 1440px, 2560px);
+  text-align: center;
+
+  h3 {
+    font-size: myclamp(20px, 28px, 1440px, 2560px);
+    font-weight: 500;
+  }
+
+  p {
+    font-size: myclamp(16px, 18px, 1440px, 2560px);
+    line-height: 1.4;
+  }
+
+  img {
+    position: relative;
+    transition: 0.5s;
+    transform: scale(1);
+    max-height: myclamp(80px, 124px, 1440px, 2560px);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+}

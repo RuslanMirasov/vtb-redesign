@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="theme-color" content="#0A2896" />
+    <meta name="description" content="President" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" as="image" href="./../assets/img/header/bg.webp" />
+    <link rel="preload" as="image" href="./../assets/img/header/column-left.webp" />
+    <link rel="preload" as="image" href="./../assets/img/header/column-right.webp" />
+    <link rel="preload" as="image" href="./../assets/img/logo.svg" />
+    <link rel="icon" type="image/x-icon" href="./../assets/img/favicon.ico" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./../assets/css/styles.min.css" />
+    <title>ВТБ | Карта ёлок</title>
+    <style>
+      .marker-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translate(-50%, -100%);
+      }
+
+      .marker-text {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        white-space: nowrap;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        display: none;
+        z-index: 10;
+      }
+
+      .marker-text.visible {
+        display: block;
+      }
+
+      .marker {
+        position: relative;
+      }
+
+      .marker .image {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+      }
+    </style>
+
+    <!-- Yandex.Metrika counter -->
+
+    <script type="text/javascript">
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+
+        m[i].l = 1 * new Date();
+
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) {
+            return;
+          }
+        }
+
+        (k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]), (k.async = 1), (k.src = r), a.parentNode.insertBefore(k, a);
+      })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=105298510', 'ym');
+
+      ym(105298510, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: 'dataLayer', accurateTrackBounce: true, trackLinks: true });
+    </script>
+
+    <noscript
+      ><div><img src="https://mc.yandex.ru/watch/105298510" style="position: absolute; left: -9999px" alt="" /></div
+    ></noscript>
+
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body class="body">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QZDRVKGLC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-1QZDRVKGLC');
+    </script>
+
+    <!--HEADER-->
+    <header class="header">
+      <a href="./../" class="logo">
+        <img src="./../assets/img/logo.svg" alt="ВТБ" />
+      </a>
+
+      <button class="burger">
+        <span>Меню бургер</span>
+      </button>
+    </header>
+
+    <!--NAVIGATION-->
+    <nav class="navigation">
+      <ul class="menu">
+        <li>
+          <a href="./../stage" class="menu__link">
+            <img src="./../assets/img/header/nav1.webp" alt="ВТБ" />
+            <b>Сцена</b>
+            <p>Ставьте пьесы для домашнего театра</p>
+          </a>
+        </li>
+        <li>
+          <a href="./../wardrobe" class="menu__link">
+            <img src="./../assets/img/header/nav2.webp" alt="ВТБ" />
+            <b>Костюмерная</b>
+            <p>Подберите яркие наряды&nbsp;героев</p>
+          </a>
+        </li>
+        <li>
+          <a href="./../makeup-room" class="menu__link">
+            <img src="./../assets/img/header/nav3.webp" alt="ВТБ" />
+            <b>Гримёрная</b>
+            <p>Используйте наши идеи сказочных образов</p>
+          </a>
+        </li>
+        <li>
+          <a href="./../orchestra-pit" class="menu__link">
+            <img src="./../assets/img/header/nav4.webp" alt="ВТБ" />
+            <b>Оркестровая яма</b>
+            <p>Послушайте аудиоверсии&nbsp;сказок</p>
+          </a>
+        </li>
+        <li>
+          <a href="./../buffet" class="menu__link">
+            <img src="./../assets/img/header/nav5.webp" alt="ВТБ" />
+            <b>Буфет</b>
+            <p>Создайте праздничное настроение</p>
+          </a>
+        </li>
+        <li>
+          <a href="./../directors-room" class="menu__link">
+            <img src="./../assets/img/header/nav6.webp" alt="ВТБ" />
+            <b>Кабинет режиссёра</b>
+            <p>Откройте пространство для&nbsp;творчества</p>
+          </a>
+        </li>
+      </ul>
+      <!-- <a href="./../holiday-map" data-closed class="menu__link map-link">Карта ёлок</a> -->
+    </nav>
+
+    <div class="fixed-background"></div>
+
+    <main class="main">
+      <section class="section section--map">
+        <div class="titles">
+          <hr class="star show-in-mobil" />
+          <h1 class="title title--h1">Карта ёлок</h1>
+          <hr />
+          <p class="subtitle subtitle--16">
+            Отправляйтесь в&nbsp;путешествие по&nbsp;самым сказочным театрам России! <br />В&nbsp;каждом из них вас ждет не&nbsp;только прекрасный
+            спектакль, но и&nbsp;елка в&nbsp;неповторимом стиле. Билет в&nbsp;сказку уже ждет вас&nbsp;— осталось выбрать направление!
+          </p>
+        </div>
+
+        <!--MAP-->
+        <div id="map"></div>
+      </section>
+    </main>
+
+    <!--COLUMNS-->
+    <div class="column column--left">
+      <img src="./../assets/img/header/column-left.webp" alt="ВТБ" />
+    </div>
+    <div class="column column--right">
+      <img src="./../assets/img/header/column-right.webp" alt="ВТБ" />
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://api-maps.yandex.ru/v3/?apikey=91868c41-df81-4491-8223-38e70ef52864&lang=ru_RU"></script>
+    <script src="./../assets/js/scripts.js" type="module"></script>
+
+    <script>
+      //initMap();
+      ymaps3.ready.then(initMap);
+
+      async function initMap() {
+        await ymaps3.ready;
+
+        const { YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapControls, YMapMarker } = ymaps3;
+        const { YMapZoomControl } = await ymaps3.import('@yandex/ymaps3-controls@0.0.1');
+
+        const map = new YMap(document.getElementById('map'), {
+          location: {
+            center: [57.588144, 55.733842],
+            zoom: 3,
+          },
+        });
+
+        let response = await fetch('./../assets/json/customization.json');
+        let data = await response.json();
+
+        const layer = new YMapDefaultSchemeLayer({
+          customization: data,
+        });
+        map.addChild(layer);
+        map.addChild(new YMapDefaultFeaturesLayer({}));
+
+        map.addChild(new YMapControls({ position: 'right' }).addChild(new YMapZoomControl({})));
+
+        response = await fetch('./../assets/json/markers.json');
+        data = await response.json();
+        data.points.forEach(point => {
+          const markerContainerElement = document.createElement('div');
+          markerContainerElement.classList.add('marker-container');
+
+          const markerText = document.createElement('div');
+          markerText.classList.add('marker-text');
+          markerText.innerText = point.title;
+
+          markerContainerElement.onmouseover = () => {
+            markerText.classList.add('visible');
+          };
+
+          markerContainerElement.onmouseout = () => {
+            markerText.classList.remove('visible');
+          };
+
+          const markerElement = document.createElement('div');
+          markerElement.classList.add('marker');
+
+          const markerImage = document.createElement('img');
+          markerImage.src = point.pointType == 'TownSquare' ? './../assets/img/townSquare.png' : './../assets/img/theatre.png';
+          markerImage.classList.add('image');
+
+          markerElement.appendChild(markerImage);
+
+          markerContainerElement.appendChild(markerText);
+          markerContainerElement.appendChild(markerElement);
+
+          const marker = new YMapMarker(
+            {
+              coordinates: point.coordinates,
+            },
+            markerContainerElement
+          );
+
+          map.addChild(marker);
+        });
+      }
+    </script>
+  </body>
+</html>

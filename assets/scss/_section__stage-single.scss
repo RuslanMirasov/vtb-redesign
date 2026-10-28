@@ -1,0 +1,509 @@
+.stage-single {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+  margin: 0 auto;
+  margin-top: myclamp(70px, 96px, 1440px, 2560px);
+  margin-bottom: 30px;
+  max-width: myclamp(320px, 1240px, 1440px, 2560px);
+  gap: 24px 65px;
+  &.stage-single--fixed {
+    position: fixed;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  @media (max-width: 499px) {
+    max-width: 84%;
+  }
+}
+
+.full-screen {
+  .stage-single {
+    @media (max-width: 767px) {
+      margin-top: myclamp(50px, 96px, 1440px, 2560px);
+      max-width: 100%;
+    }
+  }
+}
+
+.sidebar {
+  display: flex;
+  position: sticky;
+  top: myclamp(50px, 60px, 1440px, 1440px);
+  height: calc(100svh - myclamp(50px, 60px, 1440px, 1440px));
+  overflow-y: auto;
+  pointer-events: none;
+  flex-direction: column;
+  gap: 40px;
+  width: myclamp(375px, 375px, 1440px, 2560px);
+
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  @media (min-width: 1024px) {
+    padding-bottom: calc(myclamp(112px, 112px, 1440px, 2560px) + 30px);
+  }
+
+  .subtitle {
+    text-align: left;
+  }
+
+  .sidebar__content {
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    gap: 40px;
+    padding: myclamp(30px, 40px, 1440px, 2560px) myclamp(30px, 30px, 1440px, 2560px);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    text-align: center;
+  }
+
+  .sidebar__list {
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: myclamp(20px, 25px, 1440px, 2560px);
+    padding: 0px 20px;
+
+    li {
+      width: 100%;
+      font-size: myclamp(16px, 16px, 1440px, 2560px);
+      font-weight: 500;
+    }
+  }
+
+  .sidebar__buttons {
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    gap: myclamp(10px, 10px, 1440px, 2560px);
+    padding-right: myclamp(20px, 30px, 1440px, 2560px);
+    li {
+      width: 100%;
+    }
+  }
+}
+
+.sidebar__scroll-area {
+  width: 100%;
+  height: myclamp(180px, 180px, 1440px, 2560px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  pointer-events: all;
+  &.for-buttons {
+    height: myclamp(200px, 200px, 1440px, 2560px);
+  }
+}
+
+.stage-single__content {
+  display: flex;
+  position: relative;
+  width: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background: url('../img/bg-white.webp') repeat-y center top;
+  background-size: 100% auto;
+  color: var(--black-light);
+  border-radius: 30px;
+  overflow: hidden;
+  z-index: 1;
+  max-width: calc(100% - myclamp(440px, 440px, 1440px, 2560px));
+  padding: myclamp(26px, 26px, 1440px, 2560px);
+  text-align: center;
+  gap: 6.5px;
+  font-size: myclamp(14px, 14px, 1440px, 2560px);
+  line-height: 1.3;
+  margin-left: auto;
+
+  .slogan {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: myclamp(14px, 14px, 1440px, 2560px);
+    line-height: 1.3;
+    padding-bottom: myclamp(14px, 14px, 1440px, 2560px);
+  }
+
+  p {
+    display: inline-block;
+    border-radius: 10px;
+    align-self: flex-start;
+    text-align: left;
+    padding: 4px 8px;
+    span {
+      display: inline-flex;
+      width: auto;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      gap: 4px;
+    }
+  }
+
+  i {
+    display: flex;
+    position: relative;
+    width: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-size: myclamp(14px, 14px, 1440px, 2560px);
+    line-height: 1.3;
+    font-weight: 500;
+    font-family: var(--italic);
+    font-style: italic;
+    padding: 20px myclamp(24px, 40px, 1440px, 2560px);
+
+    span {
+      display: inline-flex;
+      width: auto;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      gap: 4px;
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: url('../img/header/star-blue.webp') no-repeat center center;
+      background-size: 160%;
+      position: absolute;
+    }
+    &:before {
+      left: 0px;
+    }
+    &:after {
+      right: 0px;
+    }
+
+    &.full {
+      width: 100%;
+    }
+  }
+
+  button[data-sound-src] {
+    display: inline;
+    background: url('../img/sound.webp') no-repeat center center/cover;
+    width: myclamp(18px, 18px, 1440px, 2560px);
+    height: myclamp(18px, 18px, 1440px, 2560px);
+  }
+
+  .poem {
+    display: inline-flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 20px;
+    b {
+      display: block;
+      margin-bottom: -10px;
+      text-align: center;
+      width: 100%;
+    }
+    p {
+      width: 100%;
+    }
+  }
+}
+
+.fix-buttons-panel {
+  display: flex;
+  gap: myclamp(8px, 8px, 1440px, 2560px);
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background: var(--red);
+  width: myclamp(375px, 375px, 1440px, 2560px);
+  border-radius: 30px;
+  padding: myclamp(12px, 12px, 1440px, 2560px);
+  pointer-events: all;
+
+  .fix-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    height: myclamp(40px, 40px, 1440px, 2560px);
+    border-radius: 100px;
+    padding: 20px myclamp(20px, 20px, 1440px, 2560px);
+    width: auto;
+    flex: 1;
+    color: var(--black-light);
+    font-size: myclamp(16px, 16px, 1440px, 2560px);
+    font-family: var(--font);
+    font-weight: 500;
+    background: var(--white);
+    white-space: nowrap;
+  }
+}
+
+.full-screen {
+  [data-hide-in-fullscreen] {
+    display: none;
+    @media (max-width: 1023px) {
+      &.sidebar {
+        display: block;
+      }
+    }
+  }
+  .stage-single__content {
+    max-width: 100%;
+  }
+}
+
+// POPUPS
+.sidebar__item {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  gap: 40px;
+
+  &.mobil-only {
+    position: fixed;
+    z-index: 18;
+    @media (max-width: 1023px) {
+      position: relative;
+    }
+  }
+
+  .stage-desctiption,
+  [data-sidebar-popup-close] {
+    display: none;
+  }
+}
+
+.mobil-nav-menu {
+  display: none;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 60px;
+  background: var(--blue);
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  z-index: 50;
+  transition: opacity 0.5s;
+  pointer-events: all;
+  opacity: 1;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  li {
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 6px;
+    width: 33.333%;
+    cursor: pointer;
+
+    p {
+      font-size: 10px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    img {
+      height: 32px;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    display: flex;
+  }
+}
+
+// MOBIL VERSION
+
+@media (max-width: 1023px) {
+  .sidebar {
+    display: block;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: calc(100svh - 60px - myclamp(50px, 60px, 1440px, 1440px));
+    left: 0px;
+    top: myclamp(50px, 60px, 1440px, 1440px);
+    margin-bottom: 0px;
+    z-index: 999999;
+    transform: translateZ(0);
+    transition: opacity 0.5s;
+    background: rgba(0, 0, 0, 0.3);
+    -webkit-overflow-scrolling: touch;
+
+    pointer-events: none;
+    opacity: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    &.active {
+      pointer-events: all;
+      opacity: 1;
+    }
+
+    &.stiky {
+      bottom: 0px;
+    }
+
+    .subtitle {
+      display: none;
+    }
+
+    .sidebar__content {
+      position: relative;
+      padding: 0px;
+      max-width: 414px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0px;
+      border-radius: 0px;
+      background: none;
+      margin: 0 auto;
+    }
+  }
+
+  .stage-single.stage-single--fixed {
+    position: relative;
+    left: 0px;
+    transform: translate(0%, 0%);
+    pointer-events: all;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .fix-buttons-panel {
+    position: relative;
+    width: 100%;
+  }
+
+  .stage-single {
+    margin-bottom: 60px;
+    > .stage-desctiption {
+      .subtitle {
+        width: 100%;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 10px;
+      }
+    }
+    .stage-desctiption {
+      flex-direction: column;
+      .table {
+        order: 1;
+      }
+      .description {
+        order: 2;
+      }
+    }
+  }
+
+  .stage-single__content {
+    max-width: 100%;
+    padding: 26px 10px 60px 10px;
+  }
+
+  [data-sidebar-mobil-popup] {
+    display: none;
+    background: var(--blue) url('../img/header/nav-bg-mobil.webp') no-repeat center center/cover;
+    border-radius: 30px;
+    padding-top: 50px;
+    position: relative;
+    gap: 30px;
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+    transform: translate(0px, 50px);
+    pointer-events: none;
+    &.active {
+      opacity: 1;
+      pointer-events: all;
+      transform: translate(0px, 0px);
+    }
+    [data-sidebar-popup-close] {
+      display: block;
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      right: 20px;
+      top: 20px;
+      background: url('../img/closw-popup.webp') no-repeat center center/cover;
+    }
+    .sidebar__scroll-area {
+      overflow-x: visible;
+      overflow-y: visible;
+      height: auto;
+    }
+    .stage-desctiption {
+      display: flex;
+      text-align: center;
+      width: 100%;
+
+      .description {
+        gap: 20px;
+        margin-top: 20px;
+        order: 2;
+      }
+
+      hr {
+        order: 3;
+        margin-top: 20px;
+      }
+      .subtitle {
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    .sidebar__buttons {
+      padding: 0px 20px 30px 20px;
+    }
+  }
+}

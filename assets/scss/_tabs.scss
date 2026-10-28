@@ -1,0 +1,43 @@
+[data-tabs] {
+  [data-tab] {
+    display: flex;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    transition: opacity 0.5s;
+    opacity: 0;
+    pointer-events: none;
+
+    &.active {
+      position: relative;
+      pointer-events: all;
+      opacity: 0;
+    }
+
+    .swiper-arrow {
+      z-index: 19;
+      &[data-arrow-prev] {
+        left: myclamp(24px, 40px, 1440px, 2560px);
+      }
+
+      &[data-arrow-next] {
+        right: myclamp(24px, 40px, 1440px, 2560px);
+      }
+    }
+  }
+}
+
+.loaded {
+  [data-tabs] {
+    [data-tab] {
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+}
