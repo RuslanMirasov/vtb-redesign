@@ -4,7 +4,9 @@
   min-height: 100svh;
   opacity: 0;
 
-  transition: opacity 1.5s ease-in-out 0s, transform 1.3s ease-in-out 0s;
+  transition:
+    opacity 1.5s ease-in-out 0s,
+    transform 1.3s ease-in-out 0s;
   transform: scale(1);
 
   &.scaleble {
@@ -95,23 +97,21 @@
       justify-content: flex-end;
       align-items: flex-end;
       align-content: flex-end;
-      height: calc(103.7svh - 180px);
-      @media (min-width: 1441px) {
-        height: calc(100svh - 180px);
-      }
-      @media (min-width: 1921px) {
-        height: calc(92svh - 180px);
-      }
+      width: 100%;
+      height: auto;
       margin: 0px auto;
 
       .foue-image {
-        height: calc(103.7svh - 180px);
-        @media (min-width: 1441px) {
-          height: calc(100svh - 180px);
-        }
-        @media (min-width: 1921px) {
-          height: calc(92svh - 180px);
-        }
+        width: auto;
+        min-width: auto;
+        height: 100%;
+        // height: calc(103.7svh - 180px);
+        // @media (min-width: 1441px) {
+        //   height: calc(100svh - 180px);
+        // }
+        // @media (min-width: 1921px) {
+        //   height: calc(92svh - 180px);
+        // }
         object-fit: contain;
         margin: auto;
       }
@@ -168,12 +168,12 @@
 
 .select-a-play {
   position: fixed;
-  right: myclamp(8px, 52px, 1440px, 2560px);
+  right: myclamp(8px, 30px, 1440px, 2560px);
   bottom: myclamp(8px, 30px, 1440px, 2560px);
-  width: myclamp(60px, 120px, 1440px, 2560px);
-  height: myclamp(60px, 120px, 1440px, 2560px);
+  width: myclamp(60px, 80px, 1440px, 2560px);
+  height: myclamp(60px, 80px, 1440px, 2560px);
   border-radius: 120px;
-  background: var(--red);
+  background: var(--white);
   z-index: 20;
   transition: 1s;
   transform: translate(0%, 140%);
@@ -189,7 +189,6 @@
 
     &.select-a-play__text {
       animation: spin 16s linear infinite;
-      z-index: 2;
     }
   }
 

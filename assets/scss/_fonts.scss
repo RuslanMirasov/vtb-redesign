@@ -1,27 +1,71 @@
 @font-face {
   font-family: 'vtb';
-  src: url('../fonts/vtb-regular.woff2') format('woff2'), url('../fonts/vtb-regular.woff') format('woff');
+  src:
+    url('../fonts/vtb-regular.woff2') format('woff2'),
+    url('../fonts/vtb-regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'vtb';
-  src: url('../fonts/vtb-bold.woff2') format('woff2'), url('../fonts/vtb-bold.woff') format('woff');
+  src:
+    url('../fonts/vtb-bold.woff2') format('woff2'),
+    url('../fonts/vtb-bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'vtb';
-  src: url('../fonts/vtb-mdium.woff2') format('woff2'), url('../fonts/vtb-mdium.woff') format('woff');
+  src:
+    url('../fonts/vtb-mdium.woff2') format('woff2'),
+    url('../fonts/vtb-mdium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'vtb-omega-ui';
+  src:
+    url('../fonts/vtb-omegaui-regular.woff2') format('woff2'),
+    url('../fonts/vtb-omegaui-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'vtb-omega-ui';
+  src:
+    url('../fonts/vtb-omegaui-bold.woff2') format('woff2'),
+    url('../fonts/vtb-omegaui-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'vtb-omega-ui';
+  src:
+    url('../fonts/vtb-omegaui-medium.woff2') format('woff2'),
+    url('../fonts/vtb-omegaui-medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'roboto-medium-italic';
-  src: url('../fonts/roboto-medium-italic.woff2') format('woff2'), url('../fonts/roboto-medium-italic.woff') format('woff');
+  src:
+    url('../fonts/roboto-medium-italic.woff2') format('woff2'),
+    url('../fonts/roboto-medium-italic.woff') format('woff');
   font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'pacifico';
+  src:
+    url('../fonts/pacifico-regular.woff2') format('woff2'),
+    url('../fonts/pacifico-regular.woff') format('woff');
+  font-weight: 400;
   font-style: italic;
 }

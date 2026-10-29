@@ -6,11 +6,13 @@
   height: 100dvh;
   left: 0px;
   top: 0px;
-  background: var(--blue) url('../img/header/nav-bg.webp') no-repeat center center/cover;
+  background: url('../img/header/nav-bg.webp') no-repeat center center;
+  background-size: 100% 100%;
   z-index: 0;
   transition: transform 0.7s;
   opacity: 1;
   transform: scale(1) translate(0px, 0px);
+  pointer-events: none;
 
   &.scaleble {
     transition: transform 0s;
@@ -18,32 +20,7 @@
   }
 
   &.move {
-    transform: scale(1) translate(0px, myclamp(50px, 60px, 1440px, 1440px));
-  }
-
-  &:before {
-    content: '';
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    background: var(--blue) url('../img/vyazanyi-konek/header/bg.webp') repeat;
-    background-size: 11px 15px;
-    transition: opacity 2s;
-    opacity: 0;
-  }
-
-  @media (max-width: 767px) {
-    background: var(--blue) url('../img/header/nav-bg-mobil.webp') no-repeat center center/cover;
-  }
-}
-
-.snow {
-  .fixed-background {
-    &:before {
-      opacity: 1;
-    }
+    transform: scale(1) translate(0px, myclamp(20px, 20px, 1440px, 1440px));
   }
 }
 
@@ -54,15 +31,22 @@
   top: 0px;
   z-index: 300;
   width: 100%;
-  height: myclamp(50px, 60px, 1440px, 1440px);
+  height: myclamp(50px, 70px, 1440px, 1440px);
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   align-content: center;
-  padding-right: myclamp(20px, 50px, 1440px, 1440px);
-  padding-left: myclamp(20px, 60px, 1440px, 1440px);
+  padding-right: myclamp(20px, 40px, 1440px, 1440px);
+  padding-left: myclamp(20px, 40px, 1440px, 1440px);
+  padding-bottom: 4px;
   transform: translate(0%, 0%);
   transition: transform 1s;
+  box-shadow:
+    0 2px 5px 0 rgba(0, 0, 0, 0.34),
+    0 8px 8px 0 rgba(0, 0, 0, 0.29),
+    0 19px 11px 0 rgba(0, 0, 0, 0.17),
+    0 34px 14px 0 rgba(0, 0, 0, 0.05),
+    0 53px 15px 0 rgba(0, 0, 0, 0.01);
   &.scaleble {
     transform: translate(0%, -100%);
   }
@@ -74,7 +58,12 @@
     height: 100%;
     left: 0px;
     top: 0px;
-    background: url('../img/header/bg.webp') no-repeat center center/cover;
+    background:
+      url('../img/header/bg.webp') no-repeat center center,
+      url('../img/header/bg-back.webp') repeat-x left top;
+    background-size:
+      auto 100%,
+      auto 100%;
     box-shadow: 0px 4px 8px rgba(10, 40, 150, 0.2);
     z-index: 1;
   }
@@ -144,43 +133,32 @@
   justify-content: center;
   align-items: center;
   align-content: center;
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
   font-size: 0px;
   z-index: 2;
-  span,
-  &:before,
-  &:after {
-    position: absolute;
-    height: 5px;
-    width: 100%;
-    background: url('../img/header/burger-bg.webp') no-repeat center center/cover;
-    transition: transform 0.6s;
-    opacity: 1;
-    z-index: 1;
-    border-radius: 2.5px;
-  }
 
   &:before,
   &:after {
     content: '';
+    position: absolute;
+    height: 1.5px;
+    width: 23.5px;
+    background: var(--white);
+    transition: transform 0.6s;
+    opacity: 1;
+    z-index: 1;
+    border-radius: 2px;
   }
 
-  span {
-    transform: scale(1);
-    transition: transform 0.6s;
-  }
   &:before {
-    transform: translate(0px, -9px) rotate(0deg);
+    transform: translate(0px, -4px) rotate(0deg);
   }
   &:after {
-    transform: translate(0px, 9px) rotate(0deg);
+    transform: translate(0px, 4px) rotate(0deg);
   }
 
   &.open {
-    span {
-      transform: scale(0);
-    }
     &:before {
       transform: translate(0px, 0px) rotate(45deg);
     }
@@ -219,15 +197,15 @@
   display: flex;
   position: relative;
   width: 100%;
-  max-width: 800px;
+  max-width: 888px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
-  gap: 40px 26px;
+  gap: 40px 150px;
   text-align: center;
   margin: auto;
-  padding: myclamp(50px, 80px, 1440px, 1440px) 0px;
+  padding: myclamp(50px, 90px, 1440px, 1440px) 0px;
   @media (max-width: 1023px) {
     gap: 20px;
     max-width: 400px;
@@ -236,28 +214,8 @@
     max-width: 320px;
   }
 
-  &:before,
-  &:after {
-    content: '';
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    left: 50%;
-    margin-left: -20px;
-    background: url('../img/header/star.webp') no-repeat center center/cover;
-    pointer-events: none;
-  }
-
-  &:before {
-    bottom: calc(100% - myclamp(50px, 60px, 1440px, 1440px));
-  }
-
-  &:after {
-    top: calc(100% - myclamp(50px, 60px, 1440px, 1440px));
-  }
-
   li {
-    width: calc((100% - 78px) / 3);
+    width: calc((100% - 300px) / 3);
     order: 1;
     &:last-child {
       order: 4;
@@ -271,27 +229,27 @@
     a {
       display: flex;
       position: relative;
-      width: myclamp(150px, 315px, 1440px, 1440px);
-      left: 50%;
-      transform: translate(-50%, 0%);
+      width: myclamp(150px, 196px, 1440px, 1440px);
       flex-direction: column;
       justify-content: center;
       align-items: center;
       align-content: center;
       text-align: center;
-      gap: myclamp(10px, 14px, 1440px, 1440px);
+      gap: myclamp(10px, 24px, 1440px, 1440px);
     }
     img {
       position: relative;
-      width: myclamp(100px, 128px, 1440px, 1440px);
-      height: myclamp(70px, 110px, 1440px, 1440px);
+      width: myclamp(70px, 130px, 1440px, 1440px);
+      height: myclamp(70px, 130px, 1440px, 1440px);
       margin: 0 auto;
       transform: scale(1);
       transition: 0.6s;
       object-fit: contain;
+      filter: drop-shadow(0 3px 3px rgba(0, 12, 71, 0.28)) drop-shadow(0 12px 6px rgba(0, 12, 71, 0.24)) drop-shadow(0 27px 8px rgba(0, 12, 71, 0.14))
+        drop-shadow(0 47px 9.5px rgba(0, 12, 71, 0.04)) drop-shadow(0 74px 10.5px rgba(0, 12, 71, 0.01));
     }
     b {
-      font-size: myclamp(18px, 28px, 1440px, 1440px);
+      font-size: myclamp(16px, 26px, 1440px, 1440px);
       font-weight: 500;
       @media (min-width: 768px) {
         white-space: nowrap;
@@ -330,7 +288,9 @@
   width: auto;
   height: calc(100dvh - myclamp(50px, 60px, 1440px, 1440px));
   top: myclamp(50px, 60px, 1440px, 1440px);
-  transition: transform 0.5s ease-in-out 0s, opacity 0.5s;
+  transition:
+    transform 0.5s ease-in-out 0s,
+    opacity 0.5s;
   z-index: 18;
   pointer-events: none;
   &.have-sidebar {
@@ -370,7 +330,9 @@
 
 .loaded {
   .column {
-    transition: transform 0.5s ease-out 0.5s, opacity 0.5s;
+    transition:
+      transform 0.5s ease-out 0.5s,
+      opacity 0.5s;
     &.column--left {
       transform: translate(-2%, 0%);
       &.in-main-page {
@@ -393,7 +355,9 @@
   @media (max-width: 767px) {
     &.full-screen {
       .column {
-        transition: transform 0.5s, opacity 0.5s;
+        transition:
+          transform 0.5s,
+          opacity 0.5s;
         &.column--left {
           opacity: 0;
         }

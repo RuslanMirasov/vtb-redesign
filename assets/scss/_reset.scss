@@ -131,7 +131,9 @@ a {
   position: relative;
   overflow: hidden;
   width: 100%;
-  transition: opacity 0.5s ease-in-out 0s, transform 1s ease-in-out 0.3s;
+  transition:
+    opacity 0.5s ease-in-out 0s,
+    transform 1s ease-in-out 0.3s;
   opacity: 0;
   padding-top: myclamp(50px, 60px, 1440px, 1440px);
 }
@@ -333,11 +335,9 @@ hr {
   margin: 0 !important;
 }
 
-// .body.switcheble.snow {
-//   cursor: url('../img/cursor.png') 0 0, auto;
-
-//   a,
-//   button {
-//     cursor: url('../img/cursor-pointer.png') 0 0, auto;
-//   }
-// }
+.italic {
+  display: inline-block;
+  position: relative;
+  transform: skewX(-20deg);
+  font-family: var(--pacifico);
+}

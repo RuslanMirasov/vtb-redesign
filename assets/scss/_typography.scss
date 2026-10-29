@@ -25,9 +25,15 @@
   display: block;
   text-align: center;
   line-height: 1.2;
+  font-family: var(--font);
 
   &.title--h1 {
-    font-size: myclamp(28px, 40px, 1440px, 2560px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    font-size: myclamp(32px, 60px, 1440px, 2560px);
+    .italic {
+      font-size: myclamp(42px, 74px, 1440px, 2560px);
+    }
   }
 
   &.title--h2 {
