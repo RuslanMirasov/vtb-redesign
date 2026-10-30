@@ -1388,7 +1388,6 @@ hr.star.star--blue {
 .section--hero .titles {
   z-index: 2;
   gap: 0px;
-  margin-top: 24px;
 }
 @media (min-width: 1152px) {
   .section--hero .titles {
@@ -1408,7 +1407,9 @@ hr.star.star--blue {
 }
 @media (max-width: 767px) {
   .section--hero .titles {
-    gap: 20px;
+    gap: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
 }
 .section--hero .titles .title.title--h1 {
@@ -1478,13 +1479,13 @@ hr.star.star--blue {
   width: 100%;
   height: auto;
   flex: 1;
+  min-height: 340px;
   overflow: hidden;
   margin-top: 24px;
 }
 @media (min-width: 1152px) {
   .foue {
     flex: 0 1 35.5802640723vw;
-    min-height: 340px;
     margin-top: 0;
   }
 }
@@ -1611,12 +1612,31 @@ hr.star.star--blue {
   width: 18.1%;
   left: 40.9%;
   top: 26.5%;
-  background: url("../img/foue/scene-bg.webp") no-repeat top center;
-  background-size: 100% auto;
+  background: url("../img/foue/scene-bg.webp") no-repeat center -8%;
+  background-size: 88% auto;
   z-index: 1;
 }
 .door-link.stage::before {
   padding-top: 125%;
+}
+.door-link.stage::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 200px;
+  transition: 0.8s ease-out;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0) 100%);
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -20%) scale(1);
+}
+.door-link.stage:hover::after {
+  transform: translate(-50%, -50%) scale(1.4);
+  opacity: 1;
 }
 .door-link.wardrobe {
   left: 64.4%;
@@ -1633,13 +1653,13 @@ hr.star.star--blue {
 
 .select-a-play {
   position: fixed;
-  right: clamp(8px, 2.0833vw, 53px);
-  bottom: clamp(8px, 2.0833vw, 53px);
-  width: clamp(60px, 5.5556vw, 142px);
-  height: clamp(60px, 5.5556vw, 142px);
+  right: 20px;
+  bottom: 20px;
+  width: 90px;
+  height: 90px;
   border-radius: 120px;
   background: var(--white);
-  z-index: 20;
+  z-index: 301;
   transition: 1s;
   transform: translate(0%, 140%);
   opacity: 0;
@@ -1655,10 +1675,22 @@ hr.star.star--blue {
 .select-a-play img.select-a-play__text {
   animation: spin 16s linear infinite;
 }
-@media (max-width: 414px) {
+@media (min-width: 1600px) {
   .select-a-play {
-    right: 8px;
-    bottom: 8px;
+    width: 120px;
+    height: 120px;
+  }
+}
+@media (min-width: 2560px) {
+  .select-a-play {
+    width: 180px;
+    height: 180px;
+  }
+}
+@media (max-width: 767px) {
+  .select-a-play {
+    width: 80px;
+    height: 80px;
   }
 }
 

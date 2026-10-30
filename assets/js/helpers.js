@@ -57,7 +57,6 @@ export const initNavigationMenu = () => {
   const columnLeft = document.querySelector('.column--left');
   const columnRight = document.querySelector('.column--right');
   const fixedBackground = document.querySelector('.fixed-background');
-  const selectPlayBtn = document.querySelector('.select-a-play');
   const fullScreenButton = document.querySelector('.full-screen-button');
   const mobilNavMenu = document.querySelector('.mobil-nav-menu');
   const goBackButton = document.querySelector('.go-back');
@@ -70,7 +69,6 @@ export const initNavigationMenu = () => {
     main?.classList.toggle('hidden');
     columnLeft?.classList.toggle('hidden');
     columnRight?.classList.toggle('hidden');
-    selectPlayBtn?.classList.toggle('hidden');
     fullScreenButton?.classList.toggle('hidden');
     mobilNavMenu?.classList.toggle('hidden');
     goBackButton?.classList.toggle('hidden');

@@ -26,7 +26,7 @@
   .titles {
     z-index: 2;
     gap: 0px;
-    margin-top: 24px;
+    //margin-top: 24px;
 
     // по центру места, оставшегося над картинкой
     @media (min-width: 1152px) {
@@ -44,7 +44,9 @@
       padding-top: 24px;
     }
     @media (max-width: 767px) {
-      gap: 20px;
+      gap: 10px;
+      padding-top: 0px;
+      padding-bottom: 0px;
     }
     .title.title--h1 {
       display: flex;
@@ -104,12 +106,13 @@
   width: 100%;
   height: auto;
   flex: 1;
+  // ниже картинка не сжимается: на низких экранах (телефон боком) листается .main
+  min-height: 340px;
   overflow: hidden;
   margin-top: 24px;
 
   @media (min-width: 1152px) {
     flex: 0 1 calc(100vw * 1024 / 2878);
-    min-height: 340px;
     margin-top: 0;
   }
 
@@ -240,12 +243,35 @@
     width: 18.1%;
     left: 40.9%;
     top: 26.5%;
-    background: url('../img/foue/scene-bg.webp') no-repeat top center;
-    background-size: 100% auto;
+    background: url('../img/foue/scene-bg.webp') no-repeat center -8%;
+    background-size: 88% auto;
     z-index: 1;
 
     &::before {
       padding-top: 125%;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      padding-top: 100%;
+      border-radius: 200px;
+      transition: 0.8s ease-out;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0) 100%);
+      left: 50%;
+      top: 50%;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, -20%) scale(1);
+    }
+
+    &:hover {
+      &::after {
+        transform: translate(-50%, -50%) scale(1.4);
+        opacity: 1;
+      }
     }
   }
 
@@ -266,13 +292,13 @@
 
 .select-a-play {
   position: fixed;
-  right: myclamp(8px, 30px, 1440px, 2560px);
-  bottom: myclamp(8px, 30px, 1440px, 2560px);
-  width: myclamp(60px, 80px, 1440px, 2560px);
-  height: myclamp(60px, 80px, 1440px, 2560px);
+  right: 20px;
+  bottom: 20px;
+  width: 90px;
+  height: 90px;
   border-radius: 120px;
   background: var(--white);
-  z-index: 20;
+  z-index: 301;
   transition: 1s;
   transform: translate(0%, 140%);
   opacity: 0;
@@ -290,9 +316,17 @@
     }
   }
 
-  @media (max-width: 414px) {
-    right: 8px;
-    bottom: 8px;
+  @media (min-width: 1600px) {
+    width: 120px;
+    height: 120px;
+  }
+  @media (min-width: 2560px) {
+    width: 180px;
+    height: 180px;
+  }
+  @media (max-width: 767px) {
+    width: 80px;
+    height: 80px;
   }
 }
 
