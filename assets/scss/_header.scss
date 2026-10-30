@@ -22,6 +22,13 @@
   &.move {
     transform: scale(1) translate(0px, myclamp(20px, 20px, 1440px, 1440px));
   }
+
+  @media (max-width: 767px) {
+    background-size: cover;
+    &.move {
+      transform: scale(1) translate(0px, 0px);
+    }
+  }
 }
 
 .header {
@@ -31,16 +38,18 @@
   top: 0px;
   z-index: 300;
   width: 100%;
-  height: myclamp(50px, 70px, 1440px, 1440px);
+  height: 60px;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   align-content: center;
-  padding-right: myclamp(20px, 40px, 1440px, 1440px);
-  padding-left: myclamp(20px, 40px, 1440px, 1440px);
-  padding-bottom: 4px;
+  padding-right: 40px;
+  padding-left: 40px;
+  padding-bottom: 2px;
   transform: translate(0%, 0%);
-  transition: transform 1s;
+  transition:
+    transform 1s,
+    box-shadow 1s;
   box-shadow:
     0 2px 5px 0 rgba(0, 0, 0, 0.34),
     0 8px 8px 0 rgba(0, 0, 0, 0.29),
@@ -58,6 +67,7 @@
     height: 100%;
     left: 0px;
     top: 0px;
+    transition: opacity 0.5s;
     background:
       url('../img/header/bg.webp') no-repeat center center,
       url('../img/header/bg-back.webp') repeat-x left top;
@@ -70,6 +80,50 @@
 
   > * {
     z-index: 2;
+  }
+
+  @media (max-width: 767px) {
+    position: absolute;
+    padding-right: 20px;
+    padding-left: 20px;
+    // тень переезжает на плашку, чтобы проявляться вместе с ней через opacity
+    box-shadow: none;
+    &:before {
+      opacity: 0;
+      box-shadow:
+        0 2px 5px 0 rgba(0, 0, 0, 0.34),
+        0 8px 8px 0 rgba(0, 0, 0, 0.29),
+        0 19px 11px 0 rgba(0, 0, 0, 0.17),
+        0 34px 14px 0 rgba(0, 0, 0, 0.05),
+        0 53px 15px 0 rgba(0, 0, 0, 0.01),
+        0px 4px 8px rgba(10, 40, 150, 0.2);
+    }
+
+    // прокрутка .main только переключает флаг --header-scrolled (0 → 1 на первом пикселе),
+    // а плашка реагирует на него через style query — так срабатывает обычный transition
+    @supports (animation-timeline: scroll()) {
+      animation: header-scrolled linear both;
+      animation-timeline: --page-scroll;
+      animation-range: 0px 1px;
+
+      @container style(--header-scrolled: 1) {
+        &:before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@property --header-scrolled {
+  syntax: '<integer>';
+  inherits: false;
+  initial-value: 0;
+}
+
+@keyframes header-scrolled {
+  to {
+    --header-scrolled: 1;
   }
 }
 
@@ -89,41 +143,15 @@
 
 .logo {
   position: relative;
-  width: myclamp(79.06px, 90.36px, 1440px, 1440px);
-  height: myclamp(28px, 32px, 1440px, 1440px);
-  perspective: 800px; // создаем 3D-глубину
-  transform-style: preserve-3d;
+  width: 90px;
 
-  img,
-  &:before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    transition: transform 1.5s ease;
-    display: block;
+  @media (max-width: 767px) {
+    width: 70px;
   }
 
   img {
-    transform: rotateY(0deg);
-  }
-
-  &:before {
-    content: '';
-    background: url('../img/logo.webp') no-repeat center center / contain;
-    transform: rotateY(180deg);
-  }
-
-  &.switch {
-    img {
-      transform: rotateY(180deg);
-    }
-
-    &:before {
-      transform: rotateY(0deg);
-    }
+    width: 100%;
+    display: block;
   }
 }
 
@@ -325,6 +353,10 @@
     &.scaleble {
       transform: translate(100%, 0%);
     }
+  }
+
+  @media (max-width: 1151px) {
+    display: none;
   }
 }
 

@@ -223,6 +223,10 @@ export const initScrollArea = () => {
   };
 
   const handleWheel = e => {
+    // горизонтальной прокрутки нет (десктоп) — колесо листает страницу
+    const { maxScroll } = getLimits();
+    if (maxScroll <= 1 || getComputedStyle(scrollArea).overflowX === 'hidden') return;
+
     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
       e.preventDefault();
       const { min, max } = getLimits();

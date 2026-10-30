@@ -4,6 +4,11 @@
   min-height: 100svh;
   opacity: 0;
 
+  @media (min-width: 1152px) {
+    height: 100svh;
+    overflow: visible;
+  }
+
   transition:
     opacity 1.5s ease-in-out 0s,
     transform 1.3s ease-in-out 0s;
@@ -19,41 +24,66 @@
     transform: scale(1);
   }
   .titles {
-    padding-top: 32px;
-    pointer-events: none;
     z-index: 2;
-    .button {
-      pointer-events: all;
-      span {
-        font-family: var(--font);
-        font-weight: 500;
+    gap: 0px;
+    margin-top: 24px;
+
+    // по центру места, оставшегося над картинкой
+    @media (min-width: 1152px) {
+      flex-shrink: 0;
+      margin-top: auto;
+      margin-bottom: auto;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+
+    // картинка ограничена по высоте, заголовки делят с ней свободное место
+    @media (max-width: 1040px) {
+      margin-top: auto;
+      margin-bottom: auto;
+      padding-top: 24px;
+    }
+    @media (max-width: 767px) {
+      gap: 20px;
+    }
+    .title.title--h1 {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      width: 100%;
+      flex-wrap: nowrap;
+      img {
+        width: 442px;
+
+        @media (min-width: 1921px) {
+          width: 540px;
+        }
+        @media (max-width: 1279px) {
+          width: 350px;
+        }
+        @media (max-width: 1023px) {
+          width: 394px;
+        }
+        @media (max-width: 767px) {
+          width: 272px;
+        }
       }
-      @media (max-width: 767px) {
-        min-width: 190px;
+      @media (max-width: 1023px) {
+        padding: 0px 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 0px;
       }
     }
     .subtitle {
-      max-width: myclamp(490px, 750px, 1440px, 2560px);
-      @media (max-width: 767px) {
-        font-size: 14px;
+      max-width: 600px;
+      @media (min-width: 1921px) {
+        max-width: 800px;
       }
-    }
-    @media (min-width: 1921px) {
-      padding-top: 5svh;
-    }
-    @media (max-width: 1279px) {
-      .title {
-        max-width: 500px;
+      @media (max-width: 1023px) {
+        max-width: 492px;
+        padding: 0px 20px;
       }
-    }
-    @media (max-width: 599px) {
-      padding-top: 20px;
-      .subtitle {
-        max-width: 330px;
-      }
-    }
-    @media (max-height: 639px) and (max-width: 599px) {
-      margin-bottom: 26px;
     }
   }
 }
@@ -66,30 +96,53 @@
 
 .foue {
   display: flex;
-  position: absolute;
-  bottom: 0px;
+  position: relative;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
   align-content: flex-end;
   width: 100%;
+  height: auto;
   flex: 1;
   overflow: hidden;
-  //margin-top: -88px;
+  margin-top: 24px;
+
+  @media (min-width: 1152px) {
+    flex: 0 1 calc(100vw * 1024 / 2878);
+    min-height: 340px;
+    margin-top: 0;
+  }
+
+  // растягивается по свободному месту, но не выше лимита
+  @media (max-width: 1040px) {
+    max-height: 800px;
+  }
+  @media (max-width: 499px) {
+    max-height: 400px;
+  }
 
   .scroll-area {
     display: flex;
     width: 100%;
+    height: 100%;
     flex-direction: column;
     justify-content: flex-end;
     flex: 1;
     position: absolute;
+    top: 0;
+    left: 0;
     overflow-x: scroll;
-    overflow-y: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    position: relative;
-    margin-bottom: -20px;
-    flex: 1;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media (min-width: 1152px) {
+      overflow: hidden;
+    }
 
     .foue__navigation {
       display: inline-flex;
@@ -100,70 +153,115 @@
       width: 100%;
       height: auto;
       margin: 0px auto;
-
-      .foue-image {
-        width: auto;
-        min-width: auto;
-        height: 100%;
-        // height: calc(103.7svh - 180px);
-        // @media (min-width: 1441px) {
-        //   height: calc(100svh - 180px);
-        // }
-        // @media (min-width: 1921px) {
-        //   height: calc(92svh - 180px);
-        // }
-        object-fit: contain;
-        margin: auto;
-      }
     }
   }
 }
 
-.door {
-  position: absolute;
-  z-index: 2;
+.foue-image-wrapper {
   display: block;
-  width: 7.6388%;
-  height: 51.9736%;
-  left: 0px;
-  bottom: 13.3223%;
-  &.door--director {
-    left: 10.9%;
-  }
-  &.door--buffet {
-    left: 21.39%;
-  }
-  &.door--makeup {
-    left: 31.88%;
-  }
-  &.door--stage {
-    width: 13.5%;
-    left: 43.4%;
-  }
-  &.door--wardrobe {
-    left: 60.9%;
-  }
-  &.door--orchestra {
-    left: 71.1%;
-  }
-  &.door--vtb-offer {
-    left: 81.33%;
-  }
-  &.door--secret {
-    width: 6.8%;
-    left: auto;
-    right: 0%;
-    height: 54%;
-    bottom: 12%;
+  position: relative;
+  flex-shrink: 0;
+  align-self: flex-start;
+  width: auto;
+  height: 100%;
+  min-width: 100%;
+  aspect-ratio: 2878 / 1024;
+  margin: 0;
+
+  // ширина идёт от высоты блока через aspect-ratio, по бокам могут появиться поля
+  @media (min-width: 1152px) {
+    align-self: center;
+    min-width: 0;
   }
 }
 
-.key {
-  position: absolute;
+.foue-image {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: left top;
   pointer-events: none;
-  bottom: 33%;
-  left: 90.5%;
-  width: 4.3055%;
+  z-index: 2;
+}
+
+.door {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  left: 0px;
+  top: 0px;
+  z-index: 2;
+  transition: opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.door-link {
+  display: block;
+  position: absolute;
+  width: 8.3391%;
+  z-index: 3;
+  left: 0px;
+  top: 0px;
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 250%;
+  }
+
+  &:hover {
+    + .door {
+      opacity: 1;
+    }
+  }
+
+  &.directors {
+    left: 4.4475%;
+    top: 30.9%;
+  }
+
+  &.buffet {
+    left: 16%;
+    top: 30.9%;
+  }
+
+  &.makeup {
+    left: 27.5%;
+    top: 30.9%;
+  }
+
+  &.stage {
+    width: 18.1%;
+    left: 40.9%;
+    top: 26.5%;
+    background: url('../img/foue/scene-bg.webp') no-repeat top center;
+    background-size: 100% auto;
+    z-index: 1;
+
+    &::before {
+      padding-top: 125%;
+    }
+  }
+
+  &.wardrobe {
+    left: 64.4%;
+    top: 30.9%;
+  }
+
+  &.orchestra {
+    left: 75.8%;
+    top: 30.9%;
+  }
+  &.vtb-offer {
+    left: 87.2%;
+    top: 30.9%;
+  }
 }
 
 .select-a-play {

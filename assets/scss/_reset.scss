@@ -38,6 +38,8 @@ body {
   line-height: 1;
   overflow-x: hidden;
   //overflow-y: auto;
+  // шкала прокрутки .main видна соседям (шапке)
+  timeline-scope: --page-scroll;
 }
 
 img {
@@ -108,6 +110,8 @@ a {
   -ms-overflow-style: none; /* IE/Edge legacy */
   z-index: 19;
   isolation: isolate;
+  // страница прокручивается здесь, а не в html — по этой шкале анимируется шапка
+  scroll-timeline: --page-scroll block;
 
   &.main--single {
     opacity: 0;
@@ -135,7 +139,7 @@ a {
     opacity 0.5s ease-in-out 0s,
     transform 1s ease-in-out 0.3s;
   opacity: 0;
-  padding-top: myclamp(50px, 60px, 1440px, 1440px);
+  padding-top: 60px;
 }
 
 .container {
