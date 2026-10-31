@@ -26,9 +26,7 @@
   .titles {
     z-index: 2;
     gap: 0px;
-    //margin-top: 24px;
 
-    // по центру места, оставшегося над картинкой
     @media (min-width: 1152px) {
       flex-shrink: 0;
       margin-top: auto;
@@ -37,7 +35,6 @@
       padding-bottom: 24px;
     }
 
-    // картинка ограничена по высоте, заголовки делят с ней свободное место
     @media (max-width: 1040px) {
       margin-top: auto;
       margin-bottom: auto;
@@ -106,7 +103,6 @@
   width: 100%;
   height: auto;
   flex: 1;
-  // ниже картинка не сжимается: на низких экранах (телефон боком) листается .main
   min-height: 340px;
   overflow: hidden;
   margin-top: 24px;
@@ -116,10 +112,10 @@
     margin-top: 0;
   }
 
-  // растягивается по свободному месту, но не выше лимита
   @media (max-width: 1040px) {
     max-height: 800px;
   }
+
   @media (max-width: 499px) {
     max-height: 400px;
   }
@@ -246,7 +242,14 @@
     background: url('../img/foue/scene-bg.webp') no-repeat center -8%;
     background-size: 88% auto;
     z-index: 1;
-
+    &.front {
+      z-index: 3;
+      background: none;
+      pointer-events: none;
+      &::after {
+        content: none;
+      }
+    }
     &::before {
       padding-top: 125%;
     }
@@ -258,19 +261,42 @@
       width: 100%;
       padding-top: 100%;
       border-radius: 200px;
-      transition: 0.8s ease-out;
+      transition: 0.8s ease;
       background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0) 100%);
       left: 50%;
       top: 50%;
       opacity: 0;
       pointer-events: none;
       transform: translate(-50%, -20%) scale(1);
+      @media (max-width: 767px) {
+        transform: translate(-50%, -50%) scale(1.4);
+        opacity: 1;
+      }
     }
 
     &:hover {
       &::after {
         transform: translate(-50%, -50%) scale(1.4);
         opacity: 1;
+      }
+
+      + .front {
+        .foue-person {
+          opacity: 1;
+          &.foue-person--1 {
+            transform: translateY(-164%) translateX(-120%);
+          }
+          &.foue-person--2 {
+            transform: translateY(-164%) translateX(-35%);
+          }
+          &.foue-person--3 {
+            width: 15%;
+            transform: translateY(-172%) translateX(60%);
+            &:before {
+              padding-top: 145%;
+            }
+          }
+        }
       }
     }
   }
@@ -287,6 +313,67 @@
   &.vtb-offer {
     left: 87.2%;
     top: 30.9%;
+  }
+}
+
+.foue-person {
+  position: absolute;
+  display: block;
+  width: 15.38%;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  opacity: 0;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+
+  &:before {
+    content: '';
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-top: 150%;
+  }
+  img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &.foue-person--1 {
+    transform: translateY(-164%) translateX(-230%);
+  }
+  &.foue-person--2 {
+    transform: translateY(-164%) translateX(-230%);
+  }
+  &.foue-person--3 {
+    width: 15%;
+    transform: translateY(-172%) translateX(140%);
+    &:before {
+      padding-top: 145%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    opacity: 1;
+    &.foue-person--1 {
+      transform: translateY(-164%) translateX(-120%);
+    }
+    &.foue-person--2 {
+      transform: translateY(-164%) translateX(-35%);
+    }
+    &.foue-person--3 {
+      width: 15%;
+      transform: translateY(-172%) translateX(60%);
+      &:before {
+        padding-top: 145%;
+      }
+    }
   }
 }
 
@@ -369,13 +456,11 @@
   left: 50%;
   top: 50%;
   transform: translate(-54%, -78%);
-  /* WebKit (Safari, Chrome) */
   -webkit-mask-image: url('../img/svg/blick-mask.svg');
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   -webkit-mask-size: cover;
 
-  /* Standard */
   mask-image: url('../img/svg/blick-mask.svg');
   mask-repeat: no-repeat;
   mask-position: center;
