@@ -205,7 +205,7 @@
   width: 100%;
   height: 100svh;
   z-index: 19;
-  padding: myclamp(50px, 60px, 1440px, 1440px) 0px myclamp(20px, 30px, 1440px, 1440px) 0px;
+  padding: 60px 20px 20px 20px;
   transition: 0.5s;
   opacity: 0;
   visibility: hidden;
@@ -230,16 +230,21 @@
   justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
-  gap: 40px 150px;
+  gap: 24px 150px;
   text-align: center;
   margin: auto;
-  padding: myclamp(50px, 90px, 1440px, 1440px) 0px;
+  padding: 50px 0px;
+  @media (min-width: 1440px) {
+    gap: 40px 150px;
+  }
   @media (max-width: 1023px) {
-    gap: 20px;
-    max-width: 400px;
+    gap: 50px 20px;
+    max-width: 520px;
   }
   @media (max-width: 767px) {
-    max-width: 320px;
+    gap: 20px;
+    max-width: 326px;
+    padding-top: 0px;
   }
 
   li {
@@ -263,31 +268,50 @@
       align-items: center;
       align-content: center;
       text-align: center;
-      gap: myclamp(10px, 24px, 1440px, 1440px);
+      gap: myclamp(10px, 20px, 1440px, 1440px);
+      margin: 0 auto;
     }
     img {
       position: relative;
-      width: myclamp(70px, 130px, 1440px, 1440px);
-      height: myclamp(70px, 130px, 1440px, 1440px);
+      width: 130px;
+      height: 130px;
       margin: 0 auto;
       transform: scale(1);
       transition: 0.6s;
       object-fit: contain;
       filter: drop-shadow(0 3px 3px rgba(0, 12, 71, 0.28)) drop-shadow(0 12px 6px rgba(0, 12, 71, 0.24)) drop-shadow(0 27px 8px rgba(0, 12, 71, 0.14))
-        drop-shadow(0 47px 9.5px rgba(0, 12, 71, 0.04)) drop-shadow(0 74px 10.5px rgba(0, 12, 71, 0.01));
+        drop-shadow(0 47px 9.5px rgba(0, 12, 71, 0.04));
+
+      @media (max-width: 1439px) {
+        width: 98px;
+        height: 98px;
+      }
+      @media (max-width: 767px) {
+        width: 64px;
+        height: 64px;
+      }
     }
     b {
-      font-size: myclamp(16px, 26px, 1440px, 1440px);
+      font-size: 26px;
       font-weight: 500;
-      @media (min-width: 768px) {
-        white-space: nowrap;
+      @media (max-width: 1439px) {
+        font-size: 20px;
+      }
+      @media (max-width: 767px) {
+        font-size: 16px;
       }
     }
     p {
       max-width: myclamp(150px, 210px, 1440px, 1440px);
       font-weight: 400;
-      font-size: myclamp(12px, 16px, 1440px, 1440px);
-      line-height: 1.4;
+      font-size: 16px;
+      line-height: normal;
+      @media (max-width: 1439px) {
+        font-size: 14px;
+      }
+      @media (max-width: 767px) {
+        font-size: 12px;
+      }
     }
 
     @media (hover: hover) {
@@ -303,12 +327,19 @@
 .map-link {
   display: inline-block;
   position: relative;
-  font-size: 20px;
   line-height: 1;
   font-weight: 500;
   align-self: end;
   justify-self: center;
   padding-top: 10px;
+
+  font-size: 26px;
+  @media (max-width: 1439px) {
+    font-size: 20px;
+  }
+  @media (max-width: 767px) {
+    font-size: 16px;
+  }
 }
 
 .column {
@@ -403,5 +434,37 @@
         }
       }
     }
+  }
+}
+
+.assistent {
+  width: 130px;
+  height: auto;
+  position: fixed;
+  left: 20px;
+  bottom: 5px;
+  z-index: 18;
+  transition: opacity 0.5s ease;
+  opacity: 1;
+  pointer-events: auto;
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  @media (min-width: 1600px) {
+    width: 150px;
+  }
+  @media (min-width: 2560px) {
+    width: 180px;
+  }
+  @media (max-width: 767px) {
+    width: 104px;
+    bottom: 8px;
+    left: 14px;
   }
 }

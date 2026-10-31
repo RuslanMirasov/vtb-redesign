@@ -41,7 +41,7 @@
       padding-top: 24px;
     }
     @media (max-width: 767px) {
-      gap: 10px;
+      gap: 5px;
       padding-top: 0px;
       padding-bottom: 0px;
     }
@@ -117,7 +117,7 @@
   }
 
   @media (max-width: 499px) {
-    max-height: 400px;
+    max-height: 60vh;
   }
 
   .scroll-area {
@@ -387,8 +387,8 @@
   background: var(--white);
   z-index: 301;
   transition: 1s;
-  transform: translate(0%, 140%);
-  opacity: 0;
+  transform: translate(0%, 0%);
+  opacity: 1;
 
   img {
     width: 100%;

@@ -62,6 +62,7 @@ export const initNavigationMenu = () => {
   const goBackButton = document.querySelector('.go-back');
   const tipNavigation = document.querySelector('.tip-navigation');
   const themeSwitcher = document.querySelector('.theme-switcher');
+  const assistent = document.querySelector('.assistent');
 
   const toggleMenu = () => {
     burger?.classList.toggle('open');
@@ -75,6 +76,7 @@ export const initNavigationMenu = () => {
     fixedBackground?.classList.toggle('move');
     tipNavigation?.classList.toggle('hidden');
     themeSwitcher?.classList.toggle('hidden');
+    assistent?.classList.toggle('hidden');
   };
 
   if (burger) burger.addEventListener('click', toggleMenu);
