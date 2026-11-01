@@ -44,13 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const soundsSlider = window.swipers?.['sound-slider'];
 
   if (stageSlider) {
-    stageSlider.on('slideChange', () => {
+    const syncStageSlide = () => {
       const index = stageSlider.activeIndex;
       const slideEl = stageSlider.slides[index];
       const number = slideEl?.dataset?.number;
       if (number) {
         onStageSlideChange(Number(number));
       }
-    });
+    };
+
+    stageSlider.on('slideChange', syncStageSlide);
+    // Слайд мог восстановиться из sessionStorage до подписки на slideChange
+    syncStageSlide();
   }
 });

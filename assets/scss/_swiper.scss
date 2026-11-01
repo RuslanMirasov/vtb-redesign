@@ -5,8 +5,8 @@
 .swiper-arrow {
   display: flex;
   position: absolute;
-  width: myclamp(32px, 46px, 1440px, 2560px);
-  height: myclamp(32px, 46px, 1440px, 2560px);
+  width: myclamp(56px, 56px, 1440px, 2560px);
+  height: myclamp(56px, 56px, 1440px, 2560px);
   border: none;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,12 @@
   z-index: 19;
   overflow: hidden;
   border-radius: 46px;
-  background: url('../img/header/bg.webp') no-repeat center center/cover;
+  background: #fff;
+
+  @media (max-width: 767px) {
+    width: 46px;
+    height: 46px;
+  }
 
   &:before {
     content: '';

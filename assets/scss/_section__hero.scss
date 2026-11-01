@@ -107,6 +107,36 @@
   overflow: hidden;
   margin-top: 24px;
 
+  container-type: size;
+
+  // половина ширины картинки: её ширина идёт от высоты через aspect-ratio
+  --foue-half: calc(100cqh * 2878 / 1024 / 2);
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 1440px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+
+    @media (max-width: 1151px) {
+      content: none;
+    }
+  }
+  &:before {
+    right: calc(50% + var(--foue-half) - 1px);
+    background: url('../img/foue/foue_left.webp') no-repeat right center;
+    background-size: auto 100%;
+  }
+  &:after {
+    left: calc(50% + var(--foue-half) -1px);
+    background: url('../img/foue/foue_right.webp') no-repeat left center;
+    background-size: auto 100%;
+  }
+
   @media (min-width: 1152px) {
     flex: 0 1 calc(100vw * 1024 / 2878);
     margin-top: 0;
@@ -172,6 +202,24 @@
     align-self: center;
     min-width: 0;
   }
+
+  // &:before,
+  // &:after {
+  //   content: '';
+  //   width: 1440px;
+  //   height: 100%;
+  //   position: absolute;
+  //   top: 0px;
+  // }
+  // &:before {
+  //   right: 100%;
+  //   background: red;
+  // }
+
+  // &:after {
+  //   left: 100%;
+  //   background: red;
+  // }
 }
 
 .foue-image {

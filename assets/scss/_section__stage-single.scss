@@ -362,7 +362,7 @@
     }
   }
 
-  .stage-desctiption,
+  .stage-description,
   [data-sidebar-popup-close] {
     display: none;
   }
@@ -485,23 +485,23 @@
 
   .stage-single {
     margin-bottom: 60px;
-    > .stage-desctiption {
-      .subtitle {
-        width: 100%;
-        text-align: center;
-        margin-top: 5px;
-        margin-bottom: 10px;
-      }
-    }
-    .stage-desctiption {
-      flex-direction: column;
-      .table {
-        order: 1;
-      }
-      .description {
-        order: 2;
-      }
-    }
+    // > .stage-description {
+    //   .subtitle {
+    //     width: 100%;
+    //     text-align: center;
+    //     margin-top: 5px;
+    //     margin-bottom: 10px;
+    //   }
+    // }
+    // .stage-description {
+    //   flex-direction: column;
+    //   .table {
+    //     order: 1;
+    //   }
+    //   .description {
+    //     order: 2;
+    //   }
+    // }
   }
 
   .stage-single__content {
@@ -517,7 +517,9 @@
     position: relative;
     gap: 30px;
     opacity: 0;
-    transition: opacity 0.5s, transform 0.5s;
+    transition:
+      opacity 0.5s,
+      transform 0.5s;
     transform: translate(0px, 50px);
     pointer-events: none;
     &.active {
@@ -539,26 +541,26 @@
       overflow-y: visible;
       height: auto;
     }
-    .stage-desctiption {
-      display: flex;
-      text-align: center;
-      width: 100%;
+    // .stage-description {
+    //   display: flex;
+    //   text-align: center;
+    //   width: 100%;
 
-      .description {
-        gap: 20px;
-        margin-top: 20px;
-        order: 2;
-      }
+    //   .description {
+    //     gap: 20px;
+    //     margin-top: 20px;
+    //     order: 2;
+    //   }
 
-      hr {
-        order: 3;
-        margin-top: 20px;
-      }
-      .subtitle {
-        text-align: center;
-        width: 100%;
-      }
-    }
+    //   hr {
+    //     order: 3;
+    //     margin-top: 20px;
+    //   }
+    //   .subtitle {
+    //     text-align: center;
+    //     width: 100%;
+    //   }
+    // }
 
     .sidebar__buttons {
       padding: 0px 20px 30px 20px;

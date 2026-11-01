@@ -140,9 +140,9 @@ export const initSliders = () => {
 export const onStageSlideChange = number => {
   if (!number) return;
   const activeHead = document.querySelector('.circle__image.active');
-  const activeDescription = document.querySelector('.stage-desctiption.active');
+  const activeDescription = document.querySelector('.stage-description.active');
   const targetHead = document.querySelector(`.circle__image--${number}`);
-  const targetDescription = document.querySelector(`.stage-desctiption--${number}`);
+  const targetDescription = document.querySelector(`.stage-description--${number}`);
 
   activeHead?.classList.remove('active');
   activeDescription?.classList.remove('active');

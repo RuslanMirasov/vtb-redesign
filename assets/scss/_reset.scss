@@ -144,21 +144,17 @@ a {
 
 .container {
   display: block;
+  position: relative;
   margin: 0 auto;
   width: 100%;
-  max-width: myclamp(320px, 1200px, 1440px, 2560px);
-  &.w--600 {
-    max-width: myclamp(600px, 600px, 1440px, 2560px);
-    @media (max-width: 767px) {
-      max-width: 330px;
-    }
+  max-width: 1440px;
+  padding: 0px 40px;
+  padding-top: 60px;
+  @media (max-width: 767px) {
+    padding: 0px 20px;
   }
-
-  &.w--800 {
-    max-width: myclamp(800px, 800px, 1440px, 2560px);
-    @media (max-width: 767px) {
-      max-width: 330px;
-    }
+  &.full {
+    max-width: 100%;
   }
 }
 
@@ -344,4 +340,8 @@ hr {
   position: relative;
   transform: skewX(-20deg);
   font-family: var(--pacifico);
+}
+
+[hidden] {
+  display: none !important;
 }

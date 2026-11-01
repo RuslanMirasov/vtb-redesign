@@ -9,15 +9,6 @@
   align-content: center;
   padding: 0;
 
-  .description {
-    .title {
-      text-align: left;
-      @media (max-width: 1023px) {
-        text-align: center;
-      }
-    }
-  }
-
   &:before {
     content: '';
     position: absolute;
@@ -26,48 +17,58 @@
     width: 100%;
     transition: opacity 2s;
     opacity: 1;
-    height: myclamp(82px, 82px, 1440px, 2560px);
+    height: 142px;
     background: url('../img/floor.webp') no-repeat center center/cover;
     z-index: 2;
+    @media (max-width: 767px) {
+      height: 130px;
+    }
   }
 
-  &:after {
-    content: '';
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    width: 100%;
-    transition: opacity 2s;
-    opacity: 0;
-    height: myclamp(120px, 120px, 1440px, 2560px);
-    background: url('../img//vyazanyi-konek/floor.webp') no-repeat center top/cover;
-    z-index: 2;
-  }
+  // .swiper-arrow {
+  //   &[data-arrow-prev] {
+  //     left: myclamp(24px, 40px, 1440px, 2560px);
+  //   }
 
+  //   &[data-arrow-next] {
+  //     right: myclamp(24px, 40px, 1440px, 2560px);
+  //   }
+  // }
+}
+
+.stage-arrows {
+  display: inline-flex;
+  position: relative;
+  width: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
   .swiper-arrow {
-    &[data-arrow-prev] {
-      left: myclamp(24px, 40px, 1440px, 2560px);
-    }
-
-    &[data-arrow-next] {
-      right: myclamp(24px, 40px, 1440px, 2560px);
-    }
+    position: relative;
+  }
+  gap: myclamp(20px, 20px, 1440px, 2560px);
+  @media (max-width: 767px) {
+    gap: 16px;
   }
 }
 
-.snow {
-  .section--stage {
-    &:before {
-      opacity: 0;
-    }
+// .snow {
+//   .section--stage {
+//     &:before {
+//       opacity: 0;
+//     }
 
-    &:after {
-      opacity: 1;
-    }
-  }
-}
+//     &:after {
+//       opacity: 1;
+//     }
+//   }
+// }
 
 .swiper--stage {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
   z-index: 3;
   width: 100%;
   height: 100%;
@@ -184,17 +185,17 @@
   }
 }
 
-.snow {
-  .circle__head,
-  .circle {
-    &:before {
-      opacity: 1;
-    }
-    &:after {
-      opacity: 0;
-    }
-  }
-}
+// .snow {
+//   .circle__head,
+//   .circle {
+//     &:before {
+//       opacity: 1;
+//     }
+//     &:after {
+//       opacity: 0;
+//     }
+//   }
+// }
 
 .circle__images {
   display: flex;
@@ -225,7 +226,9 @@
     max-height: 100%;
     opacity: 0;
     transform: scale(0);
-    transition: transform 1s, opacity 1s;
+    transition:
+      transform 1s,
+      opacity 1s;
     object-fit: contain;
     &.active {
       opacity: 1;
@@ -246,20 +249,20 @@
   }
 }
 
-.snow {
-  .circle__images {
-    .circle__image {
-      img {
-        &.circle__images--normal {
-          opacity: 0;
-        }
-        &.circle__images--snow {
-          opacity: 1;
-        }
-      }
-    }
-  }
-}
+// .snow {
+//   .circle__images {
+//     .circle__image {
+//       img {
+//         &.circle__images--normal {
+//           opacity: 0;
+//         }
+//         &.circle__images--snow {
+//           opacity: 1;
+//         }
+//       }
+//     }
+//   }
+// }
 
 .character {
   display: block;
@@ -422,56 +425,35 @@
   }
 }
 
-.stage-desctiptions {
+.stage-descriptions {
   display: block;
-  position: absolute;
-  height: 100%;
-  z-index: 3;
-  padding-top: 96px;
-  padding-bottom: 12px;
-  pointer-events: none;
-  @media (min-width: 1440px) {
-    padding-top: myclamp(72px, 96px, 1440px, 2000px);
-  }
-  @media (max-width: 1023px) {
-    padding-top: myclamp(72px, 96px, 1024px, 1440px);
-  }
-
-  .button {
-    pointer-events: all;
+  position: relative;
+  width: 100%;
+  max-width: myclamp(424px, 424px, 1440px, 2560px);
+  border: 1px solid red;
+  z-index: 5;
+  @media (max-width: 1439px) {
+    max-width: 358px;
   }
 }
 
-.stage-desctiption {
+.stage-description {
   display: flex;
-  position: absolute;
-  pointer-events: none;
-  left: 0px;
-  @media (min-width: 1440px) {
-    top: myclamp(72px, 96px, 1440px, 2000px);
-    height: calc(100% - myclamp(82px, 106px, 1440px, 2000px));
-  }
-  @media (max-width: 1023px) {
-    top: myclamp(72px, 96px, 1024px, 1440px);
-    height: calc(100% - myclamp(82px, 106px, 1024px, 1440px));
-  }
-  &.relative {
-    position: relative;
-    height: auto;
-    top: auto;
-    align-items: center;
-    align-content: center;
-  }
   width: 100%;
-  justify-content: space-between;
+  position: absolute;
+  left: 0px;
+  z-index: 2;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: flex-start;
   align-content: flex-start;
-  gap: 14px;
+  gap: myclamp(32px, 32px, 1440px, 2000px);
   transition: 1s;
   opacity: 0;
   visibility: hidden;
-  z-index: 2;
+
   &.active {
+    position: relative;
     opacity: 1;
     visibility: visible;
     z-index: 3;
@@ -480,173 +462,255 @@
     }
   }
 
-  .description {
-    display: inline-flex;
-    position: relative;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: myclamp(8px, 32px, 1440px, 2560px);
-    order: 1;
-
-    @media (max-width: 1023px) {
-      gap: 0px;
-    }
-
-    .title {
-      @media (max-width: 1279px) {
-        padding: 0px 40px;
-      }
-      @media (max-width: 767px) {
-        padding: 0px 0px;
-      }
-      @media (max-width: 1023px) {
-        width: 100%;
-      }
-    }
-
-    .subtitle {
-      display: block;
-      text-align: left;
-      margin-top: -8px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 20px;
-      flex-direction: column;
-    }
+  .title,
+  .subtitle {
+    text-align: left;
   }
 
   .table {
-    display: inline-flex;
+    display: flex;
     position: relative;
+    width: 100%;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     align-content: center;
-    gap: myclamp(20px, 30px, 1440px, 2560px);
-    padding: myclamp(8px, 12px, 1440px, 2560px) myclamp(14px, 20px, 1440px, 2560px);
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 100px;
-    order: 2;
-    img {
-      height: myclamp(24px, 36px, 1440px, 2560px);
-    }
-
+    gap: 24px;
     li {
-      display: flex;
-      position: relative;
-      justify-content: center;
-      align-items: center;
-      align-content: center;
-      gap: myclamp(8px, 12px, 1440px, 2560px);
-      white-space: nowrap;
-      font-size: myclamp(14px, 18px, 1440px, 2560px);
-      font-weight: 500;
-      &.time {
-        &:before {
-          content: '';
-          width: myclamp(24px, 36px, 1440px, 2560px);
-          height: myclamp(24px, 36px, 1440px, 2560px);
-          background: url('../img/stage/icon-time.webp') no-repeat center center/cover;
-        }
-      }
-      &.peoples {
-        &:before {
-          content: '';
-          width: myclamp(32px, 48px, 1440px, 2560px);
-          height: myclamp(24px, 36px, 1440px, 2560px);
-          background: url('../img/stage/icon-peoples.webp') no-repeat center center/cover;
-        }
-      }
-      &.state {
-        &:before {
-          content: '';
-          width: myclamp(17px, 25px, 1440px, 2560px);
-          height: myclamp(24px, 36px, 1440px, 2560px);
-          background: url('../img/stage/icon-state.webp') no-repeat center center/cover;
-        }
-      }
-      &.place {
-        &:before {
-          content: '';
-          width: myclamp(24px, 24px, 1440px, 2560px);
-          height: myclamp(24px, 24px, 1440px, 2560px);
-          background: url('../img/stage/icon-place.webp') no-repeat center center/cover;
-        }
-      }
-    }
+      font-size: myclamp(16px, 16px, 1440px, 2560px);
+      line-height: 1.1;
 
-    &.small {
-      gap: myclamp(20px, 20px, 1440px, 2560px);
-      padding: myclamp(8px, 8px, 1440px, 2560px) myclamp(14px, 14px, 1440px, 2560px);
-      img {
-        height: myclamp(24px, 24px, 1440px, 2560px);
-      }
-      li {
-        gap: myclamp(8px, 8px, 1440px, 2560px);
-        font-size: myclamp(14px, 14px, 1440px, 2560px);
-        &.time {
-          &:before {
-            width: myclamp(24px, 24px, 1440px, 2560px);
-            height: myclamp(24px, 24px, 1440px, 2560px);
-          }
-        }
-        &.peoples {
-          &:before {
-            width: myclamp(32px, 32px, 1440px, 2560px);
-            height: myclamp(24px, 24px, 1440px, 2560px);
-          }
-        }
-        &.state {
-          &:before {
-            width: myclamp(17px, 17px, 1440px, 2560px);
-            height: myclamp(24px, 24px, 1440px, 2560px);
-          }
-        }
+      @media (max-width: 1279px) {
+        font-size: 14px;
       }
     }
   }
 }
 
-@media (max-width: 767px), (orientation: portrait) {
-  .stage-desctiptions {
-    .stage-desctiption {
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      align-content: center;
+// .stage-descriptions {
+//   display: block;
+//   position: relative;
+//   height: 100%;
+//   z-index: 3;
+//   padding-top: 96px;
+//   padding-bottom: 12px;
+//   pointer-events: none;
+//   @media (min-width: 1440px) {
+//     padding-top: myclamp(72px, 96px, 1440px, 2000px);
+//   }
+//   @media (max-width: 1023px) {
+//     padding-top: myclamp(72px, 96px, 1024px, 1440px);
+//   }
 
-      .description {
-        justify-content: flex-start;
-        align-items: center;
-        align-content: center;
-        order: 2;
-        flex: 1;
+//   .button {
+//     pointer-events: all;
+//   }
+// }
 
-        .subtitle {
-          text-align: center;
-          margin-top: 0px;
-        }
+// .stage-description {
+//   display: flex;
+//   position: absolute;
+//   left: 0px;
+//   @media (min-width: 1440px) {
+//     top: myclamp(72px, 96px, 1440px, 2000px);
+//     height: calc(100% - myclamp(82px, 106px, 1440px, 2000px));
+//   }
+//   @media (max-width: 1023px) {
+//     top: myclamp(72px, 96px, 1024px, 1440px);
+//     height: calc(100% - myclamp(82px, 106px, 1024px, 1440px));
+//   }
+//   &.relative {
+//     position: relative;
+//     height: auto;
+//     top: auto;
+//     align-items: center;
+//     align-content: center;
+//   }
+//   width: 100%;
+//   justify-content: space-between;
+//   align-items: flex-start;
+//   align-content: flex-start;
+//   gap: 14px;
+//   transition: 1s;
+//   opacity: 0;
+//   visibility: hidden;
+//   z-index: 2;
+//   &.active {
+//     opacity: 1;
+//     visibility: visible;
+//     z-index: 3;
+//     .button {
+//       pointer-events: all;
+//     }
+//   }
 
-        .buttons {
-          display: block;
-          margin-top: auto;
-          max-width: 220px;
+//   .description {
+//     display: inline-flex;
+//     position: relative;
+//     flex-direction: column;
+//     align-items: flex-start;
+//     gap: myclamp(8px, 32px, 1440px, 2560px);
+//     order: 1;
 
-          .button {
-            min-width: 20px;
-            flex: 1;
-            width: 100%;
-            span {
-              padding: 5px 24px;
-            }
-          }
-        }
-        .button {
-          min-width: 200px;
-          margin-top: auto;
-        }
-      }
-    }
-  }
-}
+//     @media (max-width: 1023px) {
+//       gap: 0px;
+//     }
+
+//     .title {
+//       @media (max-width: 1279px) {
+//         padding: 0px 40px;
+//       }
+//       @media (max-width: 767px) {
+//         padding: 0px 0px;
+//       }
+//       @media (max-width: 1023px) {
+//         width: 100%;
+//       }
+//     }
+
+//     .subtitle {
+//       display: block;
+//       text-align: left;
+//       margin-top: -8px;
+//     }
+
+//     .buttons {
+//       display: flex;
+//       gap: 20px;
+//       flex-direction: column;
+//     }
+//   }
+
+//   .table {
+//     display: inline-flex;
+//     position: relative;
+//     justify-content: center;
+//     align-items: center;
+//     align-content: center;
+//     gap: myclamp(20px, 30px, 1440px, 2560px);
+//     padding: myclamp(8px, 12px, 1440px, 2560px) myclamp(14px, 20px, 1440px, 2560px);
+//     background: rgba(255, 255, 255, 0.2);
+//     border-radius: 100px;
+//     order: 2;
+//     img {
+//       height: myclamp(24px, 36px, 1440px, 2560px);
+//     }
+
+//     li {
+//       display: flex;
+//       position: relative;
+//       justify-content: center;
+//       align-items: center;
+//       align-content: center;
+//       gap: myclamp(8px, 12px, 1440px, 2560px);
+//       white-space: nowrap;
+//       font-size: myclamp(14px, 18px, 1440px, 2560px);
+//       font-weight: 500;
+//       &.time {
+//         &:before {
+//           content: '';
+//           width: myclamp(24px, 36px, 1440px, 2560px);
+//           height: myclamp(24px, 36px, 1440px, 2560px);
+//           background: url('../img/stage/icon-time.webp') no-repeat center center/cover;
+//         }
+//       }
+//       &.peoples {
+//         &:before {
+//           content: '';
+//           width: myclamp(32px, 48px, 1440px, 2560px);
+//           height: myclamp(24px, 36px, 1440px, 2560px);
+//           background: url('../img/stage/icon-peoples.webp') no-repeat center center/cover;
+//         }
+//       }
+//       &.state {
+//         &:before {
+//           content: '';
+//           width: myclamp(17px, 25px, 1440px, 2560px);
+//           height: myclamp(24px, 36px, 1440px, 2560px);
+//           background: url('../img/stage/icon-state.webp') no-repeat center center/cover;
+//         }
+//       }
+//       &.place {
+//         &:before {
+//           content: '';
+//           width: myclamp(24px, 24px, 1440px, 2560px);
+//           height: myclamp(24px, 24px, 1440px, 2560px);
+//           background: url('../img/stage/icon-place.webp') no-repeat center center/cover;
+//         }
+//       }
+//     }
+
+//     &.small {
+//       gap: myclamp(20px, 20px, 1440px, 2560px);
+//       padding: myclamp(8px, 8px, 1440px, 2560px) myclamp(14px, 14px, 1440px, 2560px);
+//       img {
+//         height: myclamp(24px, 24px, 1440px, 2560px);
+//       }
+//       li {
+//         gap: myclamp(8px, 8px, 1440px, 2560px);
+//         font-size: myclamp(14px, 14px, 1440px, 2560px);
+//         &.time {
+//           &:before {
+//             width: myclamp(24px, 24px, 1440px, 2560px);
+//             height: myclamp(24px, 24px, 1440px, 2560px);
+//           }
+//         }
+//         &.peoples {
+//           &:before {
+//             width: myclamp(32px, 32px, 1440px, 2560px);
+//             height: myclamp(24px, 24px, 1440px, 2560px);
+//           }
+//         }
+//         &.state {
+//           &:before {
+//             width: myclamp(17px, 17px, 1440px, 2560px);
+//             height: myclamp(24px, 24px, 1440px, 2560px);
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @media (max-width: 767px), (orientation: portrait) {
+//   .stage-descriptions {
+//     .stage-description {
+//       flex-direction: column;
+//       justify-content: flex-start;
+//       align-items: center;
+//       align-content: center;
+
+//       .description {
+//         justify-content: flex-start;
+//         align-items: center;
+//         align-content: center;
+//         order: 2;
+//         flex: 1;
+
+//         .subtitle {
+//           text-align: center;
+//           margin-top: 0px;
+//         }
+
+//         .buttons {
+//           display: block;
+//           margin-top: auto;
+//           max-width: 220px;
+
+//           .button {
+//             min-width: 20px;
+//             flex: 1;
+//             width: 100%;
+//             span {
+//               padding: 5px 24px;
+//             }
+//           }
+//         }
+//         .button {
+//           min-width: 200px;
+//           margin-top: auto;
+//         }
+//       }
+//     }
+//   }
+// }

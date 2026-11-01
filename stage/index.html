@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
@@ -48,7 +48,7 @@
           }
         }
 
-        (k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]), (k.async = 1), (k.src = r), a.parentNode.insertBefore(k, a);
+        ((k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]), (k.async = 1), (k.src = r), a.parentNode.insertBefore(k, a));
       })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=105298510', 'ym');
 
       ym(105298510, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: 'dataLayer', accurateTrackBounce: true, trackLinks: true });
@@ -61,13 +61,11 @@
 
     <!--HEADER-->
     <header class="header">
-      <a href="./../" class="logo switch">
+      <a href="./../" class="logo">
         <img src="./../assets/img/logo.svg" alt="ВТБ" />
       </a>
 
-      <button class="burger">
-        <span>Меню бургер</span>
-      </button>
+      <button class="burger" aria-label="Меню бургер"></button>
     </header>
 
     <!--NAVIGATION-->
@@ -77,47 +75,48 @@
           <a href="./../stage" class="menu__link">
             <img src="./../assets/img/header/nav1.webp" alt="ВТБ" />
             <b>Сцена</b>
-            <p>Пьесы&nbsp;для домашнего театра</p>
+            <p>Пьесы для домашнего&nbsp;театра</p>
           </a>
         </li>
         <li>
           <a href="./../wardrobe" class="menu__link">
             <img src="./../assets/img/header/nav2.webp" alt="ВТБ" />
             <b>Костюмерная</b>
-            <p>Подборка нарядов для главных&nbsp;героев</p>
+            <p>Подберите яркие наряды&nbsp;героев</p>
           </a>
         </li>
         <li>
           <a href="./../makeup-room" class="menu__link">
             <img src="./../assets/img/header/nav3.webp" alt="ВТБ" />
             <b>Гримерная</b>
-            <p>Идеи макияжа для сказочного преображения</p>
+            <p>Используйте наши идеи сказочных образов</p>
           </a>
         </li>
         <li>
           <a href="./../orchestra-pit" class="menu__link">
             <img src="./../assets/img/header/nav4.webp" alt="ВТБ" />
-            <b>Оркестровая яма</b>
-            <p>Музыкальное сопровождение для пьес</p>
+            <b>Оркестр</b>
+            <p>Послушайте аудиоверсии сказок</p>
           </a>
         </li>
         <li>
           <a href="./../buffet" class="menu__link">
             <img src="./../assets/img/header/nav5.webp" alt="ВТБ" />
             <b>Буфет</b>
-            <p>Украшения и рецепты для праздничного стола</p>
+            <p>Создайте <br />праздничное <br />настроение</p>
           </a>
         </li>
         <li>
           <a href="./../directors-room" class="menu__link">
             <img src="./../assets/img/header/nav6.webp" alt="ВТБ" />
-            <b>Кабинет режиссера</b>
-            <p>Советы для домашнего спектакля и&nbsp;чек-лист для подготовки к&nbsp;празднику</p>
+            <b>Режиссёр</b>
+            <p>Откройте пространство для&nbsp;творчества</p>
           </a>
         </li>
       </ul>
-      <a href="./../videos" class="menu__link map-link">Видео спектаклей</a>
-        <!--<a href="./../holiday-map" class="menu__link map-link">Карта елок</a>-->
+
+      <a href="./videos" class="menu__link map-link">Видео спектаклей</a>
+      <!--<a href="./holiday-map" class="menu__link map-link">Карта елок</a>-->
     </nav>
 
     <!--FIXED-BACKGROUND-->
@@ -126,14 +125,14 @@
     <main class="main">
       <section class="section section--stage" data-slider="stage-slider" data-centered="true" data-speed="1000" data-loop="true">
         <!--go back-->
-        <a href="./../" class="go-back go-back--stage">
+        <!-- <a href="./../" class="go-back go-back--stage">
           <img src="./../assets/img/svg/go-back.svg" alt="ВТБ" />
-        </a>
+        </a> -->
 
         <h1 hidden>Сцена</h1>
 
         <!--CIRCLE SLIDER-->
-        <div class="circle">
+        <div class="circle" hidden>
           <div class="circle__head">
             <div class="circle__images">
               <!--Image 1 Конек-Горбунок-->
@@ -149,16 +148,16 @@
               </div>
 
               <!--Image 3 Мешок с подарками-->
-              <!--<div class="circle__image circle__image--3">
+              <div class="circle__image circle__image--3">
                 <img src="./../assets/img/stage/meshok-s-podarkami.webp" alt="ВТБ" class="circle__images--normal" />
                 <img src="./../assets/img/vyazanyi-konek/stage/meshok-s-podarkami.webp" alt="ВТБ" class="circle__images--snow" />
-              </div>-->
+              </div>
 
               <!--Image 4 Новогодняя елка-->
-              <!--<div class="circle__image circle__image--4">
+              <div class="circle__image circle__image--4">
                 <img src="./../assets/img/stage/elka.webp" alt="ВТБ" class="circle__images--normal" />
                 <img src="./../assets/img/vyazanyi-konek/stage/elka.webp" alt="ВТБ" class="circle__images--snow" />
-              </div>-->
+              </div>
 
               <!--Image 5 Зайкина избушка-->
               <div class="circle__image circle__image--5">
@@ -215,7 +214,7 @@
             </div>
 
             <!--SLIDE 3 Мешок с подарками-->
-            <!--<div class="swiper-slide" data-number="3">
+            <div class="swiper-slide" data-number="3">
               <a href="./../stage/meshok-s-podarkami/">
                 <img
                   src="./../assets/img/stage/myshka.webp"
@@ -224,10 +223,10 @@
                   class="character character--3_2 center"
                 />
               </a>
-            </div>-->
+            </div>
 
             <!--SLIDE 4 Новогодняя елка-->
-            <!--<div class="swiper-slide" data-number="4">
+            <div class="swiper-slide" data-number="4">
               <a href="./../stage/christmas-tree/">
                 <img
                   src="./../assets/img/stage/2_center.webp"
@@ -236,7 +235,7 @@
                   class="character character--2_1 center"
                 />
               </a>
-            </div>-->
+            </div>
 
             <!--SLIDE 5 Зайкина избушка-->
             <div class="swiper-slide" data-number="5">
@@ -257,36 +256,38 @@
             </div>
 
             <!--SLIDE 99 Золотой петушок-->
-            <!-- <div class="swiper-slide" data-number="99">
-    <a href="./../stage/zolotoy-petushok/">
-      <img src="./../assets/img/stage/1_left.webp" alt="ВТБ" class="character character--1_1 left" />
-      <img src="./../assets/img/stage/1_center.gif" alt="ВТБ" class="character character--1_2 center" />
-      <img src="./../assets/img/stage/1_right.webp" alt="ВТБ" class="character character--1_3 right" />
-      </a>
-    </div> -->
+            <div class="swiper-slide" data-number="99">
+              <a href="./../stage/zolotoy-petushok/">
+                <img src="./../assets/img/stage/1_left.webp" alt="ВТБ" class="character character--1_1 left" />
+                <img src="./../assets/img/stage/1_center.gif" alt="ВТБ" class="character character--1_2 center" />
+                <img src="./../assets/img/stage/1_right.webp" alt="ВТБ" class="character character--1_3 right" />
+              </a>
+            </div>
+
             <!--SLIDE 100 скоро-->
-            <!-- <div class="swiper-slide" data-number="100">
-      <div class="shtori full-height">
-        <img src="./../assets/img/soon/hand-soon.webp" alt="ВТБ" class="shtori__hand" />
-      </div>
-    </div> -->
+            <div class="swiper-slide" data-number="100">
+              <div class="shtori full-height">
+                <img src="./../assets/img/soon/hand-soon.webp" alt="ВТБ" class="shtori__hand" />
+              </div>
+            </div>
           </div>
         </div>
 
-        <!--DESCTIPTIONS SLIDER-->
-        <div class="container stage-desctiptions">
-          <!--SLIDE 1 Путешествие Конька-Горбунка-->
-          <div class="stage-desctiption stage-desctiption--1 active">
-            <ul class="table">
-              <li class="time">11 мин</li>
-              <li class="peoples">7</li>
-              <li class="age">
-                <img src="./../assets/img/stage/icon-8.webp" alt="ВТБ" loading="lazy" />
-              </li>
-            </ul>
-            <div class="description">
+        <div class="container full">
+          <!--DESCRIPTIONS SLIDER-->
+          <div class="stage-descriptions">
+            <!--SLIDE 1 Путешествие Конька-Горбунка-->
+            <div class="stage-description stage-description--1 active">
+              <ul class="table">
+                <li class="time">11 мин</li>
+                <li class="peoples">7</li>
+                <li class="age">8+</li>
+              </ul>
+
               <h2 class="title title--h1">Путешествие <br />Конька-Горбунка</h2>
+
               <p class="subtitle">Авторская версия любимой <br />сказки для всей семьи</p>
+
               <div class="buttons">
                 <a href="./../stage/konek-gorbunok" class="button">
                   <span>К пьесе</span>
@@ -296,20 +297,19 @@
                 </a>
               </div>
             </div>
-          </div>
 
-          <!--SLIDE 2 По щучьему веленью-->
-          <div class="stage-desctiption stage-desctiption--2">
-            <ul class="table">
-              <li class="time">12 мин</li>
-              <li class="peoples">6</li>
-              <li class="age">
-                <img src="./../assets/img/stage/icon-6.webp" alt="ВТБ" loading="lazy" />
-              </li>
-            </ul>
-            <div class="description">
+            <!--SLIDE 2 По щучьему веленью-->
+            <div class="stage-description stage-description--2">
+              <ul class="table">
+                <li class="time">12 мин</li>
+                <li class="peoples">6</li>
+                <li class="age">6+</li>
+              </ul>
+
               <h2 class="title title--h1">По щучьему веленью</h2>
+
               <p class="subtitle">Поют и танцуют все! <br />Даже щука</p>
+
               <div class="buttons">
                 <a href="./../stage/po-shuchyemu-veleniyu" class="button">
                   <span>К пьесе</span>
@@ -319,54 +319,59 @@
                 </a>
               </div>
             </div>
-          </div>
 
-          <!--SLIDE 3 Мешок с подарками-->
-          <!--<div class="stage-desctiption stage-desctiption--3">
-            <ul class="table">
-              <li class="time">5 мин</li>
-              <li class="peoples">7</li>
-              <li class="age"><img src="./../assets/img/stage/icon-3.webp" alt="ВТБ" loading="lazy" /></li>
-            </ul>
-            <div class="description">
+            <!--SLIDE 3 Мешок с подарками-->
+            <div class="stage-description stage-description--3">
+              <ul class="table">
+                <li class="time">5 мин</li>
+                <li class="peoples">7</li>
+                <li class="age">3+</li>
+              </ul>
+
               <h2 class="title title--h1">Мешок с подарками</h2>
+
               <p class="subtitle">
                 Дружная семья и домашние питомцы помогают <br class="hide-in-mobil" />Деду Морозу достать мешок&nbsp;с&nbsp;подарками
               </p>
-              <a href="./../stage/meshok-s-podarkami" class="button">
-                <span>К пьесе</span>
-              </a>
-            </div>
-          </div>-->
 
-          <!--SLIDE 4 Новогодняя елка-->
-          <!--<div class="stage-desctiption stage-desctiption--4">
-            <ul class="table">
-              <li class="time">4 мин</li>
-              <li class="peoples">5</li>
-              <li class="age"><img src="./../assets/img/stage/icon-3.webp" alt="ВТБ" loading="lazy" /></li>
-            </ul>
-            <div class="description">
+              <div class="buttons">
+                <a href="./../stage/meshok-s-podarkami" class="button">
+                  <span>К пьесе</span>
+                </a>
+              </div>
+            </div>
+
+            <!--SLIDE 4 Новогодняя елка-->
+            <div class="stage-description stage-description--4">
+              <ul class="table">
+                <li class="time">4 мин</li>
+                <li class="peoples">5</li>
+                <li class="age">3+</li>
+              </ul>
+
               <h2 class="title title--h1">Новогодняя елка</h2>
-              <p class="subtitle">Сказка о звериной компании, случайно <br />собравшейся под волшебной елочкой</p>
-              <a href="./../stage/christmas-tree" class="button">
-                <span>К пьесе</span>
-              </a>
-            </div>
-          </div>-->
 
-          <!--SLIDE 5 Зайкина избушка-->
-          <div class="stage-desctiption stage-desctiption--5">
-            <ul class="table">
-              <li class="time">15 мин</li>
-              <li class="peoples">8</li>
-              <li class="age">
-                <img src="./../assets/img/stage/icon-18.webp" alt="ВТБ" loading="lazy" />
-              </li>
-            </ul>
-            <div class="description">
+              <p class="subtitle">Сказка о звериной компании, случайно <br />собравшейся под волшебной елочкой</p>
+
+              <div class="buttons">
+                <a href="./../stage/christmas-tree" class="button">
+                  <span>К пьесе</span>
+                </a>
+              </div>
+            </div>
+
+            <!--SLIDE 5 Зайкина избушка-->
+            <div class="stage-description stage-description--5">
+              <ul class="table">
+                <li class="time">15 мин</li>
+                <li class="peoples">8</li>
+                <li class="age">18+</li>
+              </ul>
+
               <h2 class="title title--h1">Зайкина избушка</h2>
+
               <p class="subtitle">Знакомые герои <br />в дерзких образах</p>
+
               <div class="buttons">
                 <a href="./../stage/zaikina-izbushka" class="button">
                   <span>К пьесе</span>
@@ -376,211 +381,42 @@
                 </a>
               </div>
             </div>
+
+            <!--SLIDE 99 Золотой петушок-->
+            <div class="stage-description stage-description--99">
+              <ul class="table">
+                <li class="time">1 час</li>
+                <li class="peoples">12</li>
+                <li class="age"><img src="./../assets/img/stage/icon-3.webp" alt="ВТБ" loading="lazy" /></li>
+              </ul>
+
+              <h2 class="title title--h1">Золотой петушок</h2>
+
+              <p class="subtitle">Куда пропал царь? <br />Дело&nbsp;расследует Петушок</p>
+
+              <div class="buttons">
+                <a href="./../stage/zolotoy-petushok" class="button">
+                  <span>К пьесе</span>
+                </a>
+              </div>
+            </div>
+
+            <!--SLIDE 100 скоро-->
+            <div class="stage-description stage-description--100"></div>
           </div>
 
-          <!--SLIDE 99 Золотой петушок-->
-          <!-- <div class="stage-desctiption stage-desctiption--99">
-      <ul class="table">
-        <li class="time">1 час</li>
-        <li class="peoples">12</li>
-        <li class="age"><img src="./../assets/img/stage/icon-3.webp" alt="ВТБ" loading="lazy" /></li>
-      </ul>
-      <div class="description">
-        <h2 class="title title--h1">Золотой петушок</h2>
-        <p class="subtitle">Куда пропал царь? <br />Дело&nbsp;расследует Петушок</p>
-        <a href="./../stage/zolotoy-petushok" class="button">
-          <span>К пьесе</span>
-        </a>
-      </div>
-    </div> -->
-          <!--SLIDE 100 скоро-->
-          <!-- <div class="stage-desctiption stage-desctiption--100"></div> -->
+          <div class="stage-arrows">
+            <button type="button" class="swiper-arrow" data-arrow-prev></button>
+            <button type="button" class="swiper-arrow" data-arrow-next></button>
+          </div>
         </div>
-
-        <button type="button" class="swiper-arrow" data-arrow-prev></button>
-        <button type="button" class="swiper-arrow" data-arrow-next></button>
       </section>
 
       <!--COLUMNS-->
-      <div class="column column--left">
-        <img src="./../assets/img/header/column-left.webp" data-snow="./../assets/img/vyazanyi-konek/header/column-left.webp" alt="ВТБ" />
-      </div>
       <div class="column column--right">
         <img src="./../assets/img/header/column-right.webp" data-snow="./../assets/img/vyazanyi-konek/header/column-right.webp" alt="ВТБ" />
       </div>
     </main>
-
-    <button type="button" class="select-a-play" data-popup-open="test-start">
-      <img src="./../assets/img/svg/select-a-play.svg" alt="ВТБ" class="select-a-play__text" />
-      <img src="./../assets/img/header/binoculars.webp" alt="ВТБ" class="select-a-play__image" />
-    </button>
-
-    <!--TEST-->
-    <div class="backdrop" data-backdrop>
-      <!-- START TEST-->
-      <div class="popup" data-popup="test-start" data-popup-close>
-        <div class="popupContent">
-          <button type="button" class="popup__close" data-popup-close></button>
-          <h2 class="title title--28">Пройдите тест</h2>
-          <p class="subtitle subtitle--16">Узнайте, какая пьеса <br />подойдет&nbsp;именно&nbsp;вам</p>
-          <button class="button" data-popup-open="test-step-1">
-            <span>Начать</span>
-          </button>
-        </div>
-      </div>
-
-      <!--TEST STEP 1-->
-      <script>
-        const saveStepOne = e => {
-          e.preventDefault();
-          const answer1 = new FormData(e.target).get('who-play');
-          window.saveAnswerToSession('question1', answer1);
-          window.popup.open('test-step-2');
-        };
-      </script>
-      <div class="popup" data-popup="test-step-1" data-popup-close>
-        <div class="popupContent">
-          <button type="button" class="popup__close" data-popup-close></button>
-          <h2 class="title title--28">Какая пьеса <br />вам подходит?</h2>
-          <p class="test-question"><strong>01</strong><span>Кто будет играть в пьесе?</span></p>
-          <form action="#" class="form form--test" novalidate onsubmit="saveStepOne(event)">
-            <label class="radio">
-              <input type="radio" name="who-play" value="Большая семья — с детьми, бабушками и дедушками" />
-              <span>Большая семья — с детьми, <br />бабушками и дедушками</span>
-            </label>
-
-            <label class="radio">
-              <input type="radio" name="who-play" value="Веселая компания на вечеринке" />
-              <span>Веселая компания на вечеринке</span>
-            </label>
-
-            <label class="radio">
-              <input type="radio" name="who-play" value="Мама, папа, я, а еще, может быть, друзья" />
-              <span>Мама, папа, я, а еще, <br />может быть, друзья</span>
-            </label>
-
-            <label class="radio">
-              <input type="radio" name="who-play" value="Вдвоем" />
-              <span>Вдвоем</span>
-            </label>
-
-            <label class="radio">
-              <input type="radio" name="who-play" value="Я сам(а)" />
-              <span>Я сам(а)</span>
-            </label>
-
-            <div class="form-buttons">
-              <button type="submit" class="button">
-                <span>Далее</span>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <!--TEST STEP 2-->
-      <script>
-        const saveStepTwo = e => {
-          e.preventDefault();
-          const answer2 = new FormData(e.target).get('favorite-film');
-          window.saveAnswerToSession('question2', answer2);
-          window.popup.open('test-step-3');
-        };
-      </script>
-      <div class="popup" data-popup="test-step-2" data-popup-close>
-        <div class="popupContent">
-          <button type="button" class="popup__close" data-popup-close></button>
-          <h2 class="title title--28">Какая пьеса <br />вам подходит?</h2>
-          <p class="test-question"><strong>02</strong><span>Ваш любимый жанр в&nbsp;кино?</span></p>
-          <form action="#" class="form form--test" novalidate onsubmit="saveStepTwo(event)">
-            <label class="radio">
-              <input type="radio" name="favorite-film" value="Приключения" />
-              <span>Приключения</span>
-            </label>
-
-            <label class="radio">
-              <input type="radio" name="favorite-film" value="Мелодрама" />
-              <span>Мелодрама</span>
-            </label>
-
-            <label class="radio">
-              <input type="radio" name="favorite-film" value="Триллер" />
-              <span>Триллер</span>
-            </label>
-
-            <label class="radio">
-              <input type="radio" name="favorite-film" value="Артхаус" />
-              <span>Артхаус</span>
-            </label>
-
-            <div class="form-buttons">
-              <button type="button" class="button button--white" data-popup-open="test-step-1">
-                <span>Назад</span>
-              </button>
-              <button type="submit" class="button">
-                <span>Далее</span>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <!--TEST STEP 3-->
-      <script>
-        const saveStepThree = e => {
-          e.preventDefault();
-          const answer3 = new FormData(e.target).get('hobby');
-          window.saveAnswerToSession('question3', answer3);
-          const result = window.getTestResult();
-          window.renderResults(result);
-          window.popup.open('test-result');
-        };
-      </script>
-      <div class="popup" data-popup="test-step-3" data-popup-close>
-        <div class="popupContent">
-          <button type="button" class="popup__close" data-popup-close></button>
-          <h2 class="title title--28">Какая пьеса <br />вам подходит?</h2>
-          <p class="test-question"><strong>03</strong><span>Что у вас получается лучше всего?</span></p>
-          <form action="#" class="form form--test" novalidate onsubmit="saveStepThree(event)">
-            <label class="radio">
-              <input type="radio" name="hobby" value="Петь и танцевать" />
-              <span>Петь и танцевать</span>
-            </label>
-
-            <label class="radio">
-              <input type="radio" name="hobby" value="Читать стихи" />
-              <span>Читать стихи</span>
-            </label>
-
-            <label class="radio">
-              <input type="radio" name="hobby" value="Стендап" />
-              <span>Стендап</span>
-            </label>
-
-            <label class="radio">
-              <input type="radio" name="hobby" value="Создавать уют" />
-              <span>Создавать уют</span>
-            </label>
-
-            <div class="form-buttons">
-              <button type="button" class="button button--white" data-popup-open="test-step-2">
-                <span>Назад</span>
-              </button>
-              <button type="submit" class="button">
-                <span>Далее</span>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <!--TEST END (RENDER RESULTS)-->
-      <div class="popup" data-popup="test-result" data-popup-close>
-        <div class="popupContent" data-path="./../" data-test-results-block>
-          <button type="button" class="popup__close" data-popup-close></button>
-        </div>
-      </div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./../assets/js/scripts.js" type="module"></script>
