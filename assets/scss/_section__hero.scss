@@ -60,12 +60,9 @@
       }
     }
     .subtitle {
-      max-width: 600px;
-      @media (min-width: 1921px) {
-        max-width: 800px;
-      }
+      max-width: myclamp(492px, 600px);
+
       @media (max-width: 1023px) {
-        max-width: 492px;
         padding: 0px 20px;
       }
     }
