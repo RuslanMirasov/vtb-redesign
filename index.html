@@ -194,9 +194,14 @@
     </button>
 
     <!--assistent-->
-    <button type="button" class="assistent">
+    <div class="assistent">
       <img src="./assets/img/header/rakushka.webp" alt="ВТБ" class="rakushka rakushka--static" />
-    </button>
+
+      <div class="assistent-text active">
+        <p>Могу рассказать, с&nbsp;чего лучше начать.</p>
+        <button type="button" class="button button--assistent small" onclick="window.popup.open('intro')"><span>Узнать</span></button>
+      </div>
+    </div>
 
     <!--TEST-->
     <div class="backdrop" data-backdrop>
@@ -206,7 +211,7 @@
           <button type="button" class="popup__close" data-popup-close></button>
           <h2 class="title title--28">Пройдите тест</h2>
           <p class="subtitle subtitle--16">Узнайте, какая пьеса <br />подойдет&nbsp;вам</p>
-          <button class="button" data-popup-open="test-step-1">
+          <button class="button small" data-popup-open="test-step-1">
             <span>Начать</span>
           </button>
         </div>
@@ -253,7 +258,7 @@
             </label>
 
             <div class="form-buttons">
-              <button type="submit" class="button">
+              <button type="submit" class="button small">
                 <span>Далее</span>
               </button>
             </div>
@@ -297,10 +302,10 @@
             </label>
 
             <div class="form-buttons">
-              <button type="button" class="button button--white" data-popup-open="test-step-1">
+              <button type="button" class="button small button--white" data-popup-open="test-step-1">
                 <span>Назад</span>
               </button>
-              <button type="submit" class="button">
+              <button type="submit" class="button small">
                 <span>Далее</span>
               </button>
             </div>
@@ -346,10 +351,10 @@
             </label>
 
             <div class="form-buttons">
-              <button type="button" class="button button--white" data-popup-open="test-step-2">
+              <button type="button" class="button small button--white" data-popup-open="test-step-2">
                 <span>Назад</span>
               </button>
-              <button type="submit" class="button">
+              <button type="submit" class="button small">
                 <span>Далее</span>
               </button>
             </div>
@@ -403,7 +408,7 @@
           <button type="button" class="popup__close" data-popup-close></button>
           <h2 class="title title--28">Кто сегодня в&nbsp;главной роли? В&nbsp;Новогоднем театре — каждый!</h2>
           <p class="subtitle subtitle--16">Выберите сказку, соберите семью или&nbsp;друзей и&nbsp;создайте свой новогодний&nbsp;спектакль.</p>
-          <a href="./stage/" class="button"> <span>Далее</span> </a>
+          <a href="./stage/" class="button small"><span>Далее</span></a>
         </div>
       </div>
     </div>

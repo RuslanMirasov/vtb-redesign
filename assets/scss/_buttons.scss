@@ -1,4 +1,16 @@
+.buttons {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  gap: myclamp(12px, 12px, 1440px, 2560px) myclamp(12px, 24px, 1440px, 2560px);
+}
+
 .button {
+  --button-fill: var(--white);
   display: inline-flex;
   position: relative;
   width: auto;
@@ -6,92 +18,113 @@
   align-items: center;
   align-content: center;
   user-select: none;
-  background: var(--red);
-  height: myclamp(40px, 40px, 1440px, 2560px);
+  background-color: rgba(0, 0, 0, 0);
+  background-image: linear-gradient(var(--button-fill), var(--button-fill)), linear-gradient(var(--button-fill), var(--button-fill));
+  background-position:
+    left -2px center,
+    right -2px center;
+  background-size:
+    0% calc(100% + 4px),
+    0% calc(100% + 4px);
+  background-repeat: no-repeat;
+  height: auto;
   border-radius: 100px;
   overflow: hidden;
-  border-bottom: 3px solid var(--white);
+  border: 2px solid var(--white);
   box-sizing: content-box;
-  transition: 0.3s;
+  transition:
+    0.3s,
+    background-size 0.5s;
   cursor: pointer;
+
+  span {
+    display: block;
+    width: 100%;
+    position: relative;
+    color: var(--white);
+    transition: 0.5s;
+    font-family: var(--font);
+    font-weight: 500;
+    font-size: myclamp(16px, 16px, 1440px, 2560px);
+    padding: myclamp(20px, 20px, 1440px, 2560px) myclamp(30px, 30px, 1440px, 2560px);
+    text-align: center;
+    @media (max-width: 767px) {
+      font-size: 14px;
+      padding: 14px 15px;
+    }
+    line-height: 1;
+    z-index: 2;
+    flex-shrink: 0;
+    &:before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 20%, var(--white) 50%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0) 100%);
+      opacity: 0.3;
+      top: 0px;
+      left: 0px;
+      animation: move-across 6s linear infinite;
+    }
+  }
+
+  &.small {
+    min-width: myclamp(160px, 160px, 1440px, 2000px);
+    span {
+      font-size: myclamp(14px, 16px, 1440px, 2560px);
+      padding: myclamp(10px, 10px, 1440px, 2000px) myclamp(30px, 30px, 1440px, 2000px);
+      @media (max-width: 767px) {
+        padding: 10px 30px;
+        font-size: 14px;
+      }
+    }
+  }
 
   &.full {
     width: 100%;
   }
 
   &.button--white {
-    border: 2px solid var(--white);
-    background: rgba(0, 0, 0, 0);
-    height: myclamp(36px, 36px, 1440px, 2560px);
+    --button-fill: var(--blue-medium);
+    background-color: #fff;
+    border: none;
     span {
-      padding: 0px myclamp(20px, 30px, 1440px, 2560px);
+      color: var(--blue);
+      padding: myclamp(22px, 22px, 1440px, 2560px) myclamp(30px, 30px, 1440px, 2560px);
+      @media (max-width: 767px) {
+        padding: 16px 15px;
+      }
     }
   }
 
   &.button--blue {
     border: none;
-    background: var(--blue-medium);
-    height: myclamp(26px, 40px, 1440px, 2560px);
-    padding: 0;
+    background-color: var(--blue-medium);
+  }
+
+  &.button--assistent {
+    --button-fill: var(--blue);
+    background-color: var(--blue-medium);
+    border: none;
     span {
-      font-weight: 500;
-      font-size: myclamp(12px, 18px, 1440px, 2560px);
-      padding: 0px myclamp(18px, 30px, 1440px, 2560px);
+      color: var(--white);
     }
   }
 
-  &:before,
-  &:after {
-    content: '';
-    z-index: 1;
-    position: absolute;
-    bottom: -3px;
-    background: var(--white);
-    width: 51%;
-    height: calc(100% + 3px);
-    transition: 0.5s;
-  }
-
-  &:before {
-    left: 0px;
-    transform: translate(-101%, 0%);
-  }
-
-  &:after {
-    right: 0px;
-    transform: translate(101%, 0%);
-  }
-
-  span {
-    display: block;
-    position: relative;
-    color: var(--white);
-    transition: 0.5s;
-    font-weight: 500;
-    font-size: myclamp(16px, 16px, 1440px, 2560px);
-    line-height: 1;
-    padding: 0px myclamp(30px, 60px, 1440px, 2560px);
-    z-index: 2;
-    &:before {
-      content: '';
-      width: 50px;
-      height: 200px;
-      position: absolute;
-      background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, var(--white) 50%, rgba(0, 0, 0, 0) 100%);
-      opacity: 0.5;
-      top: 50%;
-      left: -80px;
-      animation: move-across 4s linear infinite;
-    }
-  }
   @media (hover: hover) {
     &:hover {
+      background-size:
+        calc(51% + 2px) calc(100% + 4px),
+        calc(51% + 2px) calc(100% + 4px);
       span {
         color: var(--blue);
       }
-      &:before,
-      &:after {
-        transform: translate(0%, 0%);
+
+      &.button--white,
+      &.button--assistent {
+        span {
+          color: var(--white);
+        }
       }
     }
   }
@@ -100,10 +133,10 @@
 @keyframes move-across {
   0%,
   70% {
-    transform: translate(0px, -50%) rotate(25deg);
+    transform: translate(-120%, 0%) skewX(-20deg);
   }
   100% {
-    transform: translate(500px, -50%) rotate(25deg);
+    transform: translate(120%, 0%) skewX(-20deg);
   }
 }
 
@@ -208,7 +241,9 @@
   bottom: 2.5%;
   z-index: 100;
   opacity: 1;
-  transition: opacity 0.5s, transform 0.5s ease-in-out 0.3s;
+  transition:
+    opacity 0.5s,
+    transform 0.5s ease-in-out 0.3s;
   pointer-events: all;
   transform: translate(0%, 0%);
 
@@ -232,42 +267,17 @@
 
 .go-back {
   display: flex;
-  position: absolute;
+  position: relative;
   z-index: 15;
-  left: myclamp(35px, 80px, 1440px, 1440px);
-  top: myclamp(90px, 120px, 1440px, 1440px);
-  &.go-back--page {
-    left: myclamp(25px, 80px, 1440px, 1440px);
-    top: myclamp(102px, 100px, 1440px, 1440px);
-  }
-  &.go-back--poem {
-    left: myclamp(0px, 0px, 1440px, 1440px);
-    top: myclamp(0px, 0px, 1440px, 1440px);
-    transform: translate(0%, 20%);
-    @media (min-width: 1280px) {
-      transform: translate(-130%, 24%);
-    }
-  }
-  &.go-back--stage {
-    left: myclamp(35px, 60px, 1440px, 1600px);
-    top: 98px;
-    @media (min-width: 1440px) {
-      top: myclamp(72px, 100px, 1440px, 2000px);
-    }
-    @media (max-width: 1023px) {
-      left: 50%;
-      margin-left: -40vw;
-      top: 78px;
-    }
-  }
   justify-content: center;
   align-items: center;
   align-content: center;
-  width: myclamp(32px, 42px, 1440px, 2560px);
-  height: myclamp(32px, 42px, 1440px, 2560px);
+  width: myclamp(26px, 32px, 1440px, 2560px);
+  height: myclamp(26px, 32px, 1440px, 2560px);
   opacity: 0;
   pointer-events: none;
   transition: 0.5s;
+  border-radius: 100px;
 
   img {
     height: 100%;

@@ -1,0 +1,26 @@
+{
+  "myclamp: мобилка / планшет / десктоп": {
+    "scope": "scss",
+    "prefix": ["myclamp", "my3"],
+    "body": "myclamp(${1:12}px, ${2:14}px, ${3:18}px)$0",
+    "description": "3 значения: $bp-mobile / $bp-tablet / $bp-desktop"
+  },
+  "myclamp: мобилка / десктоп": {
+    "scope": "scss",
+    "prefix": ["myclamp2", "my2"],
+    "body": "myclamp(${1:12}px, ${2:18}px)$0",
+    "description": "2 значения: $bp-mobile / $bp-desktop"
+  },
+  "myclamp: одно значение": {
+    "scope": "scss",
+    "prefix": ["myclamp1", "my1"],
+    "body": "myclamp(${1:16}px)$0",
+    "description": "Одно значение, масштабируется только по краям (320 / 2560)"
+  },
+  "myclamp: старый (min, value, 1440, 2560)": {
+    "scope": "scss",
+    "prefix": ["myclamp-old", "myold"],
+    "body": "myclamp(${1:16}px, ${2:24}px, ${3:1440}px, ${4:2200}px)$0",
+    "description": "Старая запись: min, значение на макете, экран макета, экран максимума"
+  }
+}

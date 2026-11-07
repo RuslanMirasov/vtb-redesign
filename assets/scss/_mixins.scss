@@ -1,51 +1,233 @@
-@function strip-unit-safe($value) {
-  @return $value / (1 * 1px);
+@use 'sass:math';
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:string';
+
+// ============================================================================
+// НАСТРОЙКИ АДАПТИВА (меняются от проекта к проекту)
+// ============================================================================
+
+// Брейкпоинты макетов. Если планшетного макета нет — $bp-tablet: null.
+$bp-mobile: 375px;
+$bp-tablet: 768px;
+$bp-desktop: 1440px;
+
+// Пределы: уже $screen-min и шире $screen-max значение не меняется.
+$screen-min: 360px;
+$screen-max: 2200px;
+
+// Что делать за крайними макетами (от $screen-min до $bp-mobile и от $bp-desktop до $screen-max):
+// true  — масштабировать пропорционально (как раньше: 1440 → 2560 растёт в 1.78 раза)
+// false — держать значение крайнего макета
+$fluid-scale-edges: true;
+
+// Единица ширины экрана (vw / svw / dvw / cqi ...)
+$fluid-unit: vw;
+
+// Выводить px-значения в rem (лучше для font-size: уважает настройки шрифта браузера)
+$fluid-rem: false;
+$fluid-root: 16px;
+
+// ============================================================================
+// myclamp
+// ----------------------------------------------------------------------------
+//   myclamp(18px)                 — 18px на всех макетах (+ масштаб по краям)
+//   myclamp(12px, 18px)           — мобилка / десктоп
+//   myclamp(12px, 14px, 18px)     — мобилка / планшет / десктоп
+//   myclamp(-8px, -16px, -24px)   — отрицательные тоже можно
+//   myclamp(12px, 14px, 18px, $rem: true)
+//   myclamp(12px, 18px, $edges: false)
+//
+//   Старый вызов из 4 аргументов работает как раньше:
+//   myclamp($min, $value, $screenStart, $screenEnd)
+// ============================================================================
+
+@function myclamp($args...) {
+  $values: $args;
+  $opts: meta.keywords($args);
+  $n: list.length($values);
+
+  @if $n == 4 {
+    @return myclamp-legacy(list.nth($values, 1), list.nth($values, 2), list.nth($values, 3), list.nth($values, 4));
+  }
+  @if $n < 1 or $n > 3 {
+    @error 'myclamp(): нужно 1–3 значения (мобилка, [планшет], десктоп), получено #{$n}';
+  }
+
+  $rem: myclamp-opt($opts, 'rem', $fluid-rem);
+  $edges: myclamp-opt($opts, 'edges', $fluid-scale-edges);
+  $unit: myclamp-opt($opts, 'unit', $fluid-unit);
+
+  @each $v in $values {
+    @if meta.type-of($v) != 'number' or math.unit($v) != 'px' {
+      @error 'myclamp(): значения должны быть в px, получено #{$v}';
+    }
+  }
+
+  // ---- опорные точки (ширина экрана → значение) ----
+  $first: list.nth($values, 1);
+  $last: list.nth($values, $n);
+  // точки добавляются по одной через list.append — так форматтер (Prettier)
+  // не может сломать вложенные списки, убрав «лишнюю» запятую
+  $points: ();
+
+  @if $edges and $screen-min < $bp-mobile {
+    $points: list.append($points, $screen-min math.div($first * $screen-min, $bp-mobile), $separator: comma);
+  }
+
+  $points: list.append($points, $bp-mobile $first, $separator: comma);
+  @if $n == 3 {
+    @if $bp-tablet == null {
+      @error 'myclamp(): передано 3 значения, но $bp-tablet: null';
+    }
+    $points: list.append($points, $bp-tablet list.nth($values, 2), $separator: comma);
+  }
+  $points: list.append($points, $bp-desktop $last, $separator: comma);
+
+  @if $edges and $screen-max > $bp-desktop {
+    $points: list.append($points, $screen-max math.div($last * $screen-max, $bp-desktop), $separator: comma);
+  }
+
+  @return myclamp-piecewise($points, $unit, $rem);
 }
 
-// @function myclamp($min, $value, $screenStart, $screenEnd, $unit: vw) {
-//   @if unit($min) != px or unit($value) != px or unit($screenStart) != px or unit($screenEnd) != px {
-//     @error "Оба значения должны быть в px";
-//   }
+// ---- ломаная через точки в одно CSS-выражение ----
+// f(x) = y0 + Σ clamp(0, k·(x − xᵢ), Δyᵢ) — каждый отрезок добавляет свой прирост
+// только в пределах своей ширины, поэтому работает для любых значений,
+// в том числе отрицательных и «вверх-вниз».
+@function myclamp-piecewise($points, $unit, $rem) {
+  // отрезки с ненулевым наклоном, соседние с одинаковым наклоном склеиваются
+  $segs: ();
+  @for $i from 1 to list.length($points) {
+    $a: list.nth($points, $i);
+    $b: list.nth($points, $i + 1);
+    $x1: list.nth($a, 1);
+    $y1: list.nth($a, 2);
+    $x2: list.nth($b, 1);
+    $y2: list.nth($b, 2);
+    @if $x2 <= $x1 {
+      @error 'myclamp(): брейкпоинты должны возрастать (#{$x1} → #{$x2})';
+    }
+    $k: math.div($y2 - $y1, $x2 - $x1);
+    $len: list.length($segs);
+    $prev: null;
+    @if $len > 0 {
+      $prev: list.nth($segs, $len);
+    }
 
-//   $is-negative: $value < 0;
-
-//   $min-num: strip-unit-safe($min);
-//   $val-num: abs(strip-unit-safe($value));
-//   $screenStart-num: strip-unit-safe($screenStart);
-//   $screenEnd-num: strip-unit-safe($screenEnd);
-
-//   $vw: ($val-num / $screenStart-num) * 100;
-//   $vw-rounded: round($vw * 10000) / 10000;
-//   $max: round(($val-num / $screenStart-num) * $screenEnd-num);
-
-//   $clamp-value: clamp(#{$min}, #{$vw-rounded}#{$unit}, #{$max}px);
-
-//   @return if($is-negative, calc(-1 * #{$clamp-value}), #{$clamp-value});
-// }
-
-@function myclamp($min, $value, $screenStart, $screenEnd, $unit: vw) {
-  @if unit($min) != px or unit($value) != px or unit($screenStart) != px or unit($screenEnd) != px {
-    @error "Оба значения должны быть в px";
+    @if $prev and list.nth($prev, 3) == $x1 and math.abs(list.nth($prev, 5) - $k) < 0.0000001 {
+      $segs: list.set-nth($segs, $len, (list.nth($prev, 1), list.nth($prev, 2), $x2, $y2, $k));
+    } @else if math.abs($y2 - $y1) >= 0.001px {
+      $segs: list.append($segs, ($x1, $y1, $x2, $y2, $k), $separator: comma);
+    }
   }
+
+  $y0: list.nth(list.nth($points, 1), 2);
+  $count: list.length($segs);
+
+  @if $count == 0 {
+    @return myclamp-len($y0, $rem);
+  }
+
+  // один отрезок — обычный clamp(min, b + k·vw, max)
+  @if $count == 1 {
+    $s: list.nth($segs, 1);
+    $y1: list.nth($s, 2);
+    $y2: list.nth($s, 4);
+    @return string.unquote(
+      'clamp(#{myclamp-len(math.min($y1, $y2), $rem)}, #{myclamp-line($s, $unit, $rem)}, #{myclamp-len(math.max($y1, $y2), $rem)})'
+    );
+  }
+
+  // несколько отрезков — сумма приростов
+  $out: '#{myclamp-len($y0, $rem)}';
+  @each $s in $segs {
+    $x1: list.nth($s, 1);
+    $dy: list.nth($s, 4) - list.nth($s, 2);
+    $k: list.nth($s, 5);
+    $lo: myclamp-len(math.min(0px, $dy), $rem);
+    $hi: myclamp-len(math.max(0px, $dy), $rem);
+    $mid: '#{myclamp-round($k * 100, 4)}#{$unit} #{myclamp-signed(-$k * $x1, $rem)}';
+    $out: '#{$out} + clamp(#{$lo}, #{$mid}, #{$hi})';
+  }
+  @return string.unquote('calc(#{$out})');
+}
+
+// b + k·vw для одного отрезка
+@function myclamp-line($s, $unit, $rem) {
+  $x1: list.nth($s, 1);
+  $y1: list.nth($s, 2);
+  $k: list.nth($s, 5);
+  $b: $y1 - $k * $x1;
+  $kv: '#{myclamp-round($k * 100, 4)}#{$unit}';
+  @if math.abs($b) < 0.005px {
+    @return $kv;
+  }
+  @return 'calc(#{$kv} #{myclamp-signed($b, $rem)})';
+}
+
+// "+ 5px" / "- 5px"
+@function myclamp-signed($px, $rem) {
+  @if $px < 0 {
+    @return '- #{myclamp-len(math.abs($px), $rem)}';
+  }
+  @return '+ #{myclamp-len($px, $rem)}';
+}
+
+@function myclamp-round($n, $digits: 4) {
+  $m: math.pow(10, $digits);
+  @return math.div(math.round($n * $m), $m);
+}
+
+@function myclamp-len($px, $rem) {
+  @if $rem and math.abs($px) >= 0.005px {
+    @return myclamp-round(math.div($px, $fluid-root), 4) * 1rem;
+  }
+  $v: myclamp-round($px, 2);
+  @if $v == 0 {
+    @return 0px;
+  }
+  @return $v;
+}
+
+@function myclamp-opt($opts, $key, $default) {
+  @if map.has-key($opts, $key) {
+    @return map.get($opts, $key);
+  }
+  @return $default;
+}
+
+// ============================================================================
+// Старый myclamp (4 аргумента) — вывод не изменён
+// ============================================================================
+
+@function strip-unit-safe($value) {
+  @return math.div($value, 1px);
+}
+
+@function myclamp-legacy($min, $value, $screenStart, $screenEnd, $unit: vw) {
+  @if math.unit($min) != 'px' or math.unit($value) != 'px' or math.unit($screenStart) != 'px' or math.unit($screenEnd) != 'px' {
+    @error 'myclamp(): все значения должны быть в px';
+  }
+
+  // не растём дальше общего предела — как и новый синтаксис
+  $screenEnd: math.min($screenEnd, $screen-max);
 
   $is-negative: $value < 0;
 
   $min-num: strip-unit-safe($min);
-  $val-num: abs(strip-unit-safe($value));
+  $val-num: math.abs(strip-unit-safe($value));
   $screenStart-num: strip-unit-safe($screenStart);
   $screenEnd-num: strip-unit-safe($screenEnd);
 
-  $vw: ($val-num / $screenStart-num) * 100;
-  $vw-rounded: round($vw * 10000) / 10000;
-  $max: round(($val-num / $screenStart-num) * $screenEnd-num);
-
-  // базовый clamp для положительных
-  $clamp-value: clamp(#{$min}, #{$vw-rounded}#{$unit}, #{$max}px);
+  $vw: math.div($val-num, $screenStart-num) * 100;
+  $vw-rounded: math.div(math.round($vw * 10000), 10000);
+  $max: math.round(math.div($val-num, $screenStart-num) * $screenEnd-num);
 
   @if $is-negative {
     $clamp-pos: clamp(#{$val-num}px, #{$vw-rounded}#{$unit}, #{$min-num}px);
     @return calc(-1 * #{$clamp-pos});
-  } @else {
-    @return $clamp-value;
   }
+  @return clamp(#{$min}, #{$vw-rounded}#{$unit}, #{$max}px);
 }

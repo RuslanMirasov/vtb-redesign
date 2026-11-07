@@ -1,0 +1,14 @@
+{
+  "[scss]": {
+    // сниппеты первыми в списке подсказок (выше map.keys и т.п.)
+    "editor.snippetSuggestions": "top",
+    // набрал префикс (my3) + Tab — вставилось, даже без открытого списка
+    "editor.tabCompletion": "onlySnippets",
+    // подсказки сразу при наборе, в том числе внутри значений свойств
+    "editor.quickSuggestions": {
+      "other": "on",
+      "comments": "off",
+      "strings": "on"
+    }
+  }
+}

@@ -33,7 +33,9 @@
   align-items: center;
   align-content: center;
   padding: 20px 0px;
-  transition: opacity 0.5s, transform 0.5s;
+  transition:
+    opacity 0.5s,
+    transform 0.5s;
   pointer-events: none;
   opacity: 0;
   transform: translate(0px, 60px);
@@ -61,7 +63,7 @@
   align-items: center;
   align-content: center;
   gap: 24px;
-  background: var(--blue) url('../img/header/nav-bg-mobil.webp') no-repeat center center / cover;
+  background: var(--blue);
   border-radius: 30px;
   padding: myclamp(36px, 36px, 1440px, 2560px) myclamp(24px, 26px, 1440px, 2560px);
   overflow: hidden;
